@@ -1,0 +1,34 @@
+server:
+  port: 8802
+
+# minion服务器配置
+by:
+  minio:
+    endpointUrl: http://127.0.0.1:9000
+    accessKey: minioadmin
+    secretKey: minioadmin
+    bucketName: by-cloud-bucket
+
+spring:
+  application:
+    name: bdd-cloud-service-file
+  config:
+    import: nacos:${spring.application.name}.${spring.cloud.nacos.config.file-extension}-dev
+  cloud:
+    nacos:
+      server:
+        port: 8848
+      discovery:
+        server-addr: localhost:${spring.cloud.nacos.server.port}
+        namespace: b27a663c-6586-4bbb-a14b-52fe8ed115c1
+        group: BDD_GROUP
+      config:
+        server-addr: localhost:${spring.cloud.nacos.server.port}
+        file-extension: yaml
+        namespace: b27a663c-6586-4bbb-a14b-52fe8ed115c1
+        group: BDD_GROUP
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+

@@ -1,0 +1,40 @@
+server:
+  port: 8801
+
+register:
+  host: ${RGISTER_HOST:127.0.0.1}
+  port: ${RGISTER_PORT:8848}
+  group: ${RGISTER_GROUP:BDD_GROUP}
+  namespace: ${RGISTER_NAMESPACE:b27a663c-6586-4bbb-a14b-52fe8ed115c1}
+  refresh: ${RGISTER_REFRESH:true}
+  username: ${RGISTER_USERNAME:nacos}
+  password: ${RGISTER_PASSWORD:nacos}
+  yaml: ${RGISTER_YAML:yaml}
+
+spring:
+  application:
+    name: by-cloud-service-upms
+  config:
+    import: nacos:${spring.application.name}.${spring.cloud.nacos.config.file-extension}-dev
+  cloud:
+    nacos:
+      username: ${register.username}
+      password: ${register.password}
+      discovery:
+        server-addr: ${register.host}:${register.port}
+        group: ${register.group}
+        namespace: ${register.namespace}
+        watch:
+          enabled: true
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        group: ${spring.cloud.nacos.discovery.group}
+        namespace: ${spring.cloud.nacos.discovery.namespace}
+        refresh-enabled: ${register.refresh}
+        file-extension: ${register.yaml}
+  datasource:
+    url: jdbc:mysql://localhost:3306/bdd_cloud?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
