@@ -23,7 +23,7 @@ public class CodeGenerator {
         //生成文件的作者，可以不填
         String author="bdd";
         //生成的entity、controller、service等包所在的公共上一级包路径全限定名
-        String rootPackage="com.by.upms";
+        String rootPackage="com.by.contract";
 
         String moduleName="province-sess-test";
         //数据库配置
@@ -32,7 +32,7 @@ public class CodeGenerator {
         String username="root";
         String password="root";
         //表名，多个使用,分隔
-        String tableNames="sys_menu";
+        String tableNames="contract";
 
         //====================配置变量区域=====================//
 

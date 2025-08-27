@@ -11,6 +11,8 @@
         <module>by-cloud-service-upms</module>
         <module>by-cloud-common</module>
         <module>by-cloud-service-file</module>
+        <module>by-cloud-gateway</module>
+        <module>by-cloud-service-contract</module>
     </modules>
 
     <!-- 属性配置 -->

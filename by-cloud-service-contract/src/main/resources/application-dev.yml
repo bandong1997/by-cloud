@@ -1,0 +1,46 @@
+server:
+  port: 8804
+
+spring:
+  application:
+    name: bdd-cloud-service-contract
+  config:
+    import: nacos:${spring.application.name}.${spring.cloud.nacos.config.file-extension}-dev
+  cloud:
+    nacos:
+      server:
+        port: 8848
+      discovery:
+        server-addr: localhost:${spring.cloud.nacos.server.port}
+        namespace: b27a663c-6586-4bbb-a14b-52fe8ed115c1
+        group: BDD_GROUP
+      config:
+        server-addr: localhost:${spring.cloud.nacos.server.port}
+        file-extension: yaml
+        namespace: b27a663c-6586-4bbb-a14b-52fe8ed115c1
+        group: BDD_GROUP
+  datasource:
+    url: jdbc:mysql://localhost:3306/bdd_cloud?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+
+# MyBatis-Plus 配置
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 开启SQL日志
+  global-config:
+    db-config:
+      id-type: auto # 主键策略
+      logic-delete-field: is_deleted # 逻辑删除字段名
+      logic-delete-value: 1 # 逻辑已删除值
+      logic-not-delete-value: 0 # 逻辑未删除值
+  mapper-locations: classpath:mapper/*/*.xml # XML文件位置
+  type-aliases-package: com.by.upms.entity # 实体类包路径
+
+# Knife4j配置
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
