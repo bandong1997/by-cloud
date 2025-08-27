@@ -1,46 +1,38 @@
 server:
   port: 8804
 
+register:
+  host: ${RGISTER_HOST:127.0.0.1}
+  port: ${RGISTER_PORT:8848}
+  group: ${RGISTER_GROUP:BDD_GROUP}
+  active: ${RGISTER_ACTIVE:dev}
+  namespace: ${RGISTER_NAMESPACE:b27a663c-6586-4bbb-a14b-52fe8ed115c1}
+  refresh: ${RGISTER_REFRESH:true}
+  username: ${RGISTER_USERNAME:nacos}
+  password: ${RGISTER_PASSWORD:nacos}
+
 spring:
   application:
     name: bdd-cloud-service-contract
   config:
-    import: nacos:${spring.application.name}.${spring.cloud.nacos.config.file-extension}-dev
+    import:
+      #      - optional:nacos:application-${register.active}.yaml
+      - optional:nacos:${spring.application.name}-${register.active}.yaml
+  # 安全配置
   cloud:
     nacos:
-      server:
-        port: 8848
+      #      username: ${register.username}
+      #      password: ${register.password}
       discovery:
-        server-addr: localhost:${spring.cloud.nacos.server.port}
-        namespace: b27a663c-6586-4bbb-a14b-52fe8ed115c1
-        group: BDD_GROUP
+        server-addr: ${register.host}:${register.port}
+        group: ${register.group}
+        namespace: ${register.namespace}
+        watch:
+          enabled: true
+      #        watch-delay: 1000
       config:
-        server-addr: localhost:${spring.cloud.nacos.server.port}
-        file-extension: yaml
-        namespace: b27a663c-6586-4bbb-a14b-52fe8ed115c1
-        group: BDD_GROUP
-  datasource:
-    url: jdbc:mysql://localhost:3306/bdd_cloud?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8&useSSL=false
-    username: root
-    password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    type: com.zaxxer.hikari.HikariDataSource
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        group: ${spring.cloud.nacos.discovery.group}
+        namespace: ${spring.cloud.nacos.discovery.namespace}
+        refresh-enabled: ${register.refresh}
 
-# MyBatis-Plus 配置
-mybatis-plus:
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 开启SQL日志
-  global-config:
-    db-config:
-      id-type: auto # 主键策略
-      logic-delete-field: is_deleted # 逻辑删除字段名
-      logic-delete-value: 1 # 逻辑已删除值
-      logic-not-delete-value: 0 # 逻辑未删除值
-  mapper-locations: classpath:mapper/*/*.xml # XML文件位置
-  type-aliases-package: com.by.upms.entity # 实体类包路径
-
-# Knife4j配置
-knife4j:
-  enable: true
-  setting:
-    language: zh_cn
