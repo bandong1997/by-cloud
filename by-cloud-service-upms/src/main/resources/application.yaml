@@ -37,10 +37,4 @@ spring:
         refresh-enabled: ${register.refresh}
 
 
-# JWT配置
-jwt:
-  secret: by-cloud-key
-  expiration: 3600000  # 1小时，单位毫秒
-
-
 

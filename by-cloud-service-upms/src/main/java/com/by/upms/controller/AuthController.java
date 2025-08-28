@@ -4,6 +4,7 @@ import com.by.common.constant.JwtConstant;
 import com.by.common.dto.LoginDTO;
 import com.by.common.dto.LoginResultDTO;
 import com.by.common.result.Result;
+import com.by.upms.entity.SysUser;
 import com.by.upms.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -43,5 +44,29 @@ public class AuthController {
     @GetMapping("/info")
     public Result<Object> getUserInfo(@RequestAttribute("userId") Long userId) {
         return Result.success(userService.getUserInfo(userId));
+    }
+
+    @Operation(summary = "注册", description = "注册")
+    @PostMapping("/register")
+    public Result<Boolean> register(@RequestBody SysUser user) {
+        boolean success = userService.register(user);
+        if (success) {
+            return Result.success(true);
+        } else {
+            return Result.fail("用户名已存在");
+        }
+    }
+
+    @Operation(summary = "修改密码", description = "修改密码")
+    @PutMapping("/password")
+    public Result<Boolean> updatePassword(@RequestAttribute("userId") Long userId,
+                                          @RequestParam String oldPassword,
+                                          @RequestParam String newPassword) {
+        boolean success = userService.updatePassword(userId, oldPassword, newPassword);
+        if (success) {
+            return Result.success(true);
+        } else {
+            return Result.fail("原密码错误");
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.by.upms.config;
 
 import com.by.upms.entity.SysUser;
+import com.by.upms.filter.JwtAuthenticationFilter;
 import com.by.upms.mapper.SysUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
