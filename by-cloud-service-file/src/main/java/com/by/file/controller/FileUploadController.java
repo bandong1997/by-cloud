@@ -36,6 +36,13 @@ public class FileUploadController {
         return Result.success(fileUrl , ResultCode.SUCCESS) ;
     }
 
+    @Operation(summary = "批量文件上传")
+    @PostMapping(value = "/batchFileUpload")
+    public List<String> batchFileUpload(@RequestParam(value = "files") MultipartFile[] files) {
+        List<String> fileUrls = fileUploadService.batchFileUpload(files);
+        return fileUrls;
+    }
+
     @Operation(summary = "文件预览(直接预览桶下面文件，不包含文件夹下文件)")
     @GetMapping("/preview/{fileName}")
     public ResponseEntity<InputStreamResource> previewPdf(@PathVariable String fileName) {

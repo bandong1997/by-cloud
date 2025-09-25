@@ -1,10 +1,12 @@
 package com.by.contract.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.by.common.result.Result;
 import com.by.common.result.ResultCode;
 import com.by.contract.dto.ContractDto;
+import com.by.contract.dto.ContractPageDto;
 import com.by.contract.entity.Contract;
 import com.by.contract.mapper.ContractMapper;
 import com.by.contract.service.ContractService;
@@ -40,5 +42,17 @@ public class ContractServiceImpl extends ServiceImpl<ContractMapper, Contract> i
         BeanUtils.copyProperties(contractDto, po);
         baseMapper.insert(po);
         return Result.success(ResultCode.SUCCESS);
+    }
+
+    @Override
+    public Result contractPage(ContractPageDto contractPageDto) {
+
+        LambdaQueryWrapper<Contract> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(Contract::getIsDeleted, 0);
+
+        Page<Contract> page = new Page<>(contractPageDto.getPage(), contractPageDto.getNumber());
+
+        Page<Contract> pageList = baseMapper.selectPage(page, wrapper);
+        return Result.success(pageList);
     }
 }

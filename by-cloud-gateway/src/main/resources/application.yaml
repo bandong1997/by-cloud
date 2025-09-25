@@ -1,3 +1,78 @@
+server:
+  port: 8803
+register:
+  host: ${RGISTER_HOST:127.0.0.1}
+  port: ${RGISTER_PORT:8848}
+  group: ${RGISTER_GROUP:BDD_GROUP}
+  active: ${RGISTER_ACTIVE:dev}
+  namespace: ${RGISTER_NAMESPACE:b27a663c-6586-4bbb-a14b-52fe8ed115c1}
+  refresh: ${RGISTER_REFRESH:true}
+  username: ${RGISTER_USERNAME:nacos}
+  password: ${RGISTER_PASSWORD:nacos}
+
 spring:
-  profiles:
-    active: dev
+  main:
+    allow-bean-definition-overriding: true
+    web-application-type: reactive
+  application:
+    name: bdd-cloud-gateway
+  config:
+    import:
+      #      - optional:nacos:application-${register.active}.yaml
+      - optional:nacos:${spring.application.name}-${register.active}.yaml
+  # 安全配置
+  cloud:
+    nacos:
+      #      username: ${register.username}
+      #      password: ${register.password}
+      discovery:
+        server-addr: ${register.host}:${register.port}
+        group: ${register.group}
+        namespace: ${register.namespace}
+        watch:
+          enabled: true
+      #        watch-delay: 1000
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        group: ${spring.cloud.nacos.discovery.group}
+        namespace: ${spring.cloud.nacos.discovery.namespace}
+        refresh-enabled: ${register.refresh}
+
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOriginPatterns: "*"
+            # 允许请求中携带的头信息
+            allowedHeaders: "*"
+            # 运行跨域的请求方式
+            allowedMethods: "*"
+            # 跨域检测的有效期,单位s
+            maxAge: 36000
+      routes:
+        - id: service-product
+          uri: lb://service-product
+          predicates:
+            - Path=/*/product/**
+        - id: service-user
+          uri: lb://service-user
+          predicates:
+            - Path=/*/user/**
+        - id: service-cart
+          uri: lb://service-cart
+          predicates:
+            - Path=/api/order/cart/**
+        - id: service-order
+          uri: lb://service-order
+          predicates:
+            - Path=/api/order/orderInfo/**
+        - id: service-pay
+          uri: lb://service-pay
+          predicates:
+            - Path=/api/order/alipay/**
+logging:
+  level:
+    org.springframework.security: DEBUG

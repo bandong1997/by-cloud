@@ -14,7 +14,10 @@
         <module>by-cloud-gateway</module>
         <module>by-cloud-service-contract</module>
     </modules>
-
+    <!--
+    使用spring-boot3.2.4+spring-cloud2023.0.2+spring-cloud-alibaba2023.0.1.0+redis+nacos+jwt+knife4j+security+mysql+mybatis
+    生成Gateway服务实现统一认证，完成登录(设置过期时间)、注册、退出、刷新token、token过期时间
+    -->
     <!-- 属性配置 -->
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

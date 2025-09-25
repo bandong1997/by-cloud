@@ -19,6 +19,8 @@ public interface FileUploadService {
      */
     String fileUpload(MultipartFile multipartFile);
 
+    List<String> batchFileUpload(MultipartFile[] files);
+
     /**
      * 文件预览(直接预览桶下面文件，不包含文件夹下文件)
      */

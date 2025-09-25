@@ -18,7 +18,6 @@
     </properties>
 
     <dependencies>
-
         <!--nacos-config-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>

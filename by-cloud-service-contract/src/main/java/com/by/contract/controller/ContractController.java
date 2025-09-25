@@ -3,11 +3,15 @@ package com.by.contract.controller;
 
 import com.by.common.result.Result;
 import com.by.contract.dto.ContractDto;
+import com.by.contract.dto.ContractPageDto;
 import com.by.contract.service.ContractService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
@@ -30,5 +34,12 @@ public class ContractController {
     public Result saveContract(@RequestBody ContractDto contractDto) {
         return contractService.saveContract(contractDto);
     }
+
+    @PostMapping("/contractPage")
+    @Operation(summary = "合同分页查询", description = "合同分页查询")
+    public Result contractPage(@RequestBody ContractPageDto contractPageDto) {
+        return contractService.contractPage(contractPageDto);
+    }
+
 
 }

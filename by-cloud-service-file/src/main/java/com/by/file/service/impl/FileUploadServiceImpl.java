@@ -98,6 +98,58 @@ public class FileUploadServiceImpl implements FileUploadService {
         }
     }
 
+    @Override
+    public List<String> batchFileUpload(MultipartFile[] files) {
+        List<String> fileUrls = new ArrayList<>();
+        if (files == null || files.length == 0) {
+            return fileUrls;
+        }
+
+        try {
+            // 创建一个Minio的客户端对象
+            MinioClient minioClient = MinioClient.builder()
+                    .endpoint(minioProperties.getEndpointUrl())
+                    .credentials(minioProperties.getAccessKey(), minioProperties.getSecretKey())
+                    .build();
+
+            // 判断桶是否存在
+            boolean found = minioClient.bucketExists(BucketExistsArgs.builder()
+                    .bucket(minioProperties.getBucketName()).build());
+
+            // 如果不存在，那么此时就创建一个新的桶
+            if (!found) {
+                minioClient.makeBucket(MakeBucketArgs.builder().bucket(minioProperties.getBucketName()).build());
+            } else {
+                System.out.println("Bucket '" + minioProperties.getBucketName() + "' already exists.");
+            }
+
+            // 设置存储对象名称的公共部分
+            String dateDir = DateUtil.format(new Date(), "yyyyMMdd");
+
+            // 逐个上传文件
+            for (MultipartFile multipartFile : files) {
+
+                String uuid = UUID.randomUUID().toString().replace("-", "");
+                String fileName = dateDir + "/" + uuid + "-" + multipartFile.getOriginalFilename();
+                // 文件上传
+
+                PutObjectArgs putObjectArgs = PutObjectArgs.builder()
+                        .bucket(minioProperties.getBucketName())
+                        .stream(multipartFile.getInputStream(), multipartFile.getSize(), -1)
+                        .object(fileName)
+                        .build();
+                minioClient.putObject(putObjectArgs);
+
+                // 保存文件上传路径
+                fileUrls.add(minioProperties.getEndpointUrl() + "/" + minioProperties.getBucketName() + "/" + fileName);
+            }
+
+            return fileUrls;
+        } catch (Exception e) {
+            throw new RuntimeException("批量文件上传失败", e);
+        }
+    }
+
     /**
      * 文件预览(直接预览桶下面文件，不包含文件夹下文件)
      */

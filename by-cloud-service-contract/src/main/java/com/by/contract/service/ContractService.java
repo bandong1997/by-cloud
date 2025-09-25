@@ -2,6 +2,7 @@ package com.by.contract.service;
 
 import com.by.common.result.Result;
 import com.by.contract.dto.ContractDto;
+import com.by.contract.dto.ContractPageDto;
 import com.by.contract.entity.Contract;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -16,4 +17,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface ContractService extends IService<Contract> {
 
     Result saveContract(ContractDto contractDto);
+
+    Result contractPage(ContractPageDto contractPageDto);
 }
