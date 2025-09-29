@@ -187,5 +187,8 @@ public class Contract implements Serializable {
     @TableLogic
     private Integer isDeleted;
 
+    @TableField("aes_key")
+    private String aesKey;
+
 
 }

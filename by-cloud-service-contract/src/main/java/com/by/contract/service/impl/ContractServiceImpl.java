@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.by.common.result.Result;
 import com.by.common.result.ResultCode;
+import com.by.common.utils.asc.CryptoUtil;
 import com.by.contract.dto.ContractDto;
 import com.by.contract.dto.ContractPageDto;
 import com.by.contract.entity.Contract;
@@ -13,6 +14,7 @@ import com.by.contract.service.ContractService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,9 +39,14 @@ public class ContractServiceImpl extends ServiceImpl<ContractMapper, Contract> i
         if (!contracts.isEmpty()) {
             return Result.fail(ResultCode.PARAM_ERROR.getCode(), "合同名称/编号已存在");
         }
-
         Contract po = new Contract();
         BeanUtils.copyProperties(contractDto, po);
+        // 生成AES密钥
+        String aesKey = CryptoUtil.generateAESKey();
+        System.out.println("生成的AES密钥: " + aesKey);
+        po.setAesKey(aesKey);
+        String encryptedData = CryptoUtil.aesEncrypt(po.getContractContent(), aesKey);
+        po.setContractContent(encryptedData);
         baseMapper.insert(po);
         return Result.success(ResultCode.SUCCESS);
     }
@@ -50,9 +57,16 @@ public class ContractServiceImpl extends ServiceImpl<ContractMapper, Contract> i
         LambdaQueryWrapper<Contract> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(Contract::getIsDeleted, 0);
 
-        Page<Contract> page = new Page<>(contractPageDto.getPage(), contractPageDto.getNumber());
-
+        Page<Contract> page = new Page<>(contractPageDto.getPageSize(), contractPageDto.getPageNumber());
         Page<Contract> pageList = baseMapper.selectPage(page, wrapper);
-        return Result.success(pageList);
+        List<Contract> list = pageList.getRecords();
+        if (list.size() > 0) {
+            for (Contract contract : list) {
+                // 执行AES解密
+                String content = CryptoUtil.aesDecrypt(contract.getContractContent(), contract.getAesKey());
+                contract.setContractContent(content);
+            }
+        }
+        return Result.success(list);
     }
 }

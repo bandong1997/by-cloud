@@ -1,6 +1,7 @@
 package com.by.contract.dto;
 
 
+import com.by.common.query.BaseQuery;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
@@ -11,13 +12,11 @@ import lombok.Data;
  */
 @Data
 @Schema(description = "分页请求体")
-public class ContractPageDto {
+public class ContractPageDto extends BaseQuery {
 
-    @Schema(description = "页数")
-    private Integer page;
+    @Schema(description = "合同名称")
+    private String contractName;
 
-    @Schema(description = "每页记录数")
-    private Integer number;
 
 
 }
