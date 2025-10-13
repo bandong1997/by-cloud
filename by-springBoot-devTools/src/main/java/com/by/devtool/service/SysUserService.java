@@ -13,4 +13,5 @@ import com.by.devtool.entity.SysUser;
  */
 public interface SysUserService extends IService<SysUser> {
 
+    SysUser findUserById(Long id);
 }

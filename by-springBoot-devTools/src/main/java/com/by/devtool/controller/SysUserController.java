@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -33,6 +34,13 @@ public class SysUserController {
     @Operation(summary = "获取所有用户", description = "findAllUser")
     public List<SysUser> findAllUser(){
         return sysUserService.list();
+    }
+
+
+    @GetMapping("/findUserById")
+    @Operation(summary = "根据id获取用户", description = "findUserById")
+    public SysUser findUserById(Long id){
+        return sysUserService.findUserById(id);
     }
 
 }
