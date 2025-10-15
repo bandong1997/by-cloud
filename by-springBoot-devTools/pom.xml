@@ -2,37 +2,52 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- Maven模型版本 -->
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- Spring Boot父项目，提供默认配置和依赖管理 -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.4</version>
-        <relativePath/>
+        <version>3.2.4</version> <!-- Spring Boot版本 -->
+        <relativePath/> <!-- 从Maven仓库查找父项目 -->
     </parent>
 
-    <groupId>com.by</groupId>
-    <artifactId>by-springBoot-devTools</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <!-- 项目基本信息 -->
+    <groupId>com.by</groupId> <!-- 项目组织ID -->
+    <artifactId>by-springBoot-devTools</artifactId> <!-- 项目构件ID -->
+    <version>1.0-SNAPSHOT</version> <!-- 项目版本 -->
+    <name>SpringBootDevTools</name> <!-- 项目名称 -->
+    <description>SpringBoot脚手架</description> <!-- 项目描述 -->
 
+    <!-- 项目属性配置 -->
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <!-- 项目依赖列表 -->
     <dependencies>
+        <!-- Spring Boot Web依赖，提供Web应用开发所需的核心功能 -->
+        <!-- 包含Spring MVC、Tomcat等组件 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- Spring Boot 测试依赖，提供测试支持 -->
+        <!-- 包含JUnit、Mockito等测试框架 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
+        <!-- Spring Boot开发工具，提供热部署等便利开发功能 -->
+        <!-- 自动重启应用程序，当类路径上的文件发生更改时 -->
+        <!-- scope设为runtime表示仅运行时需要 -->
+        <!-- optional设为true表示不传递给依赖此项目的其他项目 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -40,7 +55,8 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- MySQL驱动 -->
+        <!-- MySQL 数据库驱动，用于连接MySQL数据库 -->
+        <!-- scope设置为runtime，表示仅在运行时需要 -->
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
@@ -53,7 +69,8 @@
             <artifactId>HikariCP</artifactId>
         </dependency>
 
-        <!-- MyBatis-Plus 依赖 -->
+        <!-- MyBatis-Plus 启动器，简化MyBatis开发的增强工具 -->
+        <!-- 提供了代码生成、条件构造器、自动填充等功能 -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
@@ -66,28 +83,36 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!-- mybatis-spring -->
+
+        <!-- MyBatis与Spring框架的集成依赖 -->
+        <!-- 负责将MyBatis的SqlSessionFactory、Mapper接口等与Spring容器集成 -->
+        <!-- 版本3.0.3兼容Spring Boot 3.x -->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
             <version>3.0.3</version>
         </dependency>
 
-        <!-- Lombok 简化代码 -->
+        <!-- Lombok 库，用于简化Java代码 -->
+        <!-- 自动生成getter/setter/构造器/toString等方法 -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
 
-        <!-- Knife4j API文档工具 -->
+        <!-- Knife4j API文档工具，基于OpenAPI 3.0 -->
+        <!-- 提供可视化的API文档界面，便于接口调试和文档管理 -->
+        <!-- 注意：此版本适用于Spring Boot 3.x及使用Jakarta EE的项目 -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
             <version>4.4.0</version>
         </dependency>
 
-        <!-- Jackson for JSON处理 -->
+        <!-- Jackson数据绑定库，用于JSON序列化和反序列化 -->
+        <!-- 将Java对象转换为JSON格式，或将JSON字符串解析为Java对象 -->
+        <!-- Spring Boot Web已默认包含此依赖，但显式声明以便精确控制版本 -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
@@ -98,11 +123,22 @@
 
 
 
+    <!-- Maven构建配置 -->
     <build>
         <plugins>
+            <!-- Spring Boot Maven插件，用于打包可执行JAR文件 -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- 排除Lombok依赖，因为它只在编译时需要 -->
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
             </plugin>
         </plugins>
     </build>
