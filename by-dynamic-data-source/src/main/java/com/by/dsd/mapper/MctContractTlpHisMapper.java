@@ -2,6 +2,7 @@ package com.by.dsd.mapper;
 
 import com.by.dsd.entity.MctContractTlpHis;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author bdd
  * @since 2025-12-10
  */
+@Mapper
 public interface MctContractTlpHisMapper extends BaseMapper<MctContractTlpHis> {
 
 }
