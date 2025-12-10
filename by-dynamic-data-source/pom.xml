@@ -82,6 +82,13 @@
             <version>3.0.3</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.2.0</version> <!-- 使用与你的Spring Boot版本兼容的MyBatis版本 -->
+        </dependency>
+
+
         <!-- Lombok 库，用于简化Java代码 -->
         <!-- 自动生成getter/setter/构造器/toString等方法 -->
         <dependency>

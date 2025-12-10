@@ -1,4 +1,4 @@
-package com.by.dsd.contract;
+package com.by.dsd.controller;
 
 import com.by.dsd.result.Result;
 import com.by.dsd.service.SysUserService;
@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
  * @author bandd
