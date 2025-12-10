@@ -1,0 +1,31 @@
+server:
+  port: 8902
+
+spring:
+  datasource:
+    dynamic:  # 表示使用动态数据源（通常是基于 dynamic-datasource-spring-boot-starter 框架）
+      primary: master  # 设置默认/主要数据源为 "master"
+      strict: false   # 是否严格匹配数据源，false 表示不严格
+      datasource:
+        master: # 主数据源配置（查询主要矿权信息等）
+          type: com.zaxxer.hikari.HikariDataSource # 使用 HikariCP 连接池
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/by_master?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+          username: root
+          password: 123456
+          hikari:
+            maximum-pool-size: 20
+            minimum-idle: 5
+            idle-timeout: 300000
+            connection-timeout: 20000
+            max-lifetime: 1200000
+
+        db2: # 子数据源配置（主要本地逻辑）
+          type: com.zaxxer.hikari.HikariDataSource # 使用 HikariCP 连接池
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/by_history?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+          username: root
+          password: 123456
+          hikari:
+            maximum-pool-size: 15  # 读库可以设置较小的连接池
+            minimum-idle: 3

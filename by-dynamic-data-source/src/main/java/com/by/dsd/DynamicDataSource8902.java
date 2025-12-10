@@ -1,4 +1,4 @@
-package com.by.devtool;
+package com.by.dsd;
 
 
 import org.springframework.boot.SpringApplication;
@@ -6,15 +6,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
- * SpringBoot脚手架
- *
+ * SpringBoot多数据源
  */
 @SpringBootApplication
-@EnableScheduling // @Scheduled 注解的定时任务的支持
-public class DevTool8901
+public class DynamicDataSource8902
 {
     public static void main( String[] args )
     {
-        SpringApplication.run(DevTool8901.class, args);
+        SpringApplication.run(DynamicDataSource8902.class, args);
     }
 }
