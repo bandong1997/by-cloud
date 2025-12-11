@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
  * 在类和方法上同时使用注解
  */
 @Service
-@DS("master")  // 类级别默认使用 master
+@DS("master")  // 类级别默认使用 master (类似于MctContractTlpMapper)
 public class ComplexService {
 
     // 这个方法使用类级别的 master 数据源

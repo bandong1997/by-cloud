@@ -23,16 +23,16 @@ public class CodeGenerator {
         //生成文件的作者，可以不填
         String author="bdd";
         //生成的entity、controller、service等包所在的公共上一级包路径全限定名
-        String rootPackage="com.by.contract";
+        String rootPackage="com.by.dsd";
 
         String moduleName="province-sess-test";
         //数据库配置
-        String url="jdbc:mysql://localhost:3306/bdd_cloud?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true";
+        String url="jdbc:mysql://localhost:3306/by_master?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true";
         String driverClassName="com.mysql.cj.jdbc.Driver";
         String username="root";
-        String password="root";
+        String password="123456";
         //表名，多个使用,分隔
-        String tableNames="contract";
+        String tableNames="mod_document_field";
 
         //====================配置变量区域=====================//
 
