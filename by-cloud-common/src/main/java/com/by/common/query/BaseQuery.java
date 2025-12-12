@@ -11,6 +11,7 @@ public class BaseQuery {
 
     @Schema(description="当前页数")
     private int pageNumber = 1;
+
     @Schema(description="当前页条数")
     private int pageSize = 10;
 

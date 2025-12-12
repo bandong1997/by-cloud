@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.by.dsd.mapper.UserPointsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.by.dsd.entity.UserPoints">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId" />
+        <result column="total_points" property="totalPoints" />
+        <result column="available_points" property="availablePoints" />
+        <result column="used_points" property="usedPoints" />
+        <result column="expired_points" property="expiredPoints" />
+        <result column="level" property="level" />
+        <result column="growth_value" property="growthValue" />
+        <result column="created_at" property="createdAt" />
+        <result column="updated_at" property="updatedAt" />
+    </resultMap>
+
+</mapper>
