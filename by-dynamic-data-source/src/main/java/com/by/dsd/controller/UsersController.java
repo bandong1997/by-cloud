@@ -1,15 +1,13 @@
 package com.by.dsd.controller;
 
 
+import com.by.dsd.entity.Users;
 import com.by.dsd.result.Result;
 import com.by.dsd.service.UsersService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -43,6 +41,19 @@ public class UsersController {
     @Operation(summary = "获取所有用户,指定使用 db2 数据源", description = "findUserAllByDb2")
     public Result findUserAllByDb2(){
         return usersService.findUserAllByDb2();
+    }
+
+
+    @PostMapping(value = "/saveUser")
+    @Operation(summary = "动态切换数据源（编程式）", description = "saveUser")
+    public Result saveUser(@RequestBody Users users){
+        return usersService.saveUser(users);
+    }
+
+    @GetMapping(value = "/userSelectDataSource")
+    @Operation(summary = "根据租户动态选择数据源", description = "userSelectDataSource")
+    public Result userSelectDataSource(String dsKey){
+        return usersService.userSelectDataSource(dsKey);
     }
 
 }

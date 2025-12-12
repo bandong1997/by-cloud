@@ -15,7 +15,7 @@ import java.util.List;
  * @author bdd
  * @since 2025-12-12
  */
-@DS("db2")
+@DS("db2")  // 类级别默认使用 db2
 public interface RolesMapper extends BaseMapper<Roles> {
 
     // 如果需要某个方法使用不同数据源，可以覆盖

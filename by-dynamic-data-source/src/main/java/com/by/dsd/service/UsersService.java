@@ -29,4 +29,13 @@ public interface UsersService extends IService<Users> {
      */
     Result findUserAllByDb2();
 
+    /**
+     * 新增用户到master数据源，操作记录添加到 db2数据源
+     */
+    Result saveUser(Users users);
+
+    /**
+     * 根据租户动态选择数据源
+     */
+    Result userSelectDataSource(String dsKey);
 }

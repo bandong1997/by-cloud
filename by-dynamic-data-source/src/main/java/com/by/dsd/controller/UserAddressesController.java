@@ -26,16 +26,16 @@ public class UserAddressesController {
     private UserAddressesService userAddressesService;
 
 
-    @GetMapping(value = "/getDocumentFieldInfo")
-    @Operation(summary = "主从分离的业务, 读操作使用 db2（从库）", description = "getDocumentFieldInfo")
-    public Result getDocumentFieldInfo(Integer id){
+    @GetMapping(value = "/getUserAddressesById")
+    @Operation(summary = "主从分离的业务, 读操作使用 db2（从库）", description = "getUserAddressesById")
+    public Result getUserAddressesById(Integer id){
         return userAddressesService.getUserAddressesById(id);
     }
 
 
-    @PostMapping(value = "/createDocumentField")
-    @Operation(summary = "主从分离的业务, 写操作使用 master（主库）", description = "createDocumentField")
-    public Result createDocumentField(@RequestBody UserAddresses userAddresses){
+    @PostMapping(value = "/createUserAddresses")
+    @Operation(summary = "主从分离的业务, 写操作使用 master（主库）", description = "createUserAddresses")
+    public Result createUserAddresses(@RequestBody UserAddresses userAddresses){
         return userAddressesService.createUserAddresses(userAddresses);
     }
 
