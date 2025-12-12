@@ -11,7 +11,7 @@
  Target Server Version : 80041 (8.0.41)
  File Encoding         : 65001
 
- Date: 12/12/2025 15:25:11
+ Date: 12/12/2025 16:38:51
 */
 
 SET NAMES utf8mb4;
@@ -322,7 +322,7 @@ CREATE TABLE `user_operation_logs`  (
   INDEX `idx_operation_time`(`operation_time` ASC) USING BTREE,
   INDEX `idx_operation_type`(`operation_type` ASC) USING BTREE,
   CONSTRAINT `user_operation_logs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户操作日志表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户操作日志表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user_operation_logs
@@ -417,7 +417,7 @@ CREATE TABLE `users`  (
   INDEX `idx_phone`(`phone` ASC) USING BTREE,
   INDEX `idx_status`(`status` ASC) USING BTREE,
   INDEX `idx_created_at`(`created_at` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
@@ -427,5 +427,7 @@ INSERT INTO `users` VALUES (2, 'zhangsan', 'zhangsan@example.com', '13800138001'
 INSERT INTO `users` VALUES (3, 'lisi', 'lisi@example.com', '13800138002', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iK6YcFvT.Y6Bq17zW7QUiPz8mWgq', 'salt789', NULL, '李四', NULL, 2, NULL, 1, 1, NULL, NULL, 0, 1, 0, 0, '2025-12-12 14:42:45', '2025-12-12 14:42:45', 1, 0);
 INSERT INTO `users` VALUES (4, 'wangwu', 'wangwu@example.com', '13800138003', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iK6YcFvT.Y6Bq17zW7QUiPz8mWgq', 'salt012', NULL, '王五', NULL, 1, NULL, 0, 1, NULL, NULL, 0, 0, 0, 0, '2025-12-12 14:42:45', '2025-12-12 14:42:45', 1, 0);
 INSERT INTO `users` VALUES (5, 'zhaoliu', 'zhaoliu@example.com', '13800138004', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iK6YcFvT.Y6Bq17zW7QUiPz8mWgq', 'salt345', NULL, '赵六', NULL, 2, NULL, 1, 1, NULL, NULL, 0, 1, 0, 0, '2025-12-12 14:42:45', '2025-12-12 14:42:45', 1, 0);
+INSERT INTO `users` VALUES (9, 'by', 'by@163.com', '123456', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iK6YcFvT.Y6Bq17zW7QUiPz8mWgq', 'salt789', 'by', 'by', NULL, 0, NULL, 1, 1, NULL, NULL, 0, 0, 0, 0, '2025-12-12 16:14:46', '2025-12-12 16:14:46', 1, 0);
+INSERT INTO `users` VALUES (12, 'by1', 'by@1613.com', '123456', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iK6YcFvT.Y6Bq17zW7QUiPz8mWgq', 'salt789', 'by', 'by', NULL, 0, NULL, 1, 1, NULL, NULL, 0, 0, 0, 0, '2025-12-12 16:21:30', '2025-12-12 16:21:30', 1, 0);
 
 SET FOREIGN_KEY_CHECKS = 1;

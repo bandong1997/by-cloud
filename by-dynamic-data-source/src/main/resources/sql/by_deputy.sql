@@ -11,7 +11,7 @@
  Target Server Version : 80041 (8.0.41)
  File Encoding         : 65001
 
- Date: 12/12/2025 15:25:22
+ Date: 12/12/2025 16:38:44
 */
 
 SET NAMES utf8mb4;
@@ -74,6 +74,36 @@ INSERT INTO `user_addresses` VALUES (1, 2, '张三', '13800138001', '北京市',
 INSERT INTO `user_addresses` VALUES (2, 2, '张三', '13800138001', '上海市', '上海市', '浦东新区', '张江高科技园区', NULL, 0, '公司', 1, '2025-12-12 14:42:45', '2025-12-12 14:42:45');
 INSERT INTO `user_addresses` VALUES (3, 3, '李四', '13800138002', '广东省', '深圳市', '南山区', '科技园南区', NULL, 1, '公司', 1, '2025-12-12 14:42:45', '2025-12-12 14:42:45');
 INSERT INTO `user_addresses` VALUES (4, 2, '王五', '13800138005', '贵阳市', '贵阳市', '观山湖区', '科技园南区', '', 1, '公司', 1, '2025-12-12 15:17:43', '2025-12-12 15:19:35');
+
+-- ----------------------------
+-- Table structure for user_operation_logs
+-- ----------------------------
+DROP TABLE IF EXISTS `user_operation_logs`;
+CREATE TABLE `user_operation_logs`  (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '日志ID',
+  `user_id` bigint UNSIGNED NOT NULL COMMENT '用户ID',
+  `operation_type` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '操作类型',
+  `operation_content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL COMMENT '操作内容',
+  `request_method` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '请求方法',
+  `request_url` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '请求URL',
+  `request_params` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL COMMENT '请求参数',
+  `ip_address` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT 'IP地址',
+  `user_agent` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '用户代理',
+  `status` tinyint NULL DEFAULT 1 COMMENT '状态: 0-失败, 1-成功',
+  `error_message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL COMMENT '错误信息',
+  `execute_time` bigint NULL DEFAULT NULL COMMENT '执行时间(毫秒)',
+  `operation_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '操作时间',
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `idx_user_id`(`user_id` ASC) USING BTREE,
+  INDEX `idx_operation_time`(`operation_time` ASC) USING BTREE,
+  INDEX `idx_operation_type`(`operation_type` ASC) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户操作日志表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of user_operation_logs
+-- ----------------------------
+INSERT INTO `user_operation_logs` VALUES (3, 9, 'INSERT', '{\"email\":\"by@163.com\",\"id\":9,\"nickname\":\"by\",\"passwordHash\":\"$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iK6YcFvT.Y6Bq17zW7QUiPz8mWgq\",\"passwordSalt\":\"salt789\",\"phone\":\"123456\",\"realName\":\"by\",\"username\":\"by\"}', 'POST', '/users/saveUser', '{\"email\":\"by@163.com\",\"id\":9,\"nickname\":\"by\",\"passwordHash\":\"$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iK6YcFvT.Y6Bq17zW7QUiPz8mWgq\",\"passwordSalt\":\"salt789\",\"phone\":\"123456\",\"realName\":\"by\",\"username\":\"by\"}', 'tz-zy', '192.168.2.86', 1, NULL, NULL, '2025-12-12 16:14:46');
+INSERT INTO `user_operation_logs` VALUES (4, 12, 'INSERT', '{\"email\":\"by@1613.com\",\"id\":12,\"nickname\":\"by\",\"passwordHash\":\"$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iK6YcFvT.Y6Bq17zW7QUiPz8mWgq\",\"passwordSalt\":\"salt789\",\"phone\":\"123456\",\"realName\":\"by\",\"username\":\"by1\"}', 'POST', '/users/saveUser', '{\"email\":\"by@1613.com\",\"id\":12,\"nickname\":\"by\",\"passwordHash\":\"$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iK6YcFvT.Y6Bq17zW7QUiPz8mWgq\",\"passwordSalt\":\"salt789\",\"phone\":\"123456\",\"realName\":\"by\",\"username\":\"by1\"}', 'tz-zy', '192.168.2.86', 1, NULL, NULL, '2025-12-12 16:21:30');
 
 -- ----------------------------
 -- Table structure for users
