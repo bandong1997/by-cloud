@@ -6,15 +6,18 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.by.common.result.Result;
 import com.by.common.result.ResultCode;
 import com.by.common.utils.asc.CryptoUtil;
-import com.by.contract.dto.ContractDto;
 import com.by.contract.dto.ContractPageDto;
-import com.by.contract.entity.Contract;
-import com.by.contract.mapper.ContractMapper;
+import com.by.contract.entity.MctContract;
+import com.by.contract.entity.MctContractHis;
+import com.by.contract.mapper.MctContractHisMapper;
+import com.by.contract.mapper.MctContractMapper;
 import com.by.contract.service.ContractService;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,45 +29,57 @@ import java.util.List;
  * @since 2025-08-26
  */
 @Service
-public class ContractServiceImpl extends ServiceImpl<ContractMapper, Contract> implements ContractService {
+public class ContractServiceImpl extends ServiceImpl<MctContractMapper, MctContract>
+        implements ContractService {
+
+    @Autowired
+    private MctContractHisMapper mctContractHisMapper;
 
 
     @Override
-    public Result saveContract(ContractDto contractDto) {
+    @Transactional(rollbackFor = Exception.class)
+    public Result saveContract(MctContract mctContract) {
 
-        LambdaQueryWrapper<Contract> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(Contract::getContractName, contractDto.getContractName());
-        queryWrapper.eq(Contract::getContractCode, contractDto.getContractCode());
-        List<Contract> contracts = baseMapper.selectList(queryWrapper);
+        LambdaQueryWrapper<MctContract> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(MctContract::getName, mctContract.getName());
+        queryWrapper.eq(MctContract::getContractNumber, mctContract.getContractNumber());
+        List<MctContract> contracts = baseMapper.selectList(queryWrapper);
         if (!contracts.isEmpty()) {
             return Result.fail(ResultCode.PARAM_ERROR.getCode(), "合同名称/编号已存在");
         }
-        Contract po = new Contract();
-        BeanUtils.copyProperties(contractDto, po);
+        MctContract po = new MctContract();
+        BeanUtils.copyProperties(mctContract, po);
         // 生成AES密钥
         String aesKey = CryptoUtil.generateAESKey();
         System.out.println("生成的AES密钥: " + aesKey);
         po.setAesKey(aesKey);
-        String encryptedData = CryptoUtil.aesEncrypt(po.getContractContent(), aesKey);
-        po.setContractContent(encryptedData);
+        String encryptedData = CryptoUtil.aesEncrypt(po.getContent(), aesKey);
+        po.setContent(encryptedData);
         baseMapper.insert(po);
+
+
+        MctContractHis mctContractHis = new MctContractHis();
+        BeanUtils.copyProperties(mctContract, mctContractHis);
+        mctContractHis.setContractId(po.getId());
+        mctContractHis.setContractLimitTime(new Date());
+        mctContractHisMapper.insert(mctContractHis);
         return Result.success(ResultCode.SUCCESS);
     }
 
     @Override
     public Result contractPage(ContractPageDto contractPageDto) {
 
-        LambdaQueryWrapper<Contract> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(Contract::getIsDeleted, 0);
+        LambdaQueryWrapper<MctContract> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(MctContract::getDelStatus, 0);
 
-        Page<Contract> page = new Page<>(contractPageDto.getPageSize(), contractPageDto.getPageNumber());
-        Page<Contract> pageList = baseMapper.selectPage(page, wrapper);
-        List<Contract> list = pageList.getRecords();
-        if (list.size() > 0) {
-            for (Contract contract : list) {
+        Page<MctContract> page = new Page<>(contractPageDto.getPageSize(), contractPageDto.getPageNumber());
+        Page<MctContract> pageList = baseMapper.selectPage(page, wrapper);
+        List<MctContract> list = pageList.getRecords();
+        if (!list.isEmpty()) {
+            for (MctContract contract : list) {
                 // 执行AES解密
-                String content = CryptoUtil.aesDecrypt(contract.getContractContent(), contract.getAesKey());
-                contract.setContractContent(content);
+                String content = CryptoUtil.aesDecrypt(contract.getContent(), contract.getAesKey());
+                contract.setContent(content);
             }
         }
         return Result.success(list);

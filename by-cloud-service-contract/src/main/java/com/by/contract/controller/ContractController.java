@@ -1,9 +1,11 @@
 package com.by.contract.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.by.common.result.Result;
-import com.by.contract.dto.ContractDto;
 import com.by.contract.dto.ContractPageDto;
+import com.by.contract.entity.MctContract;
+import com.by.contract.mapper.MctContractHisMapper;
 import com.by.contract.service.ContractService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -29,16 +31,26 @@ public class ContractController {
     @Autowired
     private ContractService contractService;
 
+    @Autowired
+    private MctContractHisMapper mctContractHisMapper;
+
     @PostMapping("/saveContract")
     @Operation(summary = "保存合同", description = "保存合同")
-    public Result saveContract(@RequestBody ContractDto contractDto) {
-        return contractService.saveContract(contractDto);
+    public Result saveContract(@RequestBody MctContract mctContract) {
+        return contractService.saveContract(mctContract);
     }
 
     @PostMapping("/contractPage")
     @Operation(summary = "合同分页查询", description = "合同分页查询")
     public Result contractPage(@RequestBody ContractPageDto contractPageDto) {
         return contractService.contractPage(contractPageDto);
+    }
+
+
+    @PostMapping("/test")
+    @Operation(summary = "测试", description = "测试")
+    public Result test() {
+        return Result.success(mctContractHisMapper.selectList(new QueryWrapper<>()));
     }
 
 
