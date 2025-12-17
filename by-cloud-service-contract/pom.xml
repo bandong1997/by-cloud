@@ -70,6 +70,12 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
+        <!-- 动态数据源 Spring Boot 3.x 使用-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>dynamic-datasource-spring-boot3-starter</artifactId>
+        </dependency>
+
 
 
     </dependencies>

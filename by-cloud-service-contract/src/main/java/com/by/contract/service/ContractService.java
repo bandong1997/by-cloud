@@ -1,10 +1,9 @@
 package com.by.contract.service;
 
-import com.by.common.result.Result;
-import com.by.contract.dto.ContractDto;
-import com.by.contract.dto.ContractPageDto;
-import com.by.contract.entity.Contract;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.by.common.result.Result;
+import com.by.contract.dto.ContractPageDto;
+import com.by.contract.entity.MctContract;
 
 /**
  * <p>
@@ -14,9 +13,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author bdd
  * @since 2025-08-26
  */
-public interface ContractService extends IService<Contract> {
+public interface ContractService extends IService<MctContract> {
 
-    Result saveContract(ContractDto contractDto);
+    Result saveContract(MctContract mctContract);
 
     Result contractPage(ContractPageDto contractPageDto);
 }
