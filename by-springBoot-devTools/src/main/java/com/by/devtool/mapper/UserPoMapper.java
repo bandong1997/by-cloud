@@ -1,7 +1,7 @@
 package com.by.devtool.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.by.devtool.entity.SysUser;
+import com.by.devtool.entity.UserPo;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -9,10 +9,10 @@ import org.apache.ibatis.annotations.Mapper;
  * 用户表 Mapper 接口
  * </p>
  *
- * @author bandd
- * @since 2025-10-11
+ * @author bdd
+ * @since 2025-12-12
  */
 @Mapper
-public interface SysUserMapper extends BaseMapper<SysUser> {
+public interface UserPoMapper extends BaseMapper<UserPo> {
 
 }

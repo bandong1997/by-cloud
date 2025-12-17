@@ -1,13 +1,13 @@
 package com.by.devtool.controller;
 
 
-import com.by.devtool.entity.SysUser;
-import com.by.devtool.service.SysUserService;
+import com.by.devtool.result.Result;
+import com.by.devtool.result.ResultCode;
+import com.by.devtool.service.UserPoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -25,22 +25,22 @@ import java.util.List;
 @RestController
 @RequestMapping("/sysUser")
 @Tag(name = "用户管理", description = "用户相关的CRUD操作")
-public class SysUserController {
+public class UserController {
 
     @Autowired
-    private SysUserService sysUserService;
+    private UserPoService userPoService;
 
     @GetMapping("/list")
     @Operation(summary = "获取所有用户", description = "findAllUser")
-    public List<SysUser> findAllUser(){
-        return sysUserService.list();
+    public Result findAllUser(){
+        return Result.success(userPoService.list());
     }
 
 
     @GetMapping("/findUserById")
     @Operation(summary = "根据id获取用户", description = "findUserById")
-    public SysUser findUserById(Long id){
-        return sysUserService.findUserById(id);
+    public Result findUserById(Long id){
+        return Result.success(userPoService.getById(id));
     }
 
 }

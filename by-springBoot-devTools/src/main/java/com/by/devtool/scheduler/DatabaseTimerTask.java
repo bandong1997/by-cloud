@@ -1,7 +1,13 @@
-package com.by.devtool.timing;
+package com.by.devtool.scheduler;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.by.devtool.entity.UserPo;
+import com.by.devtool.mapper.UserPoMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * @author bandd
@@ -11,10 +17,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class DatabaseTimerTask {
 
+
+    @Autowired
+    private UserPoMapper userPoMapper;
+
     // 每5分钟执行一次
-    @Scheduled(fixedRate = 300000)
+//    @Scheduled(fixedRate = 300000)
+    @Scheduled(fixedRate = 60000)
     public void cleanExpiredUsers() {
         System.out.println("开始清理过期用户...");
+        List<UserPo> list = userPoMapper.selectList(new QueryWrapper<>());
+        for (UserPo userPo : list) {
+            System.out.println(userPo);
+        }
         // int count = userRepository.deleteExpiredUsers();
         System.out.println("清理完成，共删除 " + "count" + " 个过期用户");
     }
