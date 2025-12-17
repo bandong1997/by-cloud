@@ -1,7 +1,7 @@
 package com.by.contract.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.by.contract.entity.MctContract;
+import com.by.contract.entity.MctContractPo;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import com.by.contract.entity.MctContract;
  * @author bdd
  * @since 2025-12-11
  */
-public interface MctContractMapper extends BaseMapper<MctContract> {
+public interface MctContractMapper extends BaseMapper<MctContractPo> {
 
 }

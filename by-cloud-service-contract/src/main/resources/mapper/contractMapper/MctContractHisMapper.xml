@@ -3,7 +3,7 @@
 <mapper namespace="com.by.contract.mapper.MctContractHisMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.by.contract.entity.MctContractHis">
+    <resultMap id="BaseResultMap" type="com.by.contract.entity.MctContractHisPo">
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="contract_number" property="contractNumber" />
@@ -19,7 +19,6 @@
         <result column="sign_time" property="signTime" />
         <result column="contract_type" property="contractType" />
         <result column="contract_templates_id" property="contractTemplatesId" />
-        <result column="contract_limit_time" property="contractLimitTime" />
         <result column="content" property="content" />
         <result column="remark" property="remark" />
         <result column="term_start_time" property="termStartTime" />
