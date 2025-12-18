@@ -27,12 +27,12 @@ public class CodeGenerator {
 
         String moduleName="province-sess-test";
         //数据库配置
-        String url="jdbc:mysql://localhost:3306/by_deputy?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true";
+        String url="jdbc:mysql://localhost:3306/bdd_cloud?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true";
         String driverClassName="com.mysql.cj.jdbc.Driver";
         String username="root";
         String password="root";
         //表名，多个使用,分隔
-        String tableNames="mct_contract_his";
+        String tableNames="contract";
 
         //====================配置变量区域=====================//
 
