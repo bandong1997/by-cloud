@@ -80,6 +80,7 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users> implements
             logs.setRequestUrl("/users/saveUser");
             logs.setRequestParams(JSON.toJSONString(users));
             InetAddress localHost = InetAddress.getLocalHost();
+            // 获取ip、用户名
             logs.setIpAddress(localHost.getHostName());
             logs.setUserAgent(localHost.getHostAddress());
             userOperationLogsMapper.insert(logs);
