@@ -6,44 +6,42 @@ package com.by.devtool.coor.encap;
  */
 import org.locationtech.proj4j.*;
 
+
 public class CGCS2000Transformer {
 
-    // 35带中央经线 = 35*3 - 105 = 105°
-    private static final String CGCS2000_35N = "+proj=tmerc +lat_0=0 +lon_0=105 +k=1 +x_0=35500000 +y_0=0 +ellps=GRS80 +units=m +no_defs";
-
-    // 36带中央经线 = 36*3 - 105 = 108°
-    private static final String CGCS2000_36N = "+proj=tmerc +lat_0=0 +lon_0=108 +k=1 +x_0=36500000 +y_0=0 +ellps=GRS80 +units=m +no_defs";
-
-    // 目标
-    private static final String mb = "+proj=longlat +ellps=GRS80 +no_defs";
-
     private static CRSFactory crsFactory = new CRSFactory();
-    private CoordinateTransformFactory ctFactory = new CoordinateTransformFactory();
+    private static CoordinateTransformFactory ctFactory = new CoordinateTransformFactory();
+
+    /**
+     * 自动判断带号并进行转换（通用方法）
+     * @param x 带带号的东坐标
+     * @param y 北坐标
+     * @return [经度, 纬度]
+     */
+    public static double[] transformToGeographic(double x, double y) {
+        // 提取带号（前2位）
+        int zone = (int) (x / 1000000);
+        CoordinateReferenceSystem targetCRS = crsFactory.createFromParameters("EPSG:4490", CRSConstants.MB);
+        if (zone == 35) {
+            return transform35NToGeographic(targetCRS, x, y);
+        } else if (zone == 36) {
+            return transform36NToGeographic(targetCRS, x, y);
+        } else {
+            throw new IllegalArgumentException("不支持的带号：" + zone + "，仅支持35带和36带");
+        }
+    }
 
     /**
      * CGCS2000 35带投影坐标转地理坐标
-     * @param y 北坐标（正常值，如：2948492.000）
      * @param x 东坐标（带带号，如：35620127.000）
+     * @param y 北坐标（正常值，如：2948492.000）
      * @return [经度, 纬度]
      */
-    public double[] transform35NToGeographic(double y, double x) {
+    public static double[] transform35NToGeographic(CoordinateReferenceSystem targetCRS, double x, double y) {
         try {
-            CoordinateReferenceSystem sourceCRS = crsFactory.createFromParameters("CGCS2000_35N", CGCS2000_35N);
-            CoordinateReferenceSystem targetCRS = crsFactory.createFromParameters("EPSG:4490",mb);
+            CoordinateReferenceSystem sourceCRS = crsFactory.createFromParameters("CGCS2000_35N", CRSConstants.CGCS2000_35N);
 
-            CoordinateTransform transform = ctFactory.createTransform(sourceCRS, targetCRS);
-
-            // 去掉35带号：35620127 -> 620127，源中已处理了就不需要再此处理   35500000
-            // double easting = x - 35000000;
-            double easting = x;;
-
-            ProjCoordinate srcCoord = new ProjCoordinate(easting, y);
-            ProjCoordinate tgtCoord = new ProjCoordinate();
-
-            transform.transform(srcCoord, tgtCoord);
-
-            return new double[]{tgtCoord.x, tgtCoord.y};
-
+            return transform(sourceCRS, targetCRS, x, y);
         } catch (Exception e) {
             throw new RuntimeException("35带坐标转换失败", e);
         }
@@ -51,73 +49,42 @@ public class CGCS2000Transformer {
 
     /**
      * CGCS2000 36带投影坐标转地理坐标
-     * @param y 北坐标（正常值，如：2948492.000）
      * @param x 东坐标（带带号，如：36620127.000）
+     * @param y 北坐标（正常值，如：2948492.000）
      * @return [经度, 纬度]
      */
-    public double[] transform36NToGeographic(double y, double x) {
+    public static double[] transform36NToGeographic(CoordinateReferenceSystem targetCRS, double x, double y) {
         try {
-            CoordinateReferenceSystem sourceCRS = crsFactory.createFromParameters("EPSG:CGCS2000_36N", CGCS2000_36N);
-            CoordinateReferenceSystem targetCRS = crsFactory.createFromParameters("EPSG:4490",mb);
-            CoordinateTransform transform = ctFactory.createTransform(sourceCRS, targetCRS);
-
-            // 去掉36带号：36620127 -> 620127，源中已处理了就不需要再此处理
-            // double easting = x - 36000000;
-            double easting = x;
-            ProjCoordinate srcCoord = new ProjCoordinate(easting, y);
-            ProjCoordinate tgtCoord = new ProjCoordinate();
-
-            transform.transform(srcCoord, tgtCoord);
-
-            return new double[]{tgtCoord.x, tgtCoord.y};
-
+            CoordinateReferenceSystem sourceCRS = crsFactory.createFromParameters("EPSG:CGCS2000_36N", CRSConstants.CGCS2000_36N);
+            return transform(sourceCRS, targetCRS, x, y);
         } catch (Exception e) {
             throw new RuntimeException("36带坐标转换失败", e);
         }
     }
 
     /**
-     * 自动判断带号并进行转换（通用方法）
-     * @param y 北坐标
-     * @param x 带带号的东坐标
-     * @return [经度, 纬度]
+     * 公用处理方式
      */
-    public double[] transformToGeographic(double y, double x) {
-        // 提取带号（前2位）
-        int zone = (int) (x / 1000000);
-
-        if (zone == 35) {
-            return transform35NToGeographic(y, x);
-        } else if (zone == 36) {
-            return transform36NToGeographic(y, x);
-        } else {
-            throw new IllegalArgumentException("不支持的带号：" + zone + "，仅支持35带和36带");
-        }
+    public static double[] transform(CoordinateReferenceSystem sourceCRS, CoordinateReferenceSystem targetCRS, double x, double y){
+        CoordinateTransform transform = ctFactory.createTransform(sourceCRS, targetCRS);
+        ProjCoordinate srcCoord = new ProjCoordinate(x, y);
+        ProjCoordinate tgtCoord = new ProjCoordinate();
+        transform.transform(srcCoord, tgtCoord);
+        return new double[]{tgtCoord.x, tgtCoord.y};
     }
+
 
     /**
      * 地理坐标转35带投影坐标
-     * @param lon 经度
-     * @param lat 纬度
+     * @param x 经度
+     * @param y 纬度
      * @return [北坐标, 带带号的东坐标]
      */
-    public double[] transformGeographicTo35N(double lon, double lat) {
+    public static double[] transformGeographicTo35N(double x, double y) {
         try {
-            CoordinateReferenceSystem sourceCRS = crsFactory.createFromParameters("WGS84", mb);
-            CoordinateReferenceSystem targetCRS = crsFactory.createFromParameters("CGCS2000_35N", CGCS2000_35N);
-
-            CoordinateTransform transform = ctFactory.createTransform(sourceCRS, targetCRS);
-
-            ProjCoordinate srcCoord = new ProjCoordinate(lon, lat);
-            ProjCoordinate tgtCoord = new ProjCoordinate();
-
-            transform.transform(srcCoord, tgtCoord);
-
-            // 添加带号：620127 -> 35620127
-            double easting = tgtCoord.x;
-
-            return new double[]{tgtCoord.y, easting};
-
+            CoordinateReferenceSystem sourceCRS = crsFactory.createFromParameters("EPSG:4490", CRSConstants.MB);
+            CoordinateReferenceSystem targetCRS = crsFactory.createFromParameters("CGCS2000_35N", CRSConstants.CGCS2000_35N);
+            return transform(sourceCRS, targetCRS, x, y);
         } catch (Exception e) {
             throw new RuntimeException("地理坐标转35带投影坐标失败", e);
         }
@@ -125,30 +92,38 @@ public class CGCS2000Transformer {
 
     /**
      * 地理坐标转36带投影坐标
-     * @param lon 经度
-     * @param lat 纬度
+     * @param x 经度
+     * @param y 纬度
      * @return [北坐标, 带带号的东坐标]
      */
-    public double[] transformGeographicTo36N(double lon, double lat) {
+    public double[] transformGeographicTo36N(double x, double y) {
         try {
-            CoordinateReferenceSystem sourceCRS = crsFactory.createFromParameters("WGS84",
-                    "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs");
-            CoordinateReferenceSystem targetCRS = crsFactory.createFromParameters("CGCS2000_36N", CGCS2000_36N);
-
-            CoordinateTransform transform = ctFactory.createTransform(sourceCRS, targetCRS);
-
-            ProjCoordinate srcCoord = new ProjCoordinate(lon, lat);
-            ProjCoordinate tgtCoord = new ProjCoordinate();
-
-            transform.transform(srcCoord, tgtCoord);
-
-            // 添加带号：620127 -> 36620127
-            double easting = tgtCoord.x + 36000000;
-
-            return new double[]{tgtCoord.y, easting};
+            CoordinateReferenceSystem sourceCRS = crsFactory.createFromParameters("EPSG:4490", CRSConstants.MB);
+            CoordinateReferenceSystem targetCRS = crsFactory.createFromParameters("CGCS2000_36N", CRSConstants.CGCS2000_36N);
+            return transform(sourceCRS, targetCRS, x, y);
 
         } catch (Exception e) {
             throw new RuntimeException("地理坐标转36带投影坐标失败", e);
         }
+    }
+
+    public static void main(String[] args) {
+
+        double[] proj35 = CGCS2000Transformer.transformGeographicTo35N(106.20643354700, 26.64164979200);
+        System.out.printf("地理坐标转35带: 北坐标=%.3f, 东坐标=%.3f%n", proj35[0], proj35[1]);
+
+        double[][] COORDINATES = {
+                {2948492.00000000000, 35620127.00000000000}
+        };
+
+        for (double[] coordinate : COORDINATES) {
+            double x = coordinate[1];//地图坐标    x坐标（带带号，如：35620127.000）
+            double y = coordinate[0]; // y坐标（如：2948492.000）
+            double[] result1 = CGCS2000Transformer.transformToGeographic(x, y);
+            System.out.println("方法1结果:");
+            System.out.printf("经度: %.9f\n", result1[0]);
+            System.out.printf("纬度: %.9f\n", result1[1]);
+        }
+
     }
 }
