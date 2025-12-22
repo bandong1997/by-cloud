@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.by.devtool.mapper.UserPoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.by.lesson.entity.UserPo">
+        <id column="id" property="id" />
+        <result column="username" property="username" />
+        <result column="email" property="email" />
+        <result column="phone" property="phone" />
+        <result column="password_hash" property="passwordHash" />
+        <result column="password_salt" property="passwordSalt" />
+        <result column="real_name" property="realName" />
+        <result column="nickname" property="nickname" />
+        <result column="avatar_url" property="avatarUrl" />
+        <result column="gender" property="gender" />
+        <result column="birth_date" property="birthDate" />
+        <result column="status" property="status" />
+        <result column="source_type" property="sourceType" />
+        <result column="last_login_time" property="lastLoginTime" />
+        <result column="last_login_ip" property="lastLoginIp" />
+        <result column="login_count" property="loginCount" />
+        <result column="email_verified" property="emailVerified" />
+        <result column="phone_verified" property="phoneVerified" />
+        <result column="is_admin" property="isAdmin" />
+        <result column="created_at" property="createdAt" />
+        <result column="updated_at" property="updatedAt" />
+        <result column="version" property="version" />
+        <result column="deleted" property="deleted" />
+    </resultMap>
+
+</mapper>
