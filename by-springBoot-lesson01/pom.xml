@@ -15,10 +15,10 @@
 
     <!-- 项目基本信息 -->
     <groupId>com.by</groupId> <!-- 项目组织ID -->
-    <artifactId>by-springBoot-devTools</artifactId> <!-- 项目构件ID -->
+    <artifactId>by-springBoot-lesson01</artifactId> <!-- 项目构件ID -->
     <version>1.0-SNAPSHOT</version> <!-- 项目版本 -->
-    <name>SpringBootDevTools</name> <!-- 项目名称 -->
-    <description>SpringBoot脚手架</description> <!-- 项目描述 -->
+    <name>SpringBootDevLesson01</name> <!-- 项目名称 -->
+    <description>Lesson01</description> <!-- 项目描述 -->
 
     <!-- 项目属性配置 -->
     <properties>
@@ -109,6 +109,22 @@
             <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
             <version>4.4.0</version>
         </dependency>
+
+        <!-- Jackson数据绑定库，用于JSON序列化和反序列化 -->
+        <!-- 将Java对象转换为JSON格式，或将JSON字符串解析为Java对象 -->
+        <!-- Spring Boot Web已默认包含此依赖，但显式声明以便精确控制版本 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+
+        <!-- 坐标转换 -->
+        <dependency>
+            <groupId>org.locationtech.proj4j</groupId>
+            <artifactId>proj4j</artifactId>
+            <version>1.3.0</version>
+        </dependency>
+
 
     </dependencies>
 

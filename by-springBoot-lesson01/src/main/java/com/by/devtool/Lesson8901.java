@@ -11,10 +11,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  */
 @SpringBootApplication
 @EnableScheduling // @Scheduled 注解的定时任务的支持
-public class DevTool8901
+public class Lesson8901
 {
     public static void main( String[] args )
     {
-        SpringApplication.run(DevTool8901.class, args);
+        SpringApplication.run(Lesson8901.class, args);
     }
 }

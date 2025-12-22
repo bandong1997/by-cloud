@@ -40,7 +40,6 @@ public class CGCS2000Transformer {
     public static double[] transform35NToGeographic(CoordinateReferenceSystem targetCRS, double x, double y) {
         try {
             CoordinateReferenceSystem sourceCRS = crsFactory.createFromParameters("CGCS2000_35N", CRSConstants.CGCS2000_35N);
-
             return transform(sourceCRS, targetCRS, x, y);
         } catch (Exception e) {
             throw new RuntimeException("35带坐标转换失败", e);

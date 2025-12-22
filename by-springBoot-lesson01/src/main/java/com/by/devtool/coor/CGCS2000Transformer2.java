@@ -33,9 +33,9 @@ public class CGCS2000Transformer2 {
             CoordinateTransform transform = ctFactory.createTransform(sourceCRS, targetCRS);
 
             // 去掉35带号：35620127 -> 620127
-            double easting = x - 35000000;
+//            double easting = x - 35000000;
 
-            ProjCoordinate srcCoord = new ProjCoordinate(easting, y);
+            ProjCoordinate srcCoord = new ProjCoordinate(x, y);
             ProjCoordinate tgtCoord = new ProjCoordinate();
 
             transform.transform(srcCoord, tgtCoord);
@@ -178,7 +178,7 @@ public class CGCS2000Transformer2 {
 
         System.out.println("=== 35带坐标转换 ===");
         // 示例1: 35带坐标转地理坐标
-        double[] geo35 = transformer.transform35NToGeographic(2948300.453, 35619805.464);
+        double[] geo35 = transformer.transform35NToGeographic(2948492.00000000000, 620127.00000000000);
         System.out.printf("35带转地理坐标: 经度=%.9f, 纬度=%.9f%n", geo35[0], geo35[1]);
 
         // 测试反转换
