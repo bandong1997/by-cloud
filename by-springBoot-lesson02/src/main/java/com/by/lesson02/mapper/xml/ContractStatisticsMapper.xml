@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.by.lesson02.mapper.ContractStatisticsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.by.lesson02.entity.ContractStatistics">
+        <id column="id" property="id" />
+        <result column="stat_date" property="statDate" />
+        <result column="contract_type" property="contractType" />
+        <result column="department_id" property="departmentId" />
+        <result column="total_count" property="totalCount" />
+        <result column="draft_count" property="draftCount" />
+        <result column="effective_count" property="effectiveCount" />
+        <result column="expired_count" property="expiredCount" />
+        <result column="terminated_count" property="terminatedCount" />
+        <result column="total_amount" property="totalAmount" />
+        <result column="paid_amount" property="paidAmount" />
+        <result column="unpaid_amount" property="unpaidAmount" />
+        <result column="change_count" property="changeCount" />
+        <result column="created_count" property="createdCount" />
+        <result column="expire_soon_count" property="expireSoonCount" />
+    </resultMap>
+
+</mapper>

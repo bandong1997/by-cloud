@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.by.lesson02.mapper.ContractMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.by.lesson02.entity.Contract">
+        <id column="id" property="id" />
+        <result column="contract_uid" property="contractUid" />
+        <result column="contract_no" property="contractNo" />
+        <result column="contract_name" property="contractName" />
+        <result column="contract_type" property="contractType" />
+        <result column="status" property="status" />
+        <result column="party_a_name" property="partyAName" />
+        <result column="party_b_name" property="partyBName" />
+        <result column="party_a_id" property="partyAId" />
+        <result column="party_b_id" property="partyBId" />
+        <result column="sign_date" property="signDate" />
+        <result column="effective_date" property="effectiveDate" />
+        <result column="expire_date" property="expireDate" />
+        <result column="actual_end_date" property="actualEndDate" />
+        <result column="total_amount" property="totalAmount" />
+        <result column="currency" property="currency" />
+        <result column="paid_amount" property="paidAmount" />
+        <result column="main_file_path" property="mainFilePath" />
+        <result column="change_count" property="changeCount" />
+        <result column="transfer_count" property="transferCount" />
+        <result column="created_by_name" property="createdByName" />
+        <result column="created_time" property="createdTime" />
+        <result column="updated_by_name" property="updatedByName" />
+        <result column="updated_time" property="updatedTime" />
+        <result column="is_deleted" property="isDeleted" />
+        <result column="version" property="version" />
+        <result column="content" property="content" />
+    </resultMap>
+
+</mapper>

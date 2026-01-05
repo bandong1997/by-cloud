@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.by.lesson02.mapper.ContractTransferRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.by.lesson02.entity.ContractTransferRecord">
+        <id column="id" property="id" />
+        <result column="transfer_uid" property="transferUid" />
+        <result column="target_type" property="targetType" />
+        <result column="target_id" property="targetId" />
+        <result column="target_name" property="targetName" />
+        <result column="transfer_type" property="transferType" />
+        <result column="transfer_reason" property="transferReason" />
+        <result column="transfer_content" property="transferContent" />
+        <result column="transfer_amount" property="transferAmount" />
+        <result column="from_party_type" property="fromPartyType" />
+        <result column="from_party_id" property="fromPartyId" />
+        <result column="from_party_name" property="fromPartyName" />
+        <result column="from_user_id" property="fromUserId" />
+        <result column="from_user_name" property="fromUserName" />
+        <result column="to_party_type" property="toPartyType" />
+        <result column="to_party_id" property="toPartyId" />
+        <result column="to_party_name" property="toPartyName" />
+        <result column="to_user_id" property="toUserId" />
+        <result column="to_user_name" property="toUserName" />
+        <result column="approval_status" property="approvalStatus" />
+        <result column="approval_flow_id" property="approvalFlowId" />
+        <result column="transfer_time" property="transferTime" />
+        <result column="effective_time" property="effectiveTime" />
+        <result column="complete_time" property="completeTime" />
+        <result column="attachment_ids" property="attachmentIds" />
+        <result column="contract_attachment" property="contractAttachment" />
+        <result column="created_by" property="createdBy" />
+        <result column="created_time" property="createdTime" />
+        <result column="updated_time" property="updatedTime" />
+        <result column="is_deleted" property="isDeleted" />
+    </resultMap>
+
+</mapper>

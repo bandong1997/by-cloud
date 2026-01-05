@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.by.lesson02.mapper.ContractSystemLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.by.lesson02.entity.ContractSystemLog">
+        <id column="id" property="id" />
+        <result column="log_uid" property="logUid" />
+        <result column="log_type" property="logType" />
+        <result column="log_level" property="logLevel" />
+        <result column="log_source" property="logSource" />
+        <result column="logger_name" property="loggerName" />
+        <result column="log_title" property="logTitle" />
+        <result column="log_content" property="logContent" />
+        <result column="exception_info" property="exceptionInfo" />
+        <result column="stack_trace" property="stackTrace" />
+        <result column="business_no" property="businessNo" />
+        <result column="business_type" property="businessType" />
+        <result column="trace_id" property="traceId" />
+        <result column="span_id" property="spanId" />
+        <result column="service_name" property="serviceName" />
+        <result column="host_address" property="hostAddress" />
+        <result column="host_name" property="hostName" />
+        <result column="thread_name" property="threadName" />
+        <result column="user_id" property="userId" />
+        <result column="user_name" property="userName" />
+        <result column="client_ip" property="clientIp" />
+        <result column="log_time" property="logTime" />
+        <result column="duration_ms" property="durationMs" />
+        <result column="keyword1" property="keyword1" />
+        <result column="keyword2" property="keyword2" />
+        <result column="keyword3" property="keyword3" />
+    </resultMap>
+
+</mapper>

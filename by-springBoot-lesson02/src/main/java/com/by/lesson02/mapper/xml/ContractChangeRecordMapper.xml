@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.by.lesson02.mapper.ContractChangeRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.by.lesson02.entity.ContractChangeRecord">
+        <id column="id" property="id" />
+        <result column="change_uid" property="changeUid" />
+        <result column="business_type" property="businessType" />
+        <result column="target_type" property="targetType" />
+        <result column="target_id" property="targetId" />
+        <result column="target_name" property="targetName" />
+        <result column="change_type" property="changeType" />
+        <result column="change_version" property="changeVersion" />
+        <result column="change_title" property="changeTitle" />
+        <result column="change_reason" property="changeReason" />
+        <result column="change_content" property="changeContent" />
+        <result column="change_detail" property="changeDetail" />
+        <result column="affect_field" property="affectField" />
+        <result column="affect_amount" property="affectAmount" />
+        <result column="approval_status" property="approvalStatus" />
+        <result column="approval_flow_id" property="approvalFlowId" />
+        <result column="approval_remark" property="approvalRemark" />
+        <result column="applicant_id" property="applicantId" />
+        <result column="applicant_name" property="applicantName" />
+        <result column="approver_id" property="approverId" />
+        <result column="approver_name" property="approverName" />
+        <result column="auditor_id" property="auditorId" />
+        <result column="auditor_name" property="auditorName" />
+        <result column="apply_time" property="applyTime" />
+        <result column="approval_time" property="approvalTime" />
+        <result column="effective_time" property="effectiveTime" />
+        <result column="created_by" property="createdBy" />
+        <result column="created_time" property="createdTime" />
+        <result column="updated_time" property="updatedTime" />
+        <result column="is_deleted" property="isDeleted" />
+    </resultMap>
+
+</mapper>
