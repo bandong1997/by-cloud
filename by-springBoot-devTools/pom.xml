@@ -104,34 +104,12 @@
         <!-- Knife4j API文档工具，基于OpenAPI 3.0 -->
         <!-- 提供可视化的API文档界面，便于接口调试和文档管理 -->
         <!-- 注意：此版本适用于Spring Boot 3.x及使用Jakarta EE的项目 -->
+        <!-- 访问 ip:端口/doc.html -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
             <version>4.4.0</version>
         </dependency>
-
-        <!-- Jackson数据绑定库，用于JSON序列化和反序列化 -->
-        <!-- 将Java对象转换为JSON格式，或将JSON字符串解析为Java对象 -->
-        <!-- Spring Boot Web已默认包含此依赖，但显式声明以便精确控制版本 -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.osgeo/proj4j -->
-        <dependency>
-            <groupId>org.locationtech.proj4j</groupId>
-            <artifactId>proj4j</artifactId>
-            <version>1.3.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.osgeo</groupId>
-            <artifactId>proj4j</artifactId>
-            <version>0.1.0</version>
-        </dependency>
-
-
 
     </dependencies>
 
