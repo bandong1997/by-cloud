@@ -72,12 +72,14 @@ public class SM4KeyGenerator {
 
         // 0.需要加密的内容
         String data = "by123456";
+        String data1 = "by1234567";
 
         // 1.生成密钥
         byte[] sm4Key = SM4KeyGenerator.generateRandomKey();
 
         // 2.转换为Base64字符串（用于存储）
-        String keyBase64 = SM4KeyGenerator.keyToBase64(sm4Key);
+//        String keyBase64 = SM4KeyGenerator.keyToBase64(sm4Key);
+        String keyBase64 = "r/nrpsu/JrwKTS7JDaikpA==";
         System.out.println("密钥(Base64字符串): " + keyBase64);
 
         // 3. 如果要使用Base64字符串，必须先解码
@@ -87,8 +89,15 @@ public class SM4KeyGenerator {
         String encrypted = SM4KeyGenerator.encrypt(data, keyFromBase64);
         System.out.println("加密: " + encrypted);
 
+        String encrypted1 = SM4KeyGenerator.encrypt(data1, keyFromBase64);
+        System.out.println("加密: " + encrypted1);
+
         String decrypted = SM4KeyGenerator.decrypt(encrypted, keyFromBase64);
         System.out.println("解密: " + decrypted);
+
+        String decrypted1 = SM4KeyGenerator.decrypt(encrypted1, keyFromBase64);
+        System.out.println("解密: " + decrypted1);
+
     }
 
 
