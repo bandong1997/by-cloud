@@ -17,7 +17,6 @@ import java.util.concurrent.TimeUnit;
  * @date2026年01月29日11:05
  */
 @Controller
-//@RequestMapping("/captcha")
 @Tag(name = "图片验证", description = "图片验证")
 public class CaptchaController {
 
@@ -28,7 +27,7 @@ public class CaptchaController {
     }
 
     @Operation(summary = "生成验证码", description = "/")
-    @GetMapping("/")
+    @GetMapping("/captcha")
     public String index(Model model, HttpSession session) {
         // 生成验证码
         String code = CaptchaUtil.generateCode();
