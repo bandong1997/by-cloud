@@ -50,11 +50,15 @@ public class ByOperateLogServiceImpl extends ServiceImpl<ByOperateLogMapper, ByO
             logPo.setMethod(method);
             logPo.setRequestMethod(request.getMethod());
 
+            // 获取ip
             String localIp = IpUtils.getLocalIpAddress();
             logPo.setIp(localIp);
-            logPo.setIpLocation(IpLocationUtils.getIpLocation(localIp));
             logPo.setIpVersion(IpUtils.getIpVersion(localIp));
 
+            // ip归属地，还需调整
+            logPo.setIpLocation(IpLocationUtils.getIpLocation(localIp));
+
+            // 浏览器、系统信息
             logPo.setUserAgent(userAgent);
             logPo.setBrowser(UserAgentUtils.getBrowser(userAgent));
             logPo.setBrowserVersion(UserAgentUtils.getBrowserVersion(userAgent));

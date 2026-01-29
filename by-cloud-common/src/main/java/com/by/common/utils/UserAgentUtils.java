@@ -30,6 +30,7 @@ public class UserAgentUtils {
     public static String getCurrentBrowserWithVersion(String userAgent) {
         return getBrowser(userAgent) + " " + getBrowserVersion(userAgent);
     }
+
     public static String getBrowser(String userAgent) {
         Pattern[] patterns = {
             Pattern.compile("MSIE\\s+(\\d+\\.\\d+)", Pattern.CASE_INSENSITIVE),
