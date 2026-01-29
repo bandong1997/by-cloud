@@ -1,4 +1,4 @@
-package com.by.lesson02.controller;
+package com.by.lesson02.controller.contract;
 
 import com.by.common.utils.CaptchaUtil;
 import io.swagger.v3.oas.annotations.Operation;

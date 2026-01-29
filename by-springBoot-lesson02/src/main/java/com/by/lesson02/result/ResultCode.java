@@ -44,7 +44,10 @@ public enum ResultCode {
     SYSTEM_ERROR(500, "系统错误"),
 
     // 服务繁忙
-    SERVICE_BUSY(503, "服务繁忙");
+    SERVICE_BUSY(503, "服务繁忙"),
+
+    // 删除失败
+    DELETE_ERROR(504, "删除失败");
 
 
 

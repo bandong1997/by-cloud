@@ -1,4 +1,4 @@
-package com.by.lesson02.controller;
+package com.by.lesson02.controller.contract;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
