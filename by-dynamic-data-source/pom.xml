@@ -112,7 +112,7 @@
             <version>4.1.3</version>
         </dependency>
 
-        <!-- JSON处理 -->
+        <!-- Fastjson2 依赖：阿里巴巴新一代高性能JSON处理库，用于JSON序列化与反序列化 -->
         <dependency>
             <groupId>com.alibaba.fastjson2</groupId>
             <artifactId>fastjson2</artifactId>

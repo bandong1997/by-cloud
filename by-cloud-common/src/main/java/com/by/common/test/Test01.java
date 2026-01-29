@@ -1,6 +1,7 @@
 package com.by.common.test;
 
 import com.by.common.enums.MemberType;
+import com.by.common.enums.OrderStatus;
 
 /**
  * @author bandd
@@ -18,7 +19,8 @@ public class Test01 {
         System.out.println(user.username()); // 直接调用，像方法一样
         System.out.println(user); // 自带了很好的toString()实现
 
-
+        System.out.println(OrderStatus.CANCELLED.getDescription());
+        System.out.println(OrderStatus.CANCELLED.getCode());
 
 
     }

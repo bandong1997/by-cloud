@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- Maven项目对象模型版本：指定POM文件的XML结构版本 -->
     <modelVersion>4.0.0</modelVersion>
+    <!-- 项目组织标识符：通常采用公司或组织域名的逆序 -->
     <groupId>com.by</groupId>
+    <!-- 项目唯一标识符：在组织内唯一的项目名称 -->
     <artifactId>by-cloud</artifactId>
+    <!-- 项目版本号：SNAPSHOT表示开发中的版本 -->
     <version>0.0.1-SNAPSHOT</version>
+    <!-- 项目打包方式：pom表示这是父项目/聚合项目，用于管理子模块 -->
     <packaging>pom</packaging>
 
+    <!-- 子模块 -->
     <modules>
         <module>by-cloud-service-upms</module>
         <module>by-cloud-common</module>
@@ -20,33 +27,40 @@
     -->
     <!-- 属性配置 -->
     <properties>
+        <!-- Maven编译器设置：指定Java源代码版本为17 -->
         <maven.compiler.source>17</maven.compiler.source>
+        <!-- Maven编译器设置：指定Java编译目标版本为17 -->
         <maven.compiler.target>17</maven.compiler.target>
+        <!-- 项目构建源码编码：使用UTF-8字符编码 -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- Spring Boot 版本 -->
+        <!-- Spring Boot版本：Spring Boot框架的版本号 -->
         <spring-boot.version>3.2.4</spring-boot.version>
-        <!-- Spring Cloud 版本 -->
+        <!-- Spring Cloud版本：Spring Cloud微服务框架的版本号 -->
         <spring-cloud.version>2023.0.2</spring-cloud.version>
-        <!-- Spring Cloud Alibaba 版本 -->
+        <!-- Spring Cloud Alibaba版本：阿里巴巴微服务组件的版本号 -->
         <spring-cloud-alibaba.version>2023.0.1.0</spring-cloud-alibaba.version>
+        <!-- MyBatis Plus版本：MyBatis增强框架的版本号 -->
         <mybatis-plus.version>3.5.6</mybatis-plus.version>
+        <!-- MySQL驱动版本：MySQL数据库连接驱动的版本号 -->
         <mysql.version>8.0.33</mysql.version>
+        <!-- Lombok版本：代码简化工具的版本号 -->
         <lombok.version>1.18.26</lombok.version>
-        <!-- SLF4J 和 Log4j 版本 -->
+        <!-- SLF4J版本：日志门面框架的版本号 -->
         <slf4j.version>2.0.9</slf4j.version>
+        <!-- Jakarta Servlet版本：Java Servlet规范的版本号 -->
         <jakarta.servlet.version>6.0.0</jakarta.servlet.version>
-        <!-- Knife4j 版本 -->
+        <!-- Knife4j版本：API文档生成工具的版本号 -->
         <knife4j.version>4.4.0</knife4j.version>
-        <!-- 动态数据源 Spring Boot 3.x 使用-->
+        <!-- 动态数据源版本：支持多数据源动态切换的框架版本 -->
         <dynamic-datasource.version>4.1.3</dynamic-datasource.version>
-        <!-- JSON处理 -->
+        <!-- Fastjson2版本：阿里巴巴高性能JSON处理库的版本号 -->
         <fastjson2.version>2.0.51</fastjson2.version>
     </properties>
 
     <!-- 依赖管理 -->
     <dependencyManagement>
         <dependencies>
-            <!-- Spring Boot -->
+            <!-- Spring Boot依赖管理：导入Spring Boot父项目的依赖管理 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-parent</artifactId>
@@ -54,7 +68,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- Spring Cloud -->
+            <!-- Spring Cloud依赖管理：导入Spring Cloud的依赖管理 -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -62,7 +76,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- Spring Cloud Alibaba -->
+            <!-- Spring Cloud Alibaba依赖管理：导入阿里巴巴微服务组件的依赖管理 -->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
@@ -70,37 +84,38 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- MySQL Connector -->
+            <!-- MySQL连接器：MySQL数据库的JDBC驱动 -->
             <dependency>
                 <groupId>com.mysql</groupId>
                 <artifactId>mysql-connector-j</artifactId>
                 <version>${mysql.version}</version>
             </dependency>
-            <!-- MyBatis Plus Starter -->
+            <!-- MyBatis Plus启动器：MyBatis增强框架的Spring Boot集成 -->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
             </dependency>
-            <!--lombok-->
+            <!-- Lombok：通过注解简化Java代码的库 -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
                 <optional>true</optional>
             </dependency>
-            <!--slf4j-->
+            <!-- SLF4J API：日志门面框架的核心API -->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
+            <!-- SLF4J Simple实现：SLF4J的简单日志实现 -->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-simple</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
-
+            <!-- Jakarta Servlet API：Java EE 10规范的Servlet API，提供Web请求处理的核心接口 -->
 <!--            <dependency>-->
 <!--                <groupId>jakarta.servlet</groupId>-->
 <!--                <artifactId>jakarta.servlet-api</artifactId>-->
@@ -108,36 +123,36 @@
 <!--                <scope>provided</scope>-->
 <!--            </dependency>-->
 
-            <!-- Knife4j -->
+            <!-- Knife4j启动器：基于OpenAPI 3的API文档工具，适用于Spring Boot 3.x -->
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
             </dependency>
 
-            <!-- 动态数据源 Spring Boot 3.x 使用-->
+            <!-- 动态数据源启动器：支持多数据源动态切换的Spring Boot 3.x集成 -->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>dynamic-datasource-spring-boot3-starter</artifactId>
                 <version>${dynamic-datasource.version}</version>
             </dependency>
-            <!-- JSON处理 -->
+            <!-- Fastjson2：阿里巴巴新一代高性能JSON处理库 -->
             <dependency>
                 <groupId>com.alibaba.fastjson2</groupId>
                 <artifactId>fastjson2</artifactId>
                 <version>${fastjson2.version}</version> <!-- 使用2.0.51及以上版本 -->
             </dependency>
-
-
-
         </dependencies>
     </dependencyManagement>
 
     <build>
+        <!-- Maven插件配置 -->
         <plugins>
             <plugin>
+                <!-- Spring Boot Maven插件：用于Spring Boot应用的打包、运行和构建 -->
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <!-- 指定插件版本与Spring Boot版本保持一致 -->
                 <version>${spring-boot.version}</version>
             </plugin>
         </plugins>

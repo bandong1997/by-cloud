@@ -1,88 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- Maven项目对象模型版本：指定POM文件的XML结构版本 -->
     <modelVersion>4.0.0</modelVersion>
+
+    <!-- 父项目引用：继承by-cloud父项目的配置 -->
     <parent>
         <groupId>com.by</groupId>
         <artifactId>by-cloud</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
+    <!-- 子模块唯一标识符：文件服务模块，负责文件上传下载、文档处理等功能 -->
     <artifactId>by-cloud-service-file</artifactId>
 
     <dependencies>
-        <!--SpringBoot通用依赖模块-->
+        <!-- Spring Boot Web启动器：提供Web应用开发支持，包含Spring MVC和嵌入式Tomcat -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!--nacos-config-->
+        <!-- Nacos配置中心：Spring Cloud Alibaba Nacos配置管理，实现动态配置更新 -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
-        <!--nacos-discovery-->
+        <!-- Nacos服务发现：Spring Cloud Alibaba Nacos服务注册与发现，实现微服务治理 -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
-
-        <!--lombok-->
+        <!-- Lombok：通过注解简化Java代码，自动生成getter、setter、构造器等 -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+        <!-- Knife4j启动器：基于OpenAPI 3的API文档生成工具，提供美观的Swagger UI界面 -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
         </dependency>
-
-
-        <!-- MinIO Java SDK -->
+        <!-- MinIO Java SDK：对象存储服务的Java客户端，用于文件上传下载等操作 -->
         <dependency>
             <groupId>io.minio</groupId>
             <artifactId>minio</artifactId>
             <version>8.5.7</version>
         </dependency>
-        <!--   documents4j windows     -->
-        <!-- MinIO Java SDK -->
+        <!-- Apache Commons IO：提供IO操作的工具类库，简化文件读写等操作 -->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.15.1</version> <!-- 使用最新版本 -->
         </dependency>
-        <!-- Word处理 -->
+        <!-- Apache POI OOXML：处理Office文档（Word、Excel、PowerPoint）的Java库 -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>5.2.3</version>
         </dependency>
-
-        <!-- Apache POI for Word document processing -->
+        <!-- Apache POI核心：Apache POI库的核心模块 -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
             <version>5.2.5</version>
         </dependency>
+        <!-- Aspose.Words：强大的Word文档处理库，支持文档格式转换和操作 -->
         <dependency>
             <groupId>com.aspose</groupId>
             <artifactId>aspose-words</artifactId>
             <version>15.8.0</version>
         </dependency>
-
+        <!-- Hutool：Java工具类库，提供丰富的工具方法和简化开发 -->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>5.5.2</version>
         </dependency>
-
+        <!-- 通用模块依赖：包含项目通用的工具类、配置、常量等 -->
         <dependency>
             <groupId>com.by</groupId>
             <artifactId>by-cloud-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
-
     </dependencies>
 
 

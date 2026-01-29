@@ -1,83 +1,88 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- Maven项目对象模型版本：指定POM文件的XML结构版本 -->
     <modelVersion>4.0.0</modelVersion>
+
+    <!-- 父项目引用：继承by-cloud父项目的配置和依赖管理 -->
     <parent>
         <groupId>com.by</groupId>
         <artifactId>by-cloud</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <!-- 子模块唯一标识符：合同服务模块，负责合同相关的业务逻辑 -->
     <artifactId>by-cloud-service-contract</artifactId>
+    <!-- 打包格式：jar表示这是一个可执行的Java应用程序 -->
     <packaging>jar</packaging>
 
+    <!-- 项目名称：合同服务模块的显示名称 -->
     <name>by-cloud-service-contract</name>
+    <!-- 项目URL：指向Apache Maven网站的链接 -->
     <url>http://maven.apache.org</url>
 
+    <!-- Maven项目属性配置 -->
     <properties>
+        <!-- 指定Maven编译器使用的Java源代码版本为17 -->
         <maven.compiler.source>17</maven.compiler.source>
+        <!-- 指定Maven编译器生成的字节码目标版本为17 -->
         <maven.compiler.target>17</maven.compiler.target>
+        <!-- 设置项目构建时的源代码文件编码为UTF-8 -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
-
-        <!--nacos-config-->
+        <!-- Nacos配置中心：Spring Cloud Alibaba Nacos配置管理，实现动态配置更新 -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
-        <!--nacos-discovery-->
+        <!-- Nacos服务发现：Spring Cloud Alibaba Nacos服务注册与发现，实现微服务治理 -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
-
-        <!--SpringBoot通用依赖模块-->
+        <!-- Spring Boot Web启动器：提供Web应用开发支持，包含Spring MVC和嵌入式Tomcat -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
-        <!--mysql-->
+        <!-- MySQL连接器：MySQL数据库的JDBC驱动 -->
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
         </dependency>
-        <!--mybatis-plus-->
+        <!-- MyBatis Plus启动器：增强MyBatis的ORM框架，提供简化CRUD操作和强大查询功能 -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
         </dependency>
-        <!--lombok-->
+        <!-- Lombok：通过注解简化Java代码，自动生成getter、setter、构造器等 -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <!-- Knife4j -->
+        <!-- Knife4j启动器：基于OpenAPI 3的API文档生成工具，提供美观的Swagger UI界面 -->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
         </dependency>
-        <!-- Redis -->
+        <!-- Redis启动器：提供Redis缓存和数据存储支持 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
+        <!-- 通用模块依赖：包含项目通用的工具类、配置、常量等 -->
         <dependency>
             <groupId>com.by</groupId>
             <artifactId>by-cloud-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
-        <!-- 动态数据源 Spring Boot 3.x 使用-->
+        <!-- 动态数据源启动器：支持多数据源动态切换的Spring Boot 3.x集成 -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>dynamic-datasource-spring-boot3-starter</artifactId>
         </dependency>
-
-
-
     </dependencies>
 
 </project>

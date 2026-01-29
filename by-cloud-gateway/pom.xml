@@ -1,34 +1,38 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- Maven项目对象模型版本：指定POM文件的XML结构版本 -->
     <modelVersion>4.0.0</modelVersion>
-
+    <!-- 项目唯一标识符：API网关模块，负责路由转发、负载均衡、安全认证等 -->
     <artifactId>by-cloud-gateway</artifactId>
-
+    <!-- 父项目引用：继承by-cloud父项目的配置和依赖管理 -->
     <parent>
         <groupId>com.by</groupId>
         <artifactId>by-cloud</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <!-- 属性配置 -->
+    <!-- Maven项目属性配置 -->
     <properties>
+        <!-- 指定Maven编译器使用的Java源代码版本为17 -->
         <maven.compiler.source>17</maven.compiler.source>
+        <!-- 指定Maven编译器生成的字节码目标版本为17 -->
         <maven.compiler.target>17</maven.compiler.target>
+        <!-- 设置项目构建时的源代码文件编码为UTF-8 -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-
     <dependencies>
+        <!-- Spring Cloud Gateway：提供API网关功能，支持路由转发、过滤器和限流等 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
-        <!-- loadbalancer依赖 -->
+        <!-- Spring Cloud LoadBalancer：客户端负载均衡器，实现服务实例的动态选择 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-loadbalancer</artifactId>
         </dependency>
-        <!-- 服务注册 -->
+        <!-- Nacos服务发现：Spring Cloud Alibaba服务注册与发现，网关动态发现后端服务 -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
