@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>验证码示例</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .captcha-container {
+            margin: 20px 0;
+        }
+        .captcha-image {
+            cursor: pointer;
+            border: 1px solid #ddd;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        .form-group {
+            margin: 15px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            padding: 8px;
+            width: 200px;
+        }
+        button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+<h1>Spring Boot 验证码示例</h1>
+
+<div class="captcha-container">
+    <h3>验证码</h3>
+    <img th:src="${captchaImage}" alt="验证码" class="captcha-image" onclick="refreshCaptcha()">
+    <p>点击图片刷新验证码</p>
+</div>
+
+<form id="captchaForm">
+    <div class="form-group">
+        <label for="code">请输入验证码：</label>
+        <input type="text" id="code" name="code" required>
+    </div>
+    <button type="submit">验证</button>
+</form>
+
+<div id="result" class="result" style="display: none;"></div>
+
+<script>
+    // 刷新验证码
+    function refreshCaptcha() {
+        fetch('/refresh', {
+            method: 'POST'
+        })
+            .then(response => response.text())
+            .then(data => {
+                document.querySelector('.captcha-image').src = data;
+            });
+    }
+
+    // 验证表单
+    document.getElementById('captchaForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const code = document.getElementById('code').value;
+
+        fetch('/verify', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'code=' + encodeURIComponent(code)
+        })
+            .then(response => response.text())
+            .then(data => {
+                const resultDiv = document.getElementById('result');
+                resultDiv.textContent = data;
+                resultDiv.style.display = 'block';
+
+                // 如果验证成功，刷新验证码
+                if (data === '验证成功') {
+                    refreshCaptcha();
+                }
+            });
+    });
+</script>
+</body>
+</html>

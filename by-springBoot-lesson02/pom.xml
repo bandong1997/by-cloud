@@ -4,7 +4,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <!-- Maven模型版本 -->
     <modelVersion>4.0.0</modelVersion>
-
     <!-- Spring Boot父项目，提供默认配置和依赖管理 -->
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -42,17 +41,18 @@
 <!--            </exclusions>-->
         </dependency>
 
+        <!-- Apache HttpClient 5 依赖：支持HTTP/1.1和HTTP/2的客户端库，用于发送HTTP请求 -->
         <dependency>
             <groupId>org.apache.httpcomponents.client5</groupId>
             <artifactId>httpclient5</artifactId>
             <version>5.2.1</version>
         </dependency>
+        <!-- Apache HttpCore 5 依赖：提供HTTP协议核心功能的底层支持，包括连接管理和消息处理 -->
 <!--        <dependency>-->
 <!--            <groupId>org.apache.httpcomponents.core5</groupId>-->
 <!--            <artifactId>httpcore5</artifactId>-->
 <!--            <version>5.2</version>-->
 <!--        </dependency>-->
-
 
         <!-- Spring Boot 测试依赖，提供测试支持 -->
         <!-- 包含JUnit、Mockito等测试框架 -->
@@ -73,7 +73,7 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- Source: https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <!-- 阿里巴巴 FastJSON 依赖：高性能的JSON处理库，用于JSON序列化与反序列化 -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
@@ -109,7 +109,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
         <!-- MyBatis与Spring框架的集成依赖 -->
         <!-- 负责将MyBatis的SqlSessionFactory、Mapper接口等与Spring容器集成 -->
         <!-- 版本3.0.3兼容Spring Boot 3.x -->
@@ -118,7 +117,6 @@
             <artifactId>mybatis-spring</artifactId>
             <version>3.0.3</version>
         </dependency>
-
         <!-- Lombok 库，用于简化Java代码 -->
         <!-- 自动生成getter/setter/构造器/toString等方法 -->
         <dependency>
@@ -126,7 +124,6 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-
         <!-- Knife4j API文档工具，基于OpenAPI 3.0 -->
         <!-- 提供可视化的API文档界面，便于接口调试和文档管理 -->
         <!-- 注意：此版本适用于Spring Boot 3.x及使用Jakarta EE的项目 -->
@@ -135,11 +132,21 @@
             <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
             <version>4.4.0</version>
         </dependency>
-
+        <!-- 自定义公共模块依赖：包含项目通用的工具类、配置、常量等 -->
         <dependency>
             <groupId>com.by</groupId>
             <artifactId>by-cloud-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <!-- Spring Boot Redis 启动器：提供Redis缓存和数据存储支持 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!-- Spring Boot Thymeleaf 启动器：提供Thymeleaf模板引擎支持，用于Web页面渲染 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
     </dependencies>
