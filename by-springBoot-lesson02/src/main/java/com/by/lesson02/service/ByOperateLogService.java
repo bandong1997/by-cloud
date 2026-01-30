@@ -19,7 +19,6 @@ public interface ByOperateLogService extends IService<ByOperateLog> {
      * create by: 班东东
      * create time: 2026/1/29 20:44
      */
-    void saveOperateLogAsync(String title, String bizType, String operType,
-                             String method, HttpServletRequest request);
+    void saveOperateLogAsync(String title, String operType, HttpServletRequest request);
 
 }

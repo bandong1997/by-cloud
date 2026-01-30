@@ -2,6 +2,7 @@ package com.by.lesson02.service;
 
 import com.by.lesson02.entity.ByPermission;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.by.lesson02.result.Result;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ByPermissionService extends IService<ByPermission> {
 
+    Result finPermissionTree();
 }

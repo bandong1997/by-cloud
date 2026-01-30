@@ -1,13 +1,11 @@
 package com.by.lesson02.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>
@@ -73,10 +71,19 @@ public class ByPermission implements Serializable {
     private Integer sort;
 
     /**
-     * 权限状态：1-启用，0-禁用
+     * 逻辑删除字段
+     * 角色状态：1-启用，0-禁用
      */
+    @TableLogic(value = "1", delval = "0")
     @TableField("status")
     private Integer status;
+
+    /**
+     * 临时字段 - 数据库中没有
+     * 用户权限列表树图
+     */
+    @TableField(exist = false)
+    private List<ByPermission> children;
 
 
 }

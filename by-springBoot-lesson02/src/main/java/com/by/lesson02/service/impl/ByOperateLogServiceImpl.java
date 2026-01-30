@@ -12,6 +12,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import java.util.stream.Collectors;
+
 /**
  * <p>
  * 操作日志表 服务实现类
@@ -28,28 +30,26 @@ public class ByOperateLogServiceImpl extends ServiceImpl<ByOperateLogMapper, ByO
 
     @Async("byOperationLogExecutor")
     @Override
-    public void saveOperateLogAsync(String title, String bizType, String operType,
-                                    String method, HttpServletRequest request) {
+    public void saveOperateLogAsync(String title, String operType, HttpServletRequest request) {
         try {
-            saveOperateLog(title, bizType, operType, method, request);
+            saveOperateLog(title, operType, request);
         } catch (Exception e){
             log.error("保存操作日志失败", e);
         }
     }
 
-    public void saveOperateLog(String title, String bizType, String operType,
-                               String method, HttpServletRequest request) {
+    public void saveOperateLog(String title, String operType,HttpServletRequest request) {
 
         String userAgent = request.getHeader("User-Agent");
         try {
             ByOperateLog logPo = new ByOperateLog();
             logPo.setId(IdUtil.getUuid());
             logPo.setTitle(title);
-            logPo.setBizType(bizType);
             logPo.setOperType(operType);
-            logPo.setMethod(method);
+            StringBuffer requestURL = request.getRequestURL();
+            logPo.setUrl(request.getRequestURL().toString());
+            logPo.setMethod(request.getRequestURI());
             logPo.setRequestMethod(request.getMethod());
-
             // 获取ip
             String localIp = IpUtils.getLocalIpAddress();
             logPo.setIp(localIp);

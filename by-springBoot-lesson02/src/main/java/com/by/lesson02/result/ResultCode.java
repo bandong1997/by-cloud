@@ -47,8 +47,10 @@ public enum ResultCode {
     SERVICE_BUSY(503, "服务繁忙"),
 
     // 删除失败
-    DELETE_ERROR(504, "删除失败");
+    DELETE_ERROR(504, "删除失败"),
 
+    // 编码重复
+    REPEAT_CODE(505, "编码重复");
 
 
     /**

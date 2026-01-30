@@ -17,6 +17,7 @@ public class IpUtils {
         try {
             InetAddress inetAddress = InetAddress.getLocalHost();
             System.out.println(inetAddress + "--------");
+            System.out.println( inetAddress.getHostName()+ "--------");
             return inetAddress.getHostAddress();
         } catch (UnknownHostException e) {
             e.printStackTrace();

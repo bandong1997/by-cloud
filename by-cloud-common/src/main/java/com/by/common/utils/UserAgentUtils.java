@@ -152,8 +152,8 @@ public class UserAgentUtils {
             return "iPad";
         } else if (userAgent.contains("iPhone")) {
             return "iPhone";
-        } else if (userAgent.contains("Windows Phone")) {
-            return "Windows Phone";
+        } else if (userAgent.contains("Windows")) {
+            return "Windows";
         } else if (userAgent.contains("Mac OS")) {
             return "Mac OS";
         }

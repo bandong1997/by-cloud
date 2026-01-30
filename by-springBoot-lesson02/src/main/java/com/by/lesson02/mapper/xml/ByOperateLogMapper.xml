@@ -6,7 +6,7 @@
     <resultMap id="BaseResultMap" type="com.by.lesson02.entity.ByOperateLog">
         <result column="id" property="id" />
         <result column="title" property="title" />
-        <result column="biz_type" property="bizType" />
+        <result column="url" property="url" />
         <result column="oper_type" property="operType" />
         <result column="method" property="method" />
         <result column="request_method" property="requestMethod" />

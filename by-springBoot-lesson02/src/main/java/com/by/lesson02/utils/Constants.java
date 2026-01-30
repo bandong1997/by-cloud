@@ -18,6 +18,25 @@ public class Constants {
      */
     public static final Integer IS_DELETED_YES = 1;
 
+    // ==================== 日志表结构定义 ====================
+
+    public static final String LOG_USER_TITLE = "用户基本信息";
+
+    public static final String LOG_ROLE_TITLE = "角色基本信息";
+
+    public static final String LOG_PERMISSION_TITLE = "菜单基本信息";
+
+    public static final String LOG_DEPARTMENT_TITLE = "部门基本信息";
+
+    public static final String LOG_TYPE_QUERY = "QUERY";
+
+    public static final String LOG_TYPE_UPDATE = "UPDATE";
+
+    public static final String LOG_TYPE_DELETE = "DELETE";
+
+
+
+
     // ==================== 表结构定义 ====================
 
 }

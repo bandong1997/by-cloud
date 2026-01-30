@@ -26,6 +26,7 @@ public class UserOperationLogPoServiceImpl extends ServiceImpl<UserOperationLogP
     public void saveOperationLogAsync(String type) {
         try {
             saveOperationLog(type);
+            System.out.println("保存操作日志----------------");
         } catch (Exception e){
             log.error("保存操作日志失败", e);
         }

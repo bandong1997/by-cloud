@@ -1,9 +1,13 @@
 package com.by.lesson02.controller.users;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import com.by.lesson02.dto.RoleDto;
+import com.by.lesson02.result.Result;
+import com.by.lesson02.service.ByPermissionService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -15,6 +19,16 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/byPermission")
+@Tag(name = "系统菜单基本信息表", description = "系统菜单基本信息表")
 public class ByPermissionController {
+
+    @Autowired
+    private ByPermissionService byPermissionService;
+
+    @Operation(summary = "菜单树图", description = "finPermissionTree")
+    @GetMapping(value = "/finPermissionTree")
+    public Result finPermissionTree() {
+        return byPermissionService.finPermissionTree();
+    }
 
 }

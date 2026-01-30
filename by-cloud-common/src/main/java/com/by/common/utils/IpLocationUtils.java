@@ -10,10 +10,10 @@ public class IpLocationUtils {
     // 多个IP归属地查询API，提供备选方案
     private static final String[] IP_API_URLS = {
         "https://ipapi.co/%s/json",
-        "https://ipinfo.io/%s/json",
+//        "https://ipinfo.io/%s/json",
         "https://api.ipstack.com/%s?access_key=YOUR_ACCESS_KEY", // 需要替换为实际的API密钥
         "https://ip.sb/api/json/%s", // 国内可用的免费API
-        "https://api.ipify.org/?format=json", // IP地址查询
+//        "https://api.ipify.org/?format=json", // IP地址查询
         "https://jsonip.com/" // IP地址查询
     };
 

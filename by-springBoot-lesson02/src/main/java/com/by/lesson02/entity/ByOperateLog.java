@@ -36,10 +36,10 @@ public class ByOperateLog implements Serializable {
     private String title;
 
     /**
-     * 业务类型
+     * url
      */
-    @TableField("biz_type")
-    private String bizType;
+    @TableField("url")
+    private String url;
 
     /**
      * 操作类型

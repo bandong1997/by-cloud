@@ -14,7 +14,7 @@ public class Knife4jConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("lesson02-API文档")
+                        .title("API文档")
                         .version("1.0")
                         .description("这是一个使用Spring Boot和Knife4j构建的用户管理系统API文档")
                         .termsOfService("http://example.com/terms")

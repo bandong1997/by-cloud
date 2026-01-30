@@ -14,6 +14,7 @@ import com.by.lesson02.result.ResultCode;
 import com.by.lesson02.service.ByOperateLogService;
 import com.by.lesson02.service.ByUserService;
 import com.by.common.utils.HttpContextUtils;
+import com.by.lesson02.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -38,7 +39,8 @@ public class ByUserServiceImpl extends ServiceImpl<ByUserMapper, ByUser> impleme
 
     @Override
     public Result findPageUser(UserPageDto dto) {
-        logService.saveOperateLogAsync("系统用户基本信息表", "QUERY", "QUERY", "findPageUser", HttpContextUtils.getHttpServletRequest());
+
+
         LambdaQueryWrapper<ByUser> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(ByUser::getStatus, CommonStatus.ACTIVE);
         if (!StringUtils.isEmpty(dto.getUsername())) {
@@ -63,6 +65,9 @@ public class ByUserServiceImpl extends ServiceImpl<ByUserMapper, ByUser> impleme
         map.put("size", pageList.getSize());
         map.put("current", pageList.getCurrent());
         map.put("pages", pageList.getPages());
+
+        // 日志
+        logService.saveOperateLogAsync(Constants.LOG_USER_TITLE, Constants.LOG_TYPE_QUERY, HttpContextUtils.getHttpServletRequest());
 
         return Result.success(map);
     }
@@ -101,12 +106,16 @@ public class ByUserServiceImpl extends ServiceImpl<ByUserMapper, ByUser> impleme
             user.setPassword(encrypt);
             baseMapper.insert(user);
         }
+        // 日志
+        logService.saveOperateLogAsync(Constants.LOG_USER_TITLE, Constants.LOG_TYPE_UPDATE, HttpContextUtils.getHttpServletRequest());
         return Result.success();
     }
 
     @Override
     public Result deleteByUserId(String userId) {
         try {
+            // 日志
+            logService.saveOperateLogAsync(Constants.LOG_USER_TITLE, Constants.LOG_TYPE_DELETE, HttpContextUtils.getHttpServletRequest());
             return Result.success(baseMapper.deleteById(userId));
         } catch (Exception e) {
             return Result.fail(ResultCode.DELETE_ERROR.getCode(), ResultCode.DELETE_ERROR.getMessage());
