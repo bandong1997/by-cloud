@@ -1,6 +1,7 @@
 package com.by.lesson02.controller.users;
 
 
+import com.by.lesson02.aop.OperationLog;
 import com.by.lesson02.mapper.ByPermissionMapper;
 import com.by.lesson02.result.Result;
 import com.by.lesson02.service.ByDepartmentService;
@@ -28,6 +29,7 @@ public class ByDepartmentController {
     @Autowired
     private ByDepartmentService byDepartmentService;
 
+    @OperationLog(module = "AOP部门树图", type = "查看", desc = "查询部门信息", recordParams = true)
     @Operation(summary = "部门树图", description = "finDepartmentTree")
     @GetMapping(value = "/finDepartmentTree")
     public Result finDepartmentTree() {

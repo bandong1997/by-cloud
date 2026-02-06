@@ -38,7 +38,7 @@ public class ByDepartmentServiceImpl extends ServiceImpl<ByDepartmentMapper, ByD
         List<ByDepartment> list = baseMapper.selectList(wrapper);
         List<ByDepartment> treeList = TreeUtil.buildByDepartmentTree(list);
         // 日志
-        logService.saveOperateLogAsync(Constants.LOG_DEPARTMENT_TITLE, Constants.LOG_TYPE_QUERY, HttpContextUtils.getHttpServletRequest());
+        // logService.saveOperateLogAsync(Constants.LOG_DEPARTMENT_TITLE, Constants.LOG_TYPE_QUERY, HttpContextUtils.getHttpServletRequest());
 
         return Result.success(treeList);
     }
