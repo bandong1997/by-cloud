@@ -11,7 +11,7 @@
  Target Server Version : 80041 (8.0.41)
  File Encoding         : 65001
 
- Date: 30/01/2026 16:13:41
+ Date: 09/02/2026 17:12:02
 */
 
 SET NAMES utf8mb4;
@@ -132,6 +132,15 @@ INSERT INTO `by_operate_log` VALUES ('a586393fd9394fe9965ee1443b8cd92d', '角色
 INSERT INTO `by_operate_log` VALUES ('8b0beeb989ff467e873406590000d5ac', '菜单基本信息', 'QUERY', 'http://localhost:8902/byPermission/finPermissionTree', '/byPermission/finPermissionTree', 'GET', '192.168.28.194', '局域网地址', 'IPv4', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36', 'Chrome', '144.0', 'Windows', '10.0', 'Desktop', 'Windows', '2026-01-30 16:10:02', '2026-01-30 16:10:02');
 INSERT INTO `by_operate_log` VALUES ('4c4f9e13f56f40a4be88301fd7fcd62d', '部门基本信息', 'QUERY', 'http://localhost:8902/byDepartment/finDepartmentTree', '/byDepartment/finDepartmentTree', 'GET', '192.168.28.194', '局域网地址', 'IPv4', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36', 'Chrome', '144.0', 'Windows', '10.0', 'Desktop', 'Windows', '2026-01-30 16:10:14', '2026-01-30 16:10:14');
 INSERT INTO `by_operate_log` VALUES ('ca4fc9aac53a4ee0810d6fc0bff6ec1a', '部门基本信息', 'QUERY', 'http://localhost:8902/byDepartment/finDepartmentTree', '/byDepartment/finDepartmentTree', 'GET', '192.168.28.194', '局域网地址', 'IPv4', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36', 'Chrome', '144.0', 'Windows', '10.0', 'Desktop', 'Windows', '2026-01-30 16:11:47', '2026-01-30 16:11:47');
+INSERT INTO `by_operate_log` VALUES ('6a90605942bb4ff791d593cef94d7dc5', '用户基本信息', 'QUERY', 'http://localhost:8902/byUser/findPageUser', '/byUser/findPageUser', 'POST', '192.168.28.194', '局域网地址', 'IPv4', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36', 'Chrome', '144.0', 'Windows', '10.0', 'Desktop', 'Windows', '2026-01-30 16:54:36', '2026-01-30 16:54:36');
+INSERT INTO `by_operate_log` VALUES ('1410167c1a3f45ca872d287c560b007f', '用户基本信息', 'QUERY', 'http://localhost:8902/byUser/findPageUser', '/byUser/findPageUser', 'POST', '192.168.28.194', '局域网地址', 'IPv4', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36', 'Chrome', '144.0', 'Windows', '10.0', 'Desktop', 'Windows', '2026-01-30 16:54:40', '2026-01-30 16:54:40');
+INSERT INTO `by_operate_log` VALUES ('1d139fc81d9a44c796008700a6ddb9cb', '用户基本信息', 'QUERY', 'http://localhost:8902/byUser/findPageUser', '/byUser/findPageUser', 'POST', '192.168.28.194', '局域网地址', 'IPv4', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36', 'Chrome', '144.0', 'Windows', '10.0', 'Desktop', 'Windows', '2026-01-30 16:54:59', '2026-01-30 16:54:59');
+INSERT INTO `by_operate_log` VALUES ('48f40eb81986401b86c946f729c106a0', '用户基本信息', 'QUERY', 'http://localhost:8902/byUser/findPageUser', '/byUser/findPageUser', 'POST', '192.168.28.194', '局域网地址', 'IPv4', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36', 'Chrome', '144.0', 'Windows', '10.0', 'Desktop', 'Windows', '2026-01-30 16:57:11', '2026-01-30 16:57:11');
+INSERT INTO `by_operate_log` VALUES ('2789c0d67f7646f39ca37c6e6939ed8b', '用户基本信息', 'DELETE', 'http://localhost:8902/byUser/deleteByUserId/6ba7b8189dad11d180b400c04fd430c8', '/byUser/deleteByUserId/6ba7b8189dad11d180b400c04fd430c8', 'POST', '192.168.28.194', '局域网地址', 'IPv4', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36', 'Chrome', '144.0', 'Windows', '10.0', 'Desktop', 'Windows', '2026-01-30 17:01:18', '2026-01-30 17:01:18');
+INSERT INTO `by_operate_log` VALUES ('4d29dd8f3dc34fee92a87abedd95ed47', '用户基本信息', 'QUERY', 'http://localhost:8902/byUser/findPageUser', '/byUser/findPageUser', 'POST', '192.168.28.194', '局域网地址', 'IPv4', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36', 'Chrome', '144.0', 'Windows', '10.0', 'Desktop', 'Windows', '2026-01-30 17:01:21', '2026-01-30 17:01:21');
+INSERT INTO `by_operate_log` VALUES ('7c37c7e19b974cd6aa4fdcf6b9b4082e', '用户基本信息', 'QUERY', 'http://localhost:8902/byUser/findPageUser', '/byUser/findPageUser', 'POST', '192.168.28.194', '局域网地址', 'IPv4', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36', 'Chrome', '144.0', 'Windows', '10.0', 'Desktop', 'Windows', '2026-01-30 17:01:23', '2026-01-30 17:01:23');
+INSERT INTO `by_operate_log` VALUES ('1f985e08464241e7b50332b6729791c9', '部门基本信息', 'QUERY', 'http://localhost:8902/byDepartment/finDepartmentTree', '/byDepartment/finDepartmentTree', 'GET', '192.168.28.194', '局域网地址', 'IPv4', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36', 'Chrome', '144.0', 'Windows', '10.0', 'Desktop', 'Windows', '2026-02-03 10:46:50', '2026-02-03 10:46:50');
+INSERT INTO `by_operate_log` VALUES ('cfbce5eb2ae6423e9c1331e41cccf185', 'AOP部门树图', '查看', 'http://localhost:8902/byDepartment/finDepartmentTree', '/byDepartment/finDepartmentTree', 'GET', '0:0:0:0:0:0:0:1', '局域网地址', 'IPv4', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36', 'Chrome', '144.0', 'Windows', '10.0', 'Desktop', 'Windows', '2026-02-06 15:44:40', '2026-02-06 15:44:40');
 
 -- ----------------------------
 -- Table structure for by_permission
@@ -184,6 +193,53 @@ INSERT INTO `by_permission` VALUES ('6ba7b8689dad11d180b400c04fd430c8', 'PROFILE
 INSERT INTO `by_permission` VALUES ('6ba7b8699dad11d180b400c04fd430c8', 'NOTIFICATION', '消息通知', 1, '0', '/notification', 'bell', 0, 1);
 INSERT INTO `by_permission` VALUES ('6ba7b86a9dad11d180b400c04fd430c8', 'HELP', '帮助中心', 1, '0', '/help', 'question-circle', 0, 1);
 INSERT INTO `by_permission` VALUES ('6ba7b86b9dad11d180b400c04fd430c8', 'ABOUT', '关于系统', 1, '0', '/about', 'info-circle', 0, 1);
+
+-- ----------------------------
+-- Table structure for by_purchase_list
+-- ----------------------------
+DROP TABLE IF EXISTS `by_purchase_list`;
+CREATE TABLE `by_purchase_list`  (
+  `id` char(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '主键ID（32位UUID，去除横杠）',
+  `department_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '部门ID',
+  `department_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '部门名称',
+  `item_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '物品名称',
+  `item_category` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '物品分类（办公用品、设备、耗材等）',
+  `specification` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '规格型号',
+  `unit` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '单位（个、台、套等）',
+  `quantity` decimal(10, 2) NOT NULL DEFAULT 0.00 COMMENT '采购数量',
+  `estimated_price` decimal(15, 2) NULL DEFAULT NULL COMMENT '预估单价',
+  `estimated_total` decimal(15, 2) NULL DEFAULT NULL COMMENT '预估总价',
+  `purpose` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '用途说明',
+  `urgency_level` tinyint NOT NULL DEFAULT 2 COMMENT '紧急程度（1：紧急，2：一般，3：不紧急）',
+  `required_date` date NOT NULL COMMENT '需求日期',
+  `status` tinyint NOT NULL DEFAULT 1 COMMENT '状态（1：待审批，2：已批准，3：已驳回，4：已采购，5：已完成）',
+  `applicant_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '申请人ID',
+  `applicant_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '申请人姓名',
+  `approver_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '审批人ID',
+  `approver_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '审批人姓名',
+  `approval_time` datetime NULL DEFAULT NULL COMMENT '审批时间',
+  `approval_remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '审批备注',
+  `actual_price` decimal(15, 2) NULL DEFAULT NULL COMMENT '实际采购单价',
+  `actual_total` decimal(15, 2) NULL DEFAULT NULL COMMENT '实际采购总价',
+  `supplier` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '供应商',
+  `purchase_time` datetime NULL DEFAULT NULL COMMENT '采购时间',
+  `receipt_time` datetime NULL DEFAULT NULL COMMENT '收货时间',
+  `storage_location` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '存放位置',
+  `remark` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注信息',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `is_deleted` tinyint NOT NULL DEFAULT 0 COMMENT '删除标记（0：正常，1：删除）',
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `idx_department`(`department_id` ASC) USING BTREE,
+  INDEX `idx_status`(`status` ASC) USING BTREE,
+  INDEX `idx_applicant`(`applicant_id` ASC) USING BTREE,
+  INDEX `idx_required_date`(`required_date` ASC) USING BTREE,
+  INDEX `idx_create_time`(`create_time` ASC) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '部门采购清单表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of by_purchase_list
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for by_role
@@ -320,7 +376,7 @@ INSERT INTO `by_user` VALUES ('6ba7b8149dad11d180b400c04fd430c8', 'zhaoliu', 'e1
 INSERT INTO `by_user` VALUES ('6ba7b8159dad11d180b400c04fd430c8', 'qianqi', 'e10adc3949ba59abbe56e057f20f883e', '钱七', 'qianqi@example.com', '13800138005', 1, '2026-01-29 18:53:40', '2026-01-29 18:53:40');
 INSERT INTO `by_user` VALUES ('6ba7b8169dad11d180b400c04fd430c8', 'sunba', 'e10adc3949ba59abbe56e057f20f883e', '孙八', 'sunba@example.com', '13800138006', 1, '2026-01-29 18:53:40', '2026-01-29 18:53:40');
 INSERT INTO `by_user` VALUES ('6ba7b8179dad11d180b400c04fd430c8', 'zhoujiu', 'e10adc3949ba59abbe56e057f20f883e', '周九', 'zhoujiu@example.com', '13800138007', 1, '2026-01-29 18:53:40', '2026-01-29 18:53:40');
-INSERT INTO `by_user` VALUES ('6ba7b8189dad11d180b400c04fd430c8', 'wuwei', 'e10adc3949ba59abbe56e057f20f883e', '吴伟', 'wuwei@example.com', '13800138008', 1, '2026-01-29 18:53:40', '2026-01-29 18:53:40');
+INSERT INTO `by_user` VALUES ('6ba7b8189dad11d180b400c04fd430c8', 'wuwei', 'e10adc3949ba59abbe56e057f20f883e', '吴伟', 'wuwei@example.com', '13800138008', 0, '2026-01-29 18:53:40', '2026-01-30 17:01:14');
 INSERT INTO `by_user` VALUES ('6ba7b8199dad11d180b400c04fd430c8', 'zhengyi', 'e10adc3949ba59abbe56e057f20f883e', '郑义', 'zhengyi@example.com', '13800138009', 1, '2026-01-29 18:53:40', '2026-01-29 18:53:40');
 INSERT INTO `by_user` VALUES ('6ba7b81a9dad11d180b400c04fd430c8', 'wangfang', 'e10adc3949ba59abbe56e057f20f883e', '王芳', 'wangfang@example.com', '13800138010', 1, '2026-01-29 18:53:40', '2026-01-29 18:53:40');
 INSERT INTO `by_user` VALUES ('6ba7b81b9dad11d180b400c04fd430c8', 'lina', 'e10adc3949ba59abbe56e057f20f883e', '李娜', 'lina@example.com', '13800138011', 1, '2026-01-29 18:53:40', '2026-01-29 18:53:40');
@@ -478,7 +534,7 @@ CREATE TABLE `contract_audit_log`  (
   INDEX `idx_operator`(`operator_id` ASC) USING BTREE,
   INDEX `idx_operation_time`(`operation_time` ASC) USING BTREE,
   INDEX `idx_success`(`success_flag` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '审计日志表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '审计日志表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of contract_audit_log
@@ -527,7 +583,7 @@ CREATE TABLE `contract_change_record`  (
   INDEX `idx_applicant`(`applicant_id` ASC) USING BTREE,
   INDEX `idx_apply_time`(`apply_time` ASC) USING BTREE,
   INDEX `idx_approval_time`(`approval_time` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '变更记录表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '变更记录表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of contract_change_record
@@ -569,7 +625,7 @@ CREATE TABLE `contract_file_attachment`  (
   INDEX `idx_uploader`(`uploader_id` ASC) USING BTREE,
   INDEX `idx_file_type`(`file_type` ASC) USING BTREE,
   INDEX `idx_created_time`(`created_time` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '文件附件表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '文件附件表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of contract_file_attachment
@@ -619,7 +675,7 @@ CREATE TABLE `contract_operation_record`  (
   INDEX `idx_operation_time`(`operation_time` ASC) USING BTREE,
   INDEX `idx_ip`(`ip_address` ASC) USING BTREE,
   INDEX `idx_success`(`success_flag` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '操作记录表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '操作记录表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of contract_operation_record
@@ -668,7 +724,7 @@ CREATE TABLE `contract_payment_record`  (
   INDEX `idx_actual_date`(`actual_pay_date` ASC) USING BTREE,
   INDEX `idx_payer`(`payer_name` ASC) USING BTREE,
   INDEX `idx_payee`(`payee_name` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '合同付款记录表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '合同付款记录表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of contract_payment_record
@@ -699,7 +755,7 @@ CREATE TABLE `contract_statistics`  (
   INDEX `idx_stat_date`(`stat_date` ASC) USING BTREE,
   INDEX `idx_department`(`department_id` ASC) USING BTREE,
   INDEX `idx_type`(`contract_type` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '合同统计表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '合同统计表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of contract_statistics
@@ -747,7 +803,7 @@ CREATE TABLE `contract_system_log`  (
   INDEX `idx_service`(`service_name` ASC) USING BTREE,
   INDEX `idx_keyword1`(`keyword1` ASC) USING BTREE,
   INDEX `idx_keyword2`(`keyword2` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '系统日志表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '系统日志表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of contract_system_log
@@ -796,7 +852,7 @@ CREATE TABLE `contract_transfer_record`  (
   INDEX `idx_to_party`(`to_party_type` ASC, `to_party_id` ASC) USING BTREE,
   INDEX `idx_status`(`approval_status` ASC) USING BTREE,
   INDEX `idx_transfer_time`(`transfer_time` ASC) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '转让记录表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '转让记录表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of contract_transfer_record
