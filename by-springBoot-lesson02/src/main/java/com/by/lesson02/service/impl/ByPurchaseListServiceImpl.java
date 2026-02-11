@@ -6,10 +6,12 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.by.lesson02.dto.PurchaseDto;
 import com.by.lesson02.entity.ByPurchaseList;
 import com.by.lesson02.listener.ByPurchaseListExcelListener;
+import com.by.lesson02.listener.ByPurchaseListVoExcelListener;
 import com.by.lesson02.mapper.ByPurchaseListMapper;
 import com.by.lesson02.result.Result;
 import com.by.lesson02.service.ByPurchaseListService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.by.lesson02.vo.ByPurchaseListVo;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,10 +67,13 @@ public class ByPurchaseListServiceImpl extends ServiceImpl<ByPurchaseListMapper,
         Page<ByPurchaseList> page = new Page<>( purchaseDto.getPageNumber(), purchaseDto.getPageSize());
         Page<ByPurchaseList> pageList = baseMapper.selectPage(page, queryWrapper);
         List<ByPurchaseList> list = pageList.getRecords();
+
+        List<ByPurchaseListVo> vos = convertEntityToTemplate(list);
+
         // 使用EasyExcel库将数据写入Excel文件
-        EasyExcel.write(response.getOutputStream(), ByPurchaseList.class) // 指定输出流和数据对应的Java类
+        EasyExcel.write(response.getOutputStream(), ByPurchaseListVo.class) // 指定输出流和数据对应的Java类
                 .sheet("采购清单")                             // 设置工作表的名称
-                .doWrite(list);                           // 执行写入操作，将dataList中的数据写入Excel
+                .doWrite(vos);                           // 执行写入操作，将dataList中的数据写入Excel
 
         logger.info("成功导出 {} 条数据", list.size());
 //        return Result.success("成功导出 {} 条数据", list.size());
@@ -76,15 +81,17 @@ public class ByPurchaseListServiceImpl extends ServiceImpl<ByPurchaseListMapper,
 
     @Override
     public Result importExcelBatch(InputStream inputStream) {
-        final List<ByPurchaseList> importedList = new ArrayList<>();
+        final List<ByPurchaseListVo> importedList = new ArrayList<>();
         // 返回结果
         Map<String, Object> map = new HashMap<>();
         try {
-            EasyExcel.read(inputStream, ByPurchaseList.class, new ByPurchaseListExcelListener(new ByPurchaseListExcelListener.DataHandler<ByPurchaseList>() {
+            EasyExcel.read(inputStream, ByPurchaseListVo.class, new ByPurchaseListVoExcelListener(new ByPurchaseListVoExcelListener.DataHandler<ByPurchaseListVo>() {
+
                 @Override
-                public void handle(List<ByPurchaseList> dataList) {
+                public void handle(List<ByPurchaseListVo> dataList) {
                     if (!dataList.isEmpty()) {
-                        saveBatch(dataList);
+                        List<ByPurchaseList> byPurchaseList = convertTemplateToEntity(dataList);
+                        saveBatch(byPurchaseList);
                     }
                     importedList.addAll(dataList);
                     logger.info("批次处理: 接收到 {} 条数据", dataList.size());
@@ -105,18 +112,19 @@ public class ByPurchaseListServiceImpl extends ServiceImpl<ByPurchaseListMapper,
     public Result importExcel(InputStream inputStream) {
 
         // 封装读取的数据
-        List<ByPurchaseList> dataList = new ArrayList<>();
+        List<ByPurchaseListVo> dataList = new ArrayList<>();
         // 返回结果
         Map<String, Object> map = new HashMap<>();
 
         try {
             // 从模板中读取数据
-            EasyExcel.read(inputStream, ByPurchaseList.class, new ByPurchaseListExcelListener(dataList::addAll)).sheet().doRead();
+            EasyExcel.read(inputStream, ByPurchaseListVo.class, new ByPurchaseListVoExcelListener(dataList::addAll)).sheet().doRead();
             // 批量保存数据
-            this.saveBatch(dataList, 100);
-            map.put("dataList", dataList);
-            map.put("count", dataList.size());
-            logger.info("成功导入 {} 条数据", dataList.size());
+            List<ByPurchaseList> vos = convertTemplateToEntity(dataList);
+            this.saveBatch(vos, 100);
+            map.put("dataList", vos);
+            map.put("count", vos.size());
+            logger.info("成功导入 {} 条数据", vos.size());
             return Result.success(map);
         } catch (Exception e) {
             logger.error("导入失败", e);
@@ -128,15 +136,66 @@ public class ByPurchaseListServiceImpl extends ServiceImpl<ByPurchaseListMapper,
     public void downloadTemplate(HttpServletResponse response) throws IOException {
         response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
         response.setCharacterEncoding("utf-8");
-        String fileName = URLEncoder.encode("采购清单模板", StandardCharsets.UTF_8.toString()).replaceAll("\\+", "%20");
+        String fileName = URLEncoder.encode("采购清单模板", StandardCharsets.UTF_8).replaceAll("\\+", "%20");
 //        response.setHeader("Content-disposition", "attachment;filename*=utf-8''" + fileName + ".xlsx");
         response.setHeader("Content-disposition", "attachment;filename*=" + fileName + ".xlsx");
 
-        EasyExcel.write(response.getOutputStream(), ByPurchaseList.class)
+        EasyExcel.write(response.getOutputStream(), ByPurchaseListVo.class)
                 .sheet("采购清单")
                 .doWrite(new ArrayList<>());
 
         logger.info("成功下载模板文件");
+    }
+
+
+    // vo ---> po
+    private List<ByPurchaseList> convertTemplateToEntity(List<ByPurchaseListVo> template) {
+        List<ByPurchaseList> list = new ArrayList<>();
+        for (ByPurchaseListVo byPurchaseListVo : template) {
+            ByPurchaseList entity = new ByPurchaseList();
+            entity.setDepartmentId(byPurchaseListVo.getDepartmentId());
+            entity.setDepartmentName(byPurchaseListVo.getDepartmentName());
+            entity.setItemName(byPurchaseListVo.getItemName());
+            entity.setItemCategory(byPurchaseListVo.getItemCategory());
+            entity.setSpecification(byPurchaseListVo.getSpecification());
+            entity.setUnit(byPurchaseListVo.getUnit());
+            entity.setQuantity(byPurchaseListVo.getQuantity());
+            entity.setEstimatedPrice(byPurchaseListVo.getEstimatedPrice());
+            entity.setEstimatedTotal(byPurchaseListVo.getEstimatedTotal());
+            entity.setPurpose(byPurchaseListVo.getPurpose());
+            entity.setUrgencyLevel(byPurchaseListVo.getUrgencyLevel());
+            entity.setRequiredDate(byPurchaseListVo.getRequiredDate());
+            entity.setStatus(byPurchaseListVo.getStatus());
+            entity.setApplicantId(byPurchaseListVo.getApplicantId());
+            entity.setApplicantName(byPurchaseListVo.getApplicantName());
+            list.add(entity);
+        }
+        return list;
+    }
+
+    // po ---> vo
+    private List<ByPurchaseListVo> convertEntityToTemplate(List<ByPurchaseList> template) {
+        List<ByPurchaseListVo> list = new ArrayList<>();
+        for (ByPurchaseList byPurchaseList : template) {
+            ByPurchaseListVo entity = new ByPurchaseListVo();
+            entity.setDepartmentId(byPurchaseList.getDepartmentId());
+            entity.setDepartmentName(byPurchaseList.getDepartmentName());
+            entity.setItemName(byPurchaseList.getItemName());
+            entity.setItemCategory(byPurchaseList.getItemCategory());
+            entity.setSpecification(byPurchaseList.getSpecification());
+            entity.setUnit(byPurchaseList.getUnit());
+            entity.setQuantity(byPurchaseList.getQuantity());
+            entity.setEstimatedPrice(byPurchaseList.getEstimatedPrice());
+            entity.setEstimatedTotal(byPurchaseList.getEstimatedTotal());
+            entity.setPurpose(byPurchaseList.getPurpose());
+            entity.setUrgencyLevel(byPurchaseList.getUrgencyLevel());
+            entity.setRequiredDate(byPurchaseList.getRequiredDate());
+            entity.setStatus(byPurchaseList.getStatus());
+            entity.setApplicantId(byPurchaseList.getApplicantId());
+            entity.setApplicantName(byPurchaseList.getApplicantName());
+            list.add(entity);
+        }
+        return list;
     }
 
 }
