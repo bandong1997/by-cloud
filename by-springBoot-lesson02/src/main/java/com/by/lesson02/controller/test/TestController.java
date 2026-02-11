@@ -1,4 +1,4 @@
-package com.by.lesson02.controller;
+package com.by.lesson02.controller.test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;

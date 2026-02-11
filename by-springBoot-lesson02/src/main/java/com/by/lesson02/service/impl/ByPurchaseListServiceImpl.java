@@ -80,6 +80,7 @@ public class ByPurchaseListServiceImpl extends ServiceImpl<ByPurchaseListMapper,
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Result importExcelBatch(InputStream inputStream) {
         final List<ByPurchaseListVo> importedList = new ArrayList<>();
         // 返回结果
