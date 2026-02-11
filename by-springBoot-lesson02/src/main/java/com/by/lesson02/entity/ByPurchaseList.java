@@ -101,47 +101,36 @@ public class ByPurchaseList implements Serializable {
     @TableField("applicant_name")
     private String applicantName;
 
-    @ExcelProperty(value = "审批人ID", index = 15)
     @TableField("approver_id")
     private String approverId;
 
-    @ExcelProperty(value = "审批人姓名", index = 16)
     @TableField("approver_name")
     private String approverName;
 
-    @ExcelProperty(value = "审批时间", index = 17)
     @TableField("approval_time")
     private Date approvalTime;
 
-    @ExcelProperty(value = "审批备注", index = 18)
     @TableField("approval_remark")
     private String approvalRemark;
 
-    @ExcelProperty(value = "实际采购单价", index = 19)
     @TableField("actual_price")
     private BigDecimal actualPrice;
 
-    @ExcelProperty(value = "实际采购总价", index = 20)
     @TableField("actual_total")
     private BigDecimal actualTotal;
 
-    @ExcelProperty(value = "供应商", index = 21)
     @TableField("supplier")
     private String supplier;
 
-    @ExcelProperty(value = "采购时间", index = 22)
     @TableField("purchase_time")
     private Date purchaseTime;
 
-    @ExcelProperty(value = "收货时间", index = 23)
     @TableField("receipt_time")
     private Date receiptTime;
 
-    @ExcelProperty(value = "存放位置", index = 24)
     @TableField("storage_location")
     private String storageLocation;
 
-    @ExcelProperty(value = "备注信息", index = 25)
     @TableField("remark")
     private String remark;
 
@@ -160,7 +149,6 @@ public class ByPurchaseList implements Serializable {
     /**
      * 删除标记（0：正常，1：删除）
      */
-    @ExcelProperty(value = "删除标记", index = 26)
     @TableField("is_deleted")
     private Integer isDeleted;
 

@@ -1,7 +1,15 @@
 package com.by.lesson02.service;
 
+import com.by.lesson02.dto.PurchaseDto;
 import com.by.lesson02.entity.ByPurchaseList;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.by.lesson02.listener.ByPurchaseListExcelListener;
+import com.by.lesson02.result.Result;
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +21,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ByPurchaseListService extends IService<ByPurchaseList> {
 
+    void exportExcel(HttpServletResponse response, PurchaseDto purchaseDto) throws IOException;
+
+    Result importExcel(InputStream inputStream);
+
+    void downloadTemplate(HttpServletResponse response) throws IOException;
+
+    Result importExcelBatch(InputStream inputStream);
 }
