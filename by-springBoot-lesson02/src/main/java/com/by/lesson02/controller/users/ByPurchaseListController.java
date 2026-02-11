@@ -74,4 +74,10 @@ public class ByPurchaseListController {
         byPurchaseListService.downloadTemplate(response);
     }
 
+    @Operation(summary = "分页查询", description = "findPagePurchaseList")
+    @PostMapping("/findPagePurchaseList")
+    public Result findPagePurchaseList(@RequestBody PurchaseDto purchaseDto) {
+        byPurchaseListService.findPagePurchaseList(purchaseDto);
+    }
+
 }

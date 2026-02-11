@@ -28,4 +28,6 @@ public interface ByPurchaseListService extends IService<ByPurchaseList> {
     void downloadTemplate(HttpServletResponse response) throws IOException;
 
     Result importExcelBatch(InputStream inputStream);
+
+    Result findPagePurchaseList(PurchaseDto purchaseDto);
 }

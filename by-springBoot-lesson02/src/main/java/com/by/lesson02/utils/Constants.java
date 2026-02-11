@@ -35,8 +35,8 @@ public class Constants {
     public static final String LOG_TYPE_DELETE = "DELETE";
 
 
-
-
-    // ==================== 表结构定义 ====================
-
+    // ==================== Redis key前缀 ====================
+    public static final String PURCHASE_LIST_KEY = "purchase:list:";
+    public static final String PURCHASE_PAGE_KEY = "purchase:page:";
+    public static final String PURCHASE_TOTAL_KEY = "purchase:total";
 }
