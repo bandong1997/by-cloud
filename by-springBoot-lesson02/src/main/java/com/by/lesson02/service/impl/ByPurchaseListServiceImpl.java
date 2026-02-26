@@ -224,6 +224,7 @@ public class ByPurchaseListServiceImpl extends ServiceImpl<ByPurchaseListMapper,
             map.put("size", pageList.getSize());
             map.put("current", pageList.getCurrent());
             map.put("pages", pageList.getPages());
+            return Result.success(map);
         }
 
 
@@ -271,7 +272,7 @@ public class ByPurchaseListServiceImpl extends ServiceImpl<ByPurchaseListMapper,
         }
 
         // 2. Redis中没有，查数据库
-        purchase = purchaseListMapper.selectById(id);
+        purchase = baseMapper.selectById(id);
         if (purchase != null) {
             // 3. 存入Redis
             redisTemplate.opsForValue().set(key, purchase, 1, TimeUnit.HOURS);
@@ -286,14 +287,14 @@ public class ByPurchaseListServiceImpl extends ServiceImpl<ByPurchaseListMapper,
     @Transactional
     public int addPurchase(ByPurchaseList purchase) {
         // 1. 插入数据库
-        int result = purchaseListMapper.insert(purchase);
+        int result = baseMapper.insert(purchase);
 
         if (result > 0) {
             // 2. 清除相关缓存（因为新增数据后，分页缓存会失效）
             clearPurchaseCache();
 
             // 3. 将新增的数据存入Redis
-            String key = PURCHASE_LIST_KEY + purchase.getId();
+            String key = Constants.PURCHASE_LIST_KEY + purchase.getId();
             redisTemplate.opsForValue().set(key, purchase, 1, TimeUnit.HOURS);
         }
 
@@ -306,11 +307,11 @@ public class ByPurchaseListServiceImpl extends ServiceImpl<ByPurchaseListMapper,
     @Transactional
     public int updatePurchase(ByPurchaseList purchase) {
         // 1. 更新数据库
-        int result = purchaseListMapper.updateById(purchase);
+        int result = baseMapper.updateById(purchase);
 
         if (result > 0) {
             // 2. 更新Redis中的该条数据
-            String key = PURCHASE_LIST_KEY + purchase.getId();
+            String key = Constants.PURCHASE_LIST_KEY + purchase.getId();
             redisTemplate.opsForValue().set(key, purchase, 1, TimeUnit.HOURS);
 
             // 3. 清除分页缓存
@@ -326,11 +327,11 @@ public class ByPurchaseListServiceImpl extends ServiceImpl<ByPurchaseListMapper,
     @Transactional
     public int deletePurchase(Long id) {
         // 1. 先删除Redis缓存
-        String key = PURCHASE_LIST_KEY + id;
+        String key = Constants.PURCHASE_LIST_KEY + id;
         redisTemplate.delete(key);
 
         // 2. 删除数据库
-        int result = purchaseListMapper.deleteById(id);
+        int result = baseMapper.deleteById(id);
 
         if (result > 0) {
             // 3. 清除分页缓存
@@ -340,27 +341,14 @@ public class ByPurchaseListServiceImpl extends ServiceImpl<ByPurchaseListMapper,
         return result;
     }
 
-    /**
-     * 将采购列表数据缓存到Redis（按ID存储）
-     */
-    private void cachePurchaseListToRedis(List<ByPurchaseList> list) {
-        if (list == null || list.isEmpty()) {
-            return;
-        }
-
-        for (ByPurchaseList purchase : list) {
-            String key = PURCHASE_LIST_KEY + purchase.getId();
-            redisTemplate.opsForValue().set(key, purchase, 1, TimeUnit.HOURS);
-        }
-    }
 
     /**
      * 清除所有采购相关的缓存
      */
     public void clearPurchaseCache() {
         // 清除所有以 purchase: 开头的key
-        Set<String> keys = redisTemplate.keys(PURCHASE_LIST_KEY + "*");
-        Set<String> pageKeys = redisTemplate.keys(PURCHASE_PAGE_KEY + "*");
+        Set<String> keys = redisTemplate.keys(Constants.PURCHASE_LIST_KEY + "*");
+        Set<String> pageKeys = redisTemplate.keys(Constants.PURCHASE_PAGE_KEY + "*");
 
         if (keys != null && !keys.isEmpty()) {
             redisTemplate.delete(keys);
@@ -374,7 +362,7 @@ public class ByPurchaseListServiceImpl extends ServiceImpl<ByPurchaseListMapper,
      * 只清除分页缓存
      */
     private void clearPageCache() {
-        Set<String> pageKeys = redisTemplate.keys(PURCHASE_PAGE_KEY + "*");
+        Set<String> pageKeys = redisTemplate.keys(Constants.PURCHASE_PAGE_KEY + "*");
         if (pageKeys != null && !pageKeys.isEmpty()) {
             redisTemplate.delete(pageKeys);
         }

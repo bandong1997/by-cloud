@@ -77,7 +77,7 @@ public class ByPurchaseListController {
     @Operation(summary = "分页查询", description = "findPagePurchaseList")
     @PostMapping("/findPagePurchaseList")
     public Result findPagePurchaseList(@RequestBody PurchaseDto purchaseDto) {
-        byPurchaseListService.findPagePurchaseList(purchaseDto);
+        return byPurchaseListService.findPagePurchaseList(purchaseDto);
     }
 
 }
