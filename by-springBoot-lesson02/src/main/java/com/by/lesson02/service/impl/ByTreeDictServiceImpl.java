@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.by.lesson02.result.Result;
 import com.by.lesson02.service.ByTreeDictService;
 import com.by.lesson02.utils.TreeUtil;
+import com.by.lesson02.utils.UserContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +25,12 @@ public class ByTreeDictServiceImpl extends ServiceImpl<ByTreeDictMapper, ByTreeD
 
     @Override
     public Result findTreeDict() {
+
+        String userName = UserContextHolder.getUsername();
+        System.out.println("----------------------------");
+        System.out.println(userName);
+        System.out.println("----------------------------");
+
         List<ByTreeDict> list = baseMapper.selectList(new QueryWrapper<>());
         List<ByTreeDict> treeList = TreeUtil.buildByTreeDict(list);
         return Result.success(treeList);

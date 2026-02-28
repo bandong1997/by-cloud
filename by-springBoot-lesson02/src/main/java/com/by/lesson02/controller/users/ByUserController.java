@@ -129,6 +129,14 @@ public class ByUserController {
         return Result.success(data);
     }
 
+    /**
+     * 从 Authorization 请求头中解析出 Bearer Token。
+     * <p>
+     * 约定格式：Authorization: Bearer &lt;token&gt;
+     *
+     * @param authorization 完整的 Authorization 头内容
+     * @return 成功解析出的 token，格式不正确或为空时返回 null
+     */
     private String parseBearerToken(String authorization) {
         if (authorization == null || !authorization.startsWith(Constants.BEARER)) {
             return null;

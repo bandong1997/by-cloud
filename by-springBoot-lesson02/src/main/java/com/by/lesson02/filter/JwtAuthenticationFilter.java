@@ -6,6 +6,7 @@ package com.by.lesson02.filter;
  */
 
 import com.alibaba.fastjson.JSON;
+import com.by.lesson02.config.JwtProperties;
 import com.by.lesson02.entity.ByUser;
 import com.by.lesson02.result.Result;
 import com.by.lesson02.result.ResultCode;
@@ -39,31 +40,31 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private TokenService tokenService;
     @Autowired
     private ByUserService byUserService;
-
-    @Value("${jwt.header:Authorization}")
-    private String headerName;
-    @Value("${jwt.prefix:Bearer }")
-    private String tokenPrefix;
+    @Autowired
+    private JwtProperties jwtProperties;
 
     /**
-     * 不需要 Token 的路径前缀
+     * 判断当前请求是否需要跳过认证过滤。
+     * <p>
+     * 这里使用 {@code startsWith} 做前缀匹配，便于把一组相关资源（如 Swagger 静态资源）
+     * 统一配置成一个前缀，而不必枚举每个具体路径。
      */
-    private static final List<String> SKIP_PATHS = List.of(
-            "/byUser/login",
-            "/byUser/refreshToken",
-            "/byUser/logout",
-            "/doc.html",
-            "/webjars/",
-            "/v3/api-docs",
-            "/swagger-resources"
-    );
-
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
         String path = request.getRequestURI();
-        return SKIP_PATHS.stream().anyMatch(path::startsWith);
+        List<String> skipPaths = jwtProperties.getSkipPaths();
+        return skipPaths != null && skipPaths.stream().anyMatch(path::startsWith);
     }
 
+    /**
+     * 认证主流程：
+     * <p>
+     * - 从请求头解析 accessToken（约定为 {@code Authorization: Bearer xxx}）。<br>
+     * - 校验 JWT 签名/过期，并额外检查 Redis 是否仍存在该 token（支持退出/踢下线）。<br>
+     * - 校验通过后把当前用户放入 {@link UserContextHolder}，方便后续业务读取。<br>
+     * <p>
+     * 注意：必须在 {@code finally} 中清理 ThreadLocal，避免线程复用导致的“串号”问题。
+     */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
@@ -91,7 +92,16 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
     }
 
+    /**
+     * 从请求头中解析 Bearer Token。
+     * <p>
+     * 解析规则通过配置 {@code jwt.header} 与 {@code jwt.prefix} 统一管理，便于前后端约定变更。
+     *
+     * @return 解析成功返回 token（不含前缀），否则返回 null
+     */
     private String resolveToken(HttpServletRequest request) {
+        String headerName = jwtProperties.getHeader();
+        String tokenPrefix = jwtProperties.getPrefix();
         String value = request.getHeader(headerName);
         if (!StringUtils.hasText(value) || !value.startsWith(tokenPrefix)) {
             return null;
@@ -99,6 +109,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         return value.substring(tokenPrefix.length()).trim();
     }
 
+    /**
+     * 认证失败时的统一返回。
+     * <p>
+     * 这里直接返回 JSON 结构，便于前端统一拦截 401 并触发刷新 token / 跳转登录等策略。
+     */
     private void writeUnauthorized(HttpServletResponse response, int code, String message) throws IOException {
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.setContentType("application/json;charset=UTF-8");

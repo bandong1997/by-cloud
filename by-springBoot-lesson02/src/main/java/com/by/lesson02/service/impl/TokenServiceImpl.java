@@ -5,10 +5,12 @@ import com.by.lesson02.config.JwtProperties;
 import com.by.lesson02.entity.ByUser;
 import com.by.lesson02.service.ByUserService;
 import com.by.lesson02.service.TokenService;
+import com.by.lesson02.utils.Constants;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -27,20 +29,13 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class TokenServiceImpl implements TokenService {
 
-    private static final String REDIS_ACCESS_PREFIX = "login:access:";
-    private static final String REDIS_REFRESH_PREFIX = "login:refresh:";
 
-    private final JwtProperties jwtProperties;
-    private final RedisTemplate<String, Object> redisTemplate;
-    private final ByUserService byUserService;
-
-    public TokenServiceImpl(JwtProperties jwtProperties,
-                            RedisTemplate<String, Object> redisTemplate,
-                            ByUserService byUserService) {
-        this.jwtProperties = jwtProperties;
-        this.redisTemplate = redisTemplate;
-        this.byUserService = byUserService;
-    }
+    @Autowired
+    private JwtProperties jwtProperties;
+    @Autowired
+    private RedisTemplate<String, Object> redisTemplate;
+    @Autowired
+    private ByUserService byUserService;
 
     private SecretKey secretKey() {
         return Keys.hmacShaKeyFor(jwtProperties.getSecret().getBytes(StandardCharsets.UTF_8));
@@ -55,12 +50,19 @@ public class TokenServiceImpl implements TokenService {
         String accessToken = buildJwt(userId, accessExpire);
         String refreshToken = UUID.randomUUID().toString();
 
-        redisTemplate.opsForValue().set(REDIS_ACCESS_PREFIX + accessToken, userId, accessExpire, TimeUnit.SECONDS);
-        redisTemplate.opsForValue().set(REDIS_REFRESH_PREFIX + refreshToken, userId, refreshExpire, TimeUnit.SECONDS);
+        redisTemplate.opsForValue().set(Constants.REDIS_ACCESS_PREFIX + accessToken, userId, accessExpire, TimeUnit.SECONDS);
+        redisTemplate.opsForValue().set(Constants.REDIS_REFRESH_PREFIX + refreshToken, userId, refreshExpire, TimeUnit.SECONDS);
 
         return new TokenPair(accessToken, refreshToken, accessExpire, refreshExpire);
     }
 
+    /**
+     * 构建一个用户的 JWT accessToken。
+     *
+     * @param userId        作为 JWT 的 subject（标识当前登录用户）
+     * @param expireSeconds 过期时间，单位为「秒」，会转换为绝对过期时间写入 exp 字段
+     * @return 已签名且带有过期时间的 JWT 字符串
+     */
     private String buildJwt(String userId, long expireSeconds) {
         Date now = new Date();
         Date expiry = new Date(now.getTime() + expireSeconds * 1000);
@@ -97,7 +99,7 @@ public class TokenServiceImpl implements TokenService {
         if (userId == null) {
             return null;
         }
-        Object stored = redisTemplate.opsForValue().get(REDIS_ACCESS_PREFIX + token);
+        Object stored = redisTemplate.opsForValue().get(Constants.REDIS_ACCESS_PREFIX + token);
         return stored != null ? stored.toString() : null;
     }
 
@@ -106,24 +108,24 @@ public class TokenServiceImpl implements TokenService {
         if (!StringUtils.hasText(refreshToken)) {
             return null;
         }
-        Object userIdObj = redisTemplate.opsForValue().get(REDIS_REFRESH_PREFIX + refreshToken);
+        Object userIdObj = redisTemplate.opsForValue().get(Constants.REDIS_REFRESH_PREFIX + refreshToken);
         if (userIdObj == null) {
             return null;
         }
         String userId = userIdObj.toString();
         ByUser user = byUserService.getById(userId);
         if (user == null) {
-            redisTemplate.delete(REDIS_REFRESH_PREFIX + refreshToken);
+            redisTemplate.delete(Constants.REDIS_REFRESH_PREFIX + refreshToken);
             return null;
         }
-        redisTemplate.delete(REDIS_REFRESH_PREFIX + refreshToken);
+        redisTemplate.delete(Constants.REDIS_REFRESH_PREFIX + refreshToken);
         return createToken(user);
     }
 
     @Override
     public void invalidate(String token) {
         if (StringUtils.hasText(token)) {
-            redisTemplate.delete(REDIS_ACCESS_PREFIX + token);
+            redisTemplate.delete(Constants.REDIS_ACCESS_PREFIX + token);
         }
     }
 }

@@ -42,4 +42,6 @@ public class Constants {
     public static final String PURCHASE_LIST_KEY = "purchase:list:";
     public static final String PURCHASE_PAGE_KEY = "purchase:page:";
     public static final String PURCHASE_TOTAL_KEY = "purchase:total";
+    public static final String REDIS_ACCESS_PREFIX = "login:access:";
+    public static final String REDIS_REFRESH_PREFIX = "login:refresh:";
 }
