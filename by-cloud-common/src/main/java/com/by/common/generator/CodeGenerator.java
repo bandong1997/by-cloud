@@ -32,7 +32,7 @@ public class CodeGenerator {
         String username="root";
         String password="123456";
         //表名，多个使用,分隔
-        String tableNames="by_purchase_list";
+        String tableNames="by_tree_dict";
 
         //====================配置变量区域=====================//
 

@@ -8,5 +8,4 @@ package com.by.upms.utils;
  */
 public class UserUtils {
 
-
 }

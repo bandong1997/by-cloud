@@ -93,7 +93,8 @@ public class ByUserController {
         }
         TokenService.TokenPair tokenPair = tokenService.createToken(byUser);
         Map<String, Object> data = new HashMap<>();
-        data.put("accessToken", Constants.BEARER + tokenPair.accessToken());
+//        data.put("accessToken", Constants.BEARER + tokenPair.accessToken());
+        data.put("accessToken", tokenPair.accessToken());
         data.put("refreshToken", tokenPair.refreshToken());
         data.put("accessExpire", tokenPair.accessExpireSeconds());
         data.put("refreshExpire", tokenPair.refreshExpireSeconds());
@@ -159,7 +160,8 @@ public class ByUserController {
             return Result.fail(ResultCode.TOKEN_INVALID.getCode(), ResultCode.TOKEN_INVALID.getMessage());
         }
         Map<String, Object> data = new HashMap<>();
-        data.put("accessToken", Constants.BEARER + tokenPair.accessToken());
+//        data.put("accessToken", Constants.BEARER + tokenPair.accessToken());
+        data.put("accessToken", tokenPair.accessToken());
         data.put("refreshToken", tokenPair.refreshToken());
         data.put("accessExpire", tokenPair.accessExpireSeconds());
         data.put("refreshExpire", tokenPair.refreshExpireSeconds());

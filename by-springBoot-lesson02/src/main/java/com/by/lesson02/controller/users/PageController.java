@@ -1,4 +1,4 @@
-package com.by.lesson02.controller.contract;
+package com.by.lesson02.controller.users;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
