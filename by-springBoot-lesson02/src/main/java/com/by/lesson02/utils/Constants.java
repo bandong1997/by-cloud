@@ -34,6 +34,9 @@ public class Constants {
 
     public static final String LOG_TYPE_DELETE = "DELETE";
 
+    // token前缀
+    public static final String BEARER = "Bearer ";
+
 
     // ==================== Redis key前缀 ====================
     public static final String PURCHASE_LIST_KEY = "purchase:list:";

@@ -4,12 +4,19 @@ package com.by.lesson02.controller.users;
 import com.by.lesson02.dto.UserPageDto;
 import com.by.lesson02.entity.ByUser;
 import com.by.lesson02.result.Result;
+import com.by.lesson02.result.ResultCode;
 import com.by.lesson02.service.ByRoleService;
 import com.by.lesson02.service.ByUserService;
+import com.by.lesson02.service.TokenService;
+import com.by.lesson02.utils.Constants;
+import com.by.lesson02.utils.UserContextHolder;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * <p>
@@ -28,6 +35,8 @@ public class ByUserController {
     private ByUserService byUserService;
     @Autowired
     private ByRoleService byRoleService;
+    @Autowired
+    private TokenService tokenService;
 
     @Operation(summary = "分页查询用户", description = "findPageUser")
     @PostMapping(value = "/findPageUser")
@@ -51,6 +60,80 @@ public class ByUserController {
     @PostMapping(value = "/findRoleByUserId/{userId}")
     public Result findRoleByUserId(@PathVariable("userId") String userId) {
         return byRoleService.findRoleByUserId(userId);
+    }
+
+    /**
+     * 用户登录
+     * 账号：admin
+     * 密码：123456
+     */
+    @Operation(summary = "用户登录", description = "login")
+    @PostMapping("/login")
+    public Result login(@RequestParam String username, @RequestParam String password) {
+        ByUser byUser = byUserService.login(username, password);
+        if (byUser == null) {
+            return Result.fail(ResultCode.PASSWORD_ERROR.getCode(), "用户名或密码错误");
+        }
+        TokenService.TokenPair tokenPair = tokenService.createToken(byUser);
+        Map<String, Object> data = new HashMap<>();
+        data.put("accessToken", Constants.BEARER + tokenPair.accessToken());
+        data.put("refreshToken", tokenPair.refreshToken());
+        data.put("accessExpire", tokenPair.accessExpireSeconds());
+        data.put("refreshExpire", tokenPair.refreshExpireSeconds());
+        byUser.setPassword(null);
+        data.put("user", byUser);
+        return Result.success(data);
+    }
+
+    /**
+     * 获取当前登录用户信息（需携带 Token）
+     */
+    @Operation(summary = "获取当前用户", description = "getCurrentUser")
+    @GetMapping("/currentUser")
+    public Result getCurrentUser() {
+        ByUser user = UserContextHolder.getUser();
+        if (user == null) {
+            return Result.fail(ResultCode.UNAUTHORIZED.getCode(), ResultCode.UNAUTHORIZED.getMessage());
+        }
+        return Result.success(user);
+    }
+
+    /**
+     * 用户退出登录
+     */
+    @Operation(summary = "用户退出", description = "logout")
+    @PostMapping("/logout")
+    public Result logout(@RequestHeader(value = "Authorization", required = false) String authorization) {
+        String token = parseBearerToken(authorization);
+        if (token != null) {
+            tokenService.invalidate(token);
+        }
+        return Result.success();
+    }
+
+    /**
+     * 刷新 Token
+     */
+    @Operation(summary = "刷新Token", description = "refreshToken")
+    @PostMapping("/refreshToken")
+    public Result refreshToken(@RequestParam String refreshToken) {
+        TokenService.TokenPair tokenPair = tokenService.refreshToken(refreshToken);
+        if (tokenPair == null) {
+            return Result.fail(ResultCode.TOKEN_INVALID.getCode(), ResultCode.TOKEN_INVALID.getMessage());
+        }
+        Map<String, Object> data = new HashMap<>();
+        data.put("accessToken", Constants.BEARER + tokenPair.accessToken());
+        data.put("refreshToken", tokenPair.refreshToken());
+        data.put("accessExpire", tokenPair.accessExpireSeconds());
+        data.put("refreshExpire", tokenPair.refreshExpireSeconds());
+        return Result.success(data);
+    }
+
+    private String parseBearerToken(String authorization) {
+        if (authorization == null || !authorization.startsWith(Constants.BEARER)) {
+            return null;
+        }
+        return authorization.substring(7).trim();
     }
 
 

@@ -40,7 +40,6 @@ public class ByUserServiceImpl extends ServiceImpl<ByUserMapper, ByUser> impleme
     @Override
     public Result findPageUser(UserPageDto dto) {
 
-
         LambdaQueryWrapper<ByUser> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(ByUser::getStatus, CommonStatus.ACTIVE);
         if (!StringUtils.isEmpty(dto.getUsername())) {
@@ -120,5 +119,20 @@ public class ByUserServiceImpl extends ServiceImpl<ByUserMapper, ByUser> impleme
         } catch (Exception e) {
             return Result.fail(ResultCode.DELETE_ERROR.getCode(), ResultCode.DELETE_ERROR.getMessage());
         }
+    }
+
+    @Override
+    public ByUser login(String username, String password) {
+        if (!StringUtils.hasText(username) || !StringUtils.hasText(password)) {
+            return null;
+        }
+        LambdaQueryWrapper<ByUser> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(ByUser::getUsername, username).eq(ByUser::getStatus, CommonStatus.ACTIVE);
+        ByUser user = baseMapper.selectOne(wrapper);
+        if (user == null) {
+            return null;
+        }
+        boolean verify = MD5Util.verify(password, user.getPassword());
+        return verify ? user : null;
     }
 }

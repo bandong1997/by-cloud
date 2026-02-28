@@ -22,6 +22,12 @@ public enum ResultCode {
     // 未授权
     UNAUTHORIZED(401, "未授权"),
 
+    // Token 过期
+    TOKEN_EXPIRED(401, "Token已过期"),
+
+    // Token 无效
+    TOKEN_INVALID(401, "Token无效"),
+
     // 禁止访问
     FORBIDDEN(403, "禁止访问"),
 

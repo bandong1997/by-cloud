@@ -20,4 +20,6 @@ public interface ByUserService extends IService<ByUser> {
     Result insertOrUpdateUser(ByUser user);
 
     Result deleteByUserId(String userId);
+
+    ByUser login(String username, String password);
 }
