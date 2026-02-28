@@ -15,4 +15,6 @@ import com.by.lesson02.result.Result;
 public interface ByPermissionService extends IService<ByPermission> {
 
     Result finPermissionTree();
+
+    Result findePermissionByRoleId(String roleId);
 }

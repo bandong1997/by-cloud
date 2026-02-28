@@ -4,6 +4,7 @@ package com.by.lesson02.controller.users;
 import com.by.lesson02.dto.UserPageDto;
 import com.by.lesson02.entity.ByUser;
 import com.by.lesson02.result.Result;
+import com.by.lesson02.service.ByRoleService;
 import com.by.lesson02.service.ByUserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -24,7 +25,9 @@ import org.springframework.web.bind.annotation.*;
 public class ByUserController {
 
     @Autowired
-    ByUserService byUserService;
+    private ByUserService byUserService;
+    @Autowired
+    private ByRoleService byRoleService;
 
     @Operation(summary = "分页查询用户", description = "findPageUser")
     @PostMapping(value = "/findPageUser")
@@ -43,5 +46,13 @@ public class ByUserController {
     public Result deleteByUserId(@PathVariable("userId") String userId) {
         return byUserService.deleteByUserId(userId);
     }
+
+    @Operation(summary = "获取用户关联的角色信息", description = "findRoleByUserId")
+    @PostMapping(value = "/findRoleByUserId/{userId}")
+    public Result findRoleByUserId(@PathVariable("userId") String userId) {
+        return byRoleService.findRoleByUserId(userId);
+    }
+
+
 
 }

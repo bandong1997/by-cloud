@@ -20,4 +20,6 @@ public interface ByRoleService extends IService<ByRole> {
     Result insertOrUpdateRole(ByRole role);
 
     Result deletRoleByRoleId(String roleId);
+
+    Result findRoleByUserId(String userId);
 }

@@ -3,6 +3,7 @@ package com.by.lesson02.utils;
 import com.by.lesson02.entity.ByDepartment;
 import com.by.lesson02.entity.ByPermission;
 import com.by.lesson02.entity.ByRole;
+import com.by.lesson02.entity.ByTreeDict;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -123,6 +124,43 @@ public class TreeUtil {
             String parentId = it.getParentId();
             if (Objects.equals(id, parentId)) {
                 vo.getChildren().add(findByDepartmentChildren(it, treeNodes));
+            }
+        }
+        return vo;
+    }
+
+    /**
+     * Department
+     * 使用递归方法建菜单
+     */
+    public static List<ByTreeDict> buildByTreeDict(List<ByTreeDict> voList) {
+
+        List<ByTreeDict> trees = new ArrayList<>();
+
+        for (ByTreeDict vo : voList) {
+            // 判断是否父节点
+            String parentId = vo.getParentId();
+            if (Objects.equals(parentId, "0")) {
+                // 查询子节点
+                trees.add(findByTreeDictChildren(vo, voList));
+            }
+        }
+        return trees;
+    }
+
+    /**
+     * 递归查找子节点
+     */
+    public static ByTreeDict findByTreeDictChildren(ByTreeDict vo, List<ByTreeDict> treeNodes) {
+
+        vo.setChildren(new ArrayList<>());
+
+        for (ByTreeDict it : treeNodes) {
+            // 获取下级节点
+            String id = vo.getId();
+            String parentId = it.getParentId();
+            if (Objects.equals(id, parentId)) {
+                vo.getChildren().add(findByTreeDictChildren(it, treeNodes));
             }
         }
         return vo;

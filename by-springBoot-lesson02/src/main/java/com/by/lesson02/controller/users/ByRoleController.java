@@ -5,6 +5,8 @@ import com.by.lesson02.dto.RoleDto;
 import com.by.lesson02.dto.UserPageDto;
 import com.by.lesson02.entity.ByRole;
 import com.by.lesson02.result.Result;
+import com.by.lesson02.service.ByPermissionService;
+import com.by.lesson02.service.ByRolePermissionService;
 import com.by.lesson02.service.ByRoleService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -26,6 +28,8 @@ public class ByRoleController {
 
     @Autowired
     private ByRoleService byRoleService;
+    @Autowired
+    private ByPermissionService byPermissionService;
 
     @Operation(summary = "角色树图", description = "finRoleTree")
     @PostMapping(value = "/finRoleTree")
@@ -43,6 +47,12 @@ public class ByRoleController {
     @PostMapping(value = "/deletRoleByRoleId/{roleId}")
     public Result deletRoleByRoleId(@PathVariable("roleId") String roleId) {
         return byRoleService.deletRoleByRoleId(roleId);
+    }
+
+    @Operation(summary = "查询角色关联权限", description = "findePermissionByRoleId")
+    @PostMapping(value = "/findePermissionByRoleId/{roleId}")
+    public Result findePermissionByRoleId(@PathVariable("roleId") String roleId) {
+        return byPermissionService.findePermissionByRoleId(roleId);
     }
 
 }

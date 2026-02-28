@@ -11,7 +11,7 @@
  Target Server Version : 80041 (8.0.41)
  File Encoding         : 65001
 
- Date: 09/02/2026 17:12:02
+ Date: 28/02/2026 09:26:18
 */
 
 SET NAMES utf8mb4;
@@ -240,6 +240,36 @@ CREATE TABLE `by_purchase_list`  (
 -- ----------------------------
 -- Records of by_purchase_list
 -- ----------------------------
+INSERT INTO `by_purchase_list` VALUES ('0446d3743b0e4c2bb447aebc63d4c7ff', 'DEPT005', '行政部', '饮水机', '生活设备', '美的YR1216S-X 温热型', '台', 4.00, 650.00, 2600.00, '各楼层饮水设备更新', 2, '2024-02-28', 1, 'EMP013', '刘十五', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('1d41933659c0a636f535a749b93e0500', 'DEPT006', '研发部', 'UPS电源', '电力设备', '山特C3K 在线式', '台', 4.00, 4200.00, 16800.00, '保障研发服务器稳定运行', 1, '2024-02-08', 5, 'EMP017', '周十九', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('1f3fd67e5c16bdcf722b0806084c530c', 'DEPT004', '财务部', '计算器', '办公用品', '卡西欧HR-100TM', '个', 5.00, 85.00, 425.00, '财务核算使用', 3, '2024-03-01', 1, 'EMP019', '郑二一', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('2842765ce1b6ce9de94ec5c4fbc2a35b', 'DEPT004', '财务部', '装订机', '办公设备', '可得优重型电动', '台', 2.00, 1500.00, 3000.00, '财务报表装订', 2, '2024-02-22', 2, 'EMP011', '李十三', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('2d26e89889606719fdb687eb7414cef8', 'DEPT006', '研发部', '开发板', '电子元件', '树莓派5 8GB', '块', 20.00, 550.00, 11000.00, '物联网项目开发', 2, '2024-02-28', 2, 'EMP026', '黄二八', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('3a0204e1969f33164403c86fa8a442a8', 'DEPT004', '财务部', '碎纸机', '办公设备', '科密C-686 保密级', '台', 2.00, 3200.00, 6400.00, '销毁敏感财务文件', 2, '2024-02-18', 3, 'EMP027', '周二九', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('3f021b557f83d6b4c754f44d7136fef8', 'DEPT001', '技术部', '显示器', '电脑配件', '戴尔U2723QX 4K', '台', 8.00, 3200.00, 25600.00, '设计人员显示器升级', 2, '2024-03-05', 2, 'EMP014', '陈十六', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('43f674f23ed4254fe072b9210c724462', 'DEPT004', '财务部', '保险柜', '办公设备', '虎牌180L 电子锁', '个', 1.00, 3200.00, 3200.00, '存放重要票据', 2, '2024-02-25', 1, 'EMP005', '钱七', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('6308634606b607490f2c0c12c5c23796', 'DEPT003', '人事部', '办公桌椅', '办公家具', '实木桌椅, 160*80cm', '套', 8.00, 1800.00, 14400.00, '办公区扩容采购', 2, '2024-02-28', 2, 'EMP003', '王五', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('6d7bf95b949f81847cb97f7a926d1bd5', 'DEPT001', '技术部', '网络交换机', '网络设备', '华为S6720-54C-EI-48S', '台', 3.00, 12500.00, 37500.00, '网络设备扩容', 2, '2024-03-12', 3, 'EMP020', '王二二', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('70bc4840a0722bd52ee752c400a0fa27', 'DEPT005', '行政部', '绿植', '环境美化', '发财树 1.5米高', '盆', 15.00, 180.00, 2700.00, '办公室环境美化', 3, '2024-03-10', 1, 'EMP028', '吴三十', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('71b13cc93ce5455f69d25a6eb036a3a1', 'DEPT002', '市场部', '移动硬盘', '存储设备', '希捷2TB USB3.0', '个', 5.00, 580.00, 2900.00, '存储市场资料', 2, '2024-02-12', 5, 'EMP012', '张十四', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('7211c7749b655bfe4eb24a14b4d380bd', 'DEPT005', '行政部', '文件柜', '办公家具', '铁皮柜 180cm四门', '个', 10.00, 1200.00, 12000.00, '档案室文件整理', 2, '2024-02-25', 2, 'EMP021', '李二三', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('7c4ed3300a581fd43b4b3c17c070f4ff', 'DEPT003', '人事部', '打印机', '办公设备', '惠普MFP M436n A3', '台', 2.00, 6800.00, 13600.00, '人事档案打印', 2, '2024-02-16', 4, 'EMP016', '黄十八', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('7c81f3eaccfdf009318a7d94929e7001', 'DEPT001', '技术部', '服务器', '网络设备', '戴尔R740 32核/128G', '台', 2.00, 45000.00, 90000.00, '机房服务器升级', 1, '2024-02-05', 4, 'EMP009', '郑十一', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('8644bf21a13787299ca04b690b24a34f', 'DEPT001', '技术部', '测试手机', '测试设备', '小米14 Pro 16+512', '台', 5.00, 5500.00, 27500.00, 'APP兼容性测试', 2, '2024-03-15', 1, 'EMP025', '杨二七', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('89e0359f0fd8b35c6b709c26785ba31d', 'DEPT003', '人事部', '办公电话', '通讯设备', '西门子数字电话机', '部', 12.00, 450.00, 5400.00, '新工位电话安装', 2, '2024-02-20', 5, 'EMP023', '刘二五', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('a882757bc3c4ae25c9fd9a2c4636e613', 'DEPT005', '行政部', 'A4打印纸', '办公耗材', 'Double A 80g', '箱', 20.00, 180.00, 3600.00, '日常办公使用', 2, '2024-02-15', 5, 'EMP007', '周九', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('ab65a0b5be83e4296276c8b1d1ef9b9f', 'DEPT002', '市场部', '投影仪', '办公设备', '明基W1120 1080P', '台', 2.00, 5500.00, 11000.00, '会议室演示使用', 3, '2024-03-15', 1, 'EMP002', '李四', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('b1bda49973d38e1b336147bac105fcc5', 'DEPT006', '研发部', '编程书籍', '图书资料', '《代码大全》《设计模式》', '套', 15.00, 200.00, 3000.00, '技术团队学习资料', 3, '2024-03-20', 1, 'EMP010', '王十二', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('c1e34552b028604532f516e3e39b737b', 'DEPT002', '市场部', '数码相机', '电子设备', '索尼A7M4 24-70mm', '台', 1.00, 18500.00, 18500.00, '市场活动拍摄', 2, '2024-03-10', 2, 'EMP006', '孙八', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('c6a8e163ddcc0748130cd19f0f83e711', 'DEPT001', '技术部', '笔记本电脑', '电子设备', 'ThinkPad X1, i7/16G/512G', '台', 5.00, 12000.00, 60000.00, '新员工入职配备', 2, '2024-02-20', 1, 'EMP001', '张三', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('c7df2ba6b5a457e3fe92a71d7a757059', 'DEPT002', '市场部', '易拉宝', '宣传物料', '80*200cm 可折叠', '个', 8.00, 150.00, 1200.00, '展会宣传使用', 1, '2024-02-14', 2, 'EMP024', '陈二六', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('c993fb066b66953b2ef8557a8b2268a3', 'DEPT002', '市场部', '视频会议设备', '音视频设备', '罗技CC5000e 4K', '套', 2.00, 12800.00, 25600.00, '远程客户会议', 2, '2024-02-22', 4, 'EMP029', '郑三一', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('da02836655c21f0a48efa11018832a96', 'DEPT007', '产品部', '录音笔', '电子设备', '索尼ICD-UX575F 16GB', '支', 3.00, 950.00, 2850.00, '用户访谈录音', 2, '2024-03-02', 4, 'EMP022', '张二四', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('dd6b1ada1d6806ada7522f07e655a325', 'DEPT002', '市场部', '礼品套装', '市场物料', '企业定制商务套装', '套', 50.00, 280.00, 14000.00, '客户拜访礼品', 2, '2024-03-08', 2, 'EMP018', '吴二十', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('e12c4b5afe66781418e9aa71582a5897', 'DEPT003', '人事部', '指纹考勤机', '办公设备', '中控X8 人脸识别', '台', 3.00, 2800.00, 8400.00, '更换旧考勤设备', 2, '2024-02-18', 3, 'EMP008', '吴十', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('f55887cc59e5c6ccd426250943abbb0e', 'DEPT001', '技术部', '机械键盘', '电脑配件', '樱桃MX3.0 青轴', '个', 10.00, 450.00, 4500.00, '开发人员更换键盘', 1, '2024-02-10', 4, 'EMP004', '赵六', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('f94e6b6c56c3ffc77539ea8ad7510755', 'DEPT007', '产品部', '白板', '办公设备', '磁性白板 120*90cm', '块', 6.00, 350.00, 2100.00, '产品讨论会议使用', 3, '2024-03-18', 1, 'EMP015', '杨十七', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
+INSERT INTO `by_purchase_list` VALUES ('fba10939f8e3b7bbb482a0fd8cd6ae1a', 'DEPT001', '技术部', '办公软件', '软件许可', 'Office 365 商业版', '套', 25.00, 380.00, 9500.00, '新员工软件授权', 2, '2024-03-05', 5, 'EMP030', '王三二', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2026-02-11 11:46:38', '2026-02-11 11:46:38', 0);
 
 -- ----------------------------
 -- Table structure for by_role
@@ -344,6 +374,160 @@ INSERT INTO `by_role_permission` VALUES ('6ba7b8a49dad11d180b400c04fd430c8', '6b
 INSERT INTO `by_role_permission` VALUES ('6ba7b8a59dad11d180b400c04fd430c8', '6ba7b83b9dad11d180b400c04fd430c8', '6ba7b8629dad11d180b400c04fd430c8', '2026-01-29 18:54:28');
 INSERT INTO `by_role_permission` VALUES ('6ba7b8a69dad11d180b400c04fd430c8', '6ba7b83c9dad11d180b400c04fd430c8', '6ba7b8629dad11d180b400c04fd430c8', '2026-01-29 18:54:28');
 INSERT INTO `by_role_permission` VALUES ('6ba7b8a79dad11d180b400c04fd430c8', '6ba7b83d9dad11d180b400c04fd430c8', '6ba7b8629dad11d180b400c04fd430c8', '2026-01-29 18:54:28');
+
+-- ----------------------------
+-- Table structure for by_tree_dict
+-- ----------------------------
+DROP TABLE IF EXISTS `by_tree_dict`;
+CREATE TABLE `by_tree_dict`  (
+  `id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'UUID主键（32位，无横线）',
+  `parent_id` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '0' COMMENT '父级ID，0表示顶级',
+  `dict_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '字典名称',
+  `dict_code` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '字典编码',
+  `dict_value` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '字典值',
+  `dict_type` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '字典类型',
+  `type_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '类型名称',
+  `level_path` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '层级路径',
+  `tree_level` int NULL DEFAULT 1 COMMENT '层级',
+  `sort_order` int NULL DEFAULT 0 COMMENT '排序',
+  `has_children` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'N' COMMENT '是否有子节点',
+  `icon` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '图标',
+  `color` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '颜色标识',
+  `status` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '1' COMMENT '状态(0禁用 1启用)',
+  `is_default` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'N' COMMENT '是否默认',
+  `create_time` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `idx_parent_id`(`parent_id` ASC) USING BTREE,
+  INDEX `idx_dict_type`(`dict_type`(32) ASC) USING BTREE,
+  INDEX `idx_dict_code`(`dict_code`(32) ASC) USING BTREE,
+  INDEX `idx_level_path`(`level_path`(255) ASC) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '业务树形字典表' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of by_tree_dict
+-- ----------------------------
+INSERT INTO `by_tree_dict` VALUES ('c93ed5d013be11f19da92cfda15d723b', '0', '电商业务', 'BIZ_ECOMMERCE', 'ecommerce', 'business_type', '业务类型', 'biz_1', 1, 1, 'Y', 'shopping-cart', '#FF6B6B', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '电商相关业务');
+INSERT INTO `by_tree_dict` VALUES ('c93ef82513be11f19da92cfda15d723b', '0', '金融业务', 'BIZ_FINANCE', 'finance', 'business_type', '业务类型', 'biz_2', 1, 2, 'Y', 'bank', '#4ECDC4', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '金融相关业务');
+INSERT INTO `by_tree_dict` VALUES ('c93efe8b13be11f19da92cfda15d723b', '0', '教育业务', 'BIZ_EDU', 'education', 'business_type', '业务类型', 'biz_3', 1, 3, 'Y', 'book', '#45B7D1', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '教育相关业务');
+INSERT INTO `by_tree_dict` VALUES ('c93f034213be11f19da92cfda15d723b', '0', '医疗业务', 'BIZ_MEDICAL', 'medical', 'business_type', '业务类型', 'biz_4', 1, 4, 'Y', 'hospital', '#96CEB4', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '医疗相关业务');
+INSERT INTO `by_tree_dict` VALUES ('c93f0cc513be11f19da92cfda15d723b', '0', '物流业务', 'BIZ_LOGISTICS', 'logistics', 'business_type', '业务类型', 'biz_5', 1, 5, 'Y', 'truck', '#FFEEAD', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '物流相关业务');
+INSERT INTO `by_tree_dict` VALUES ('c93f129013be11f19da92cfda15d723b', '0', '餐饮业务', 'BIZ_CATERING', 'catering', 'business_type', '业务类型', 'biz_6', 1, 6, 'Y', 'restaurant', '#D4A5A5', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '餐饮相关业务');
+INSERT INTO `by_tree_dict` VALUES ('c93f181e13be11f19da92cfda15d723b', '0', '旅游业务', 'BIZ_TRAVEL', 'travel', 'business_type', '业务类型', 'biz_7', 1, 7, 'Y', 'plane', '#9B59B6', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '旅游相关业务');
+INSERT INTO `by_tree_dict` VALUES ('c93f1cfd13be11f19da92cfda15d723b', '0', '房产业务', 'BIZ_ESTATE', 'realestate', 'business_type', '业务类型', 'biz_8', 1, 8, 'Y', 'building', '#3498DB', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '房产相关业务');
+INSERT INTO `by_tree_dict` VALUES ('c93f21f313be11f19da92cfda15d723b', '0', '汽车业务', 'BIZ_AUTO', 'automotive', 'business_type', '业务类型', 'biz_9', 1, 9, 'Y', 'car', '#E67E22', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '汽车相关业务');
+INSERT INTO `by_tree_dict` VALUES ('c93f26b613be11f19da92cfda15d723b', '0', '能源业务', 'BIZ_ENERGY', 'energy', 'business_type', '业务类型', 'biz_10', 1, 10, 'Y', 'bolt', '#2ECC71', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '能源相关业务');
+INSERT INTO `by_tree_dict` VALUES ('c94ef93613be11f19da92cfda15d723b', 'c93ed5d013be11f19da92cfda15d723b', 'B2C电商', 'BIZ_B2C', 'b2c', 'business_type', '业务类型', 'biz_1_11', 2, 1, 'N', 'online-shopping', '#FF6B6B', '1', 'Y', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '企业对消费者');
+INSERT INTO `by_tree_dict` VALUES ('c94efb0013be11f19da92cfda15d723b', 'c93ed5d013be11f19da92cfda15d723b', 'B2B电商', 'BIZ_B2B', 'b2b', 'business_type', '业务类型', 'biz_1_12', 2, 2, 'N', 'wholesale', '#FF8E8E', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '企业对企业');
+INSERT INTO `by_tree_dict` VALUES ('c94efbf813be11f19da92cfda15d723b', 'c93ed5d013be11f19da92cfda15d723b', 'C2C电商', 'BIZ_C2C', 'c2c', 'business_type', '业务类型', 'biz_1_13', 2, 3, 'N', 'users', '#FFA5A5', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '消费者对消费者');
+INSERT INTO `by_tree_dict` VALUES ('c94efcd613be11f19da92cfda15d723b', 'c93ed5d013be11f19da92cfda15d723b', '跨境电商', 'BIZ_CROSS', 'crossborder', 'business_type', '业务类型', 'biz_1_14', 2, 4, 'N', 'globe', '#FFBDBD', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '跨境电子商务');
+INSERT INTO `by_tree_dict` VALUES ('c94efe1b13be11f19da92cfda15d723b', 'c93ed5d013be11f19da92cfda15d723b', '社交电商', 'BIZ_SOCIAL', 'social', 'business_type', '业务类型', 'biz_1_15', 2, 5, 'N', 'share', '#FFD6D6', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '社交电子商务');
+INSERT INTO `by_tree_dict` VALUES ('c94efefa13be11f19da92cfda15d723b', 'c93ed5d013be11f19da92cfda15d723b', '直播电商', 'BIZ_LIVE', 'live', 'business_type', '业务类型', 'biz_1_16', 2, 6, 'N', 'video', '#FF6B6B', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '直播带货');
+INSERT INTO `by_tree_dict` VALUES ('c94effce13be11f19da92cfda15d723b', 'c93ed5d013be11f19da92cfda15d723b', '生鲜电商', 'BIZ_FRESH', 'fresh', 'business_type', '业务类型', 'biz_1_17', 2, 7, 'N', 'carrot', '#FF6B6B', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '生鲜食品电商');
+INSERT INTO `by_tree_dict` VALUES ('c94f00a313be11f19da92cfda15d723b', 'c93ed5d013be11f19da92cfda15d723b', '医药电商', 'BIZ_MED', 'medical', 'business_type', '业务类型', 'biz_1_18', 2, 8, 'N', 'pill', '#FF6B6B', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '医药电子商务');
+INSERT INTO `by_tree_dict` VALUES ('c94f01a213be11f19da92cfda15d723b', 'c93ed5d013be11f19da92cfda15d723b', '二手电商', 'BIZ_SECOND', 'secondhand', 'business_type', '业务类型', 'biz_1_19', 2, 9, 'N', 'recycle', '#FF6B6B', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '二手商品交易');
+INSERT INTO `by_tree_dict` VALUES ('c94f028213be11f19da92cfda15d723b', 'c93ed5d013be11f19da92cfda15d723b', '奢侈品电商', 'BIZ_LUXURY', 'luxury', 'business_type', '业务类型', 'biz_1_20', 2, 10, 'N', 'diamond', '#FF6B6B', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '奢侈品销售');
+INSERT INTO `by_tree_dict` VALUES ('c95f1a1913be11f19da92cfda15d723b', 'c93ef82513be11f19da92cfda15d723b', '银行服务', 'BIZ_BANK', 'bank', 'business_type', '业务类型', 'biz_2_21', 2, 1, 'N', 'landmark', '#4ECDC4', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '银行业务');
+INSERT INTO `by_tree_dict` VALUES ('c95f1bbb13be11f19da92cfda15d723b', 'c93ef82513be11f19da92cfda15d723b', '保险服务', 'BIZ_INSURANCE', 'insurance', 'business_type', '业务类型', 'biz_2_22', 2, 2, 'N', 'umbrella', '#4ECDC4', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '保险业务');
+INSERT INTO `by_tree_dict` VALUES ('c95f1caf13be11f19da92cfda15d723b', 'c93ef82513be11f19da92cfda15d723b', '证券服务', 'BIZ_STOCK', 'stock', 'business_type', '业务类型', 'biz_2_23', 2, 3, 'N', 'trending-up', '#4ECDC4', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '证券业务');
+INSERT INTO `by_tree_dict` VALUES ('c95f1d9113be11f19da92cfda15d723b', 'c93ef82513be11f19da92cfda15d723b', '基金理财', 'BIZ_FUND', 'fund', 'business_type', '业务类型', 'biz_2_24', 2, 4, 'N', 'pie-chart', '#4ECDC4', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '基金业务');
+INSERT INTO `by_tree_dict` VALUES ('c95f1e6c13be11f19da92cfda15d723b', 'c93ef82513be11f19da92cfda15d723b', '第三方支付', 'BIZ_PAYMENT', 'payment', 'business_type', '业务类型', 'biz_2_25', 2, 5, 'N', 'credit-card', '#4ECDC4', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '支付业务');
+INSERT INTO `by_tree_dict` VALUES ('c95f1f4113be11f19da92cfda15d723b', 'c93ef82513be11f19da92cfda15d723b', '消费金融', 'BIZ_CONSUMER', 'consumer', 'business_type', '业务类型', 'biz_2_26', 2, 6, 'N', 'shopping-bag', '#4ECDC4', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '消费金融');
+INSERT INTO `by_tree_dict` VALUES ('c95f201513be11f19da92cfda15d723b', 'c93ef82513be11f19da92cfda15d723b', '供应链金融', 'BIZ_SUPPLY', 'supply', 'business_type', '业务类型', 'biz_2_27', 2, 7, 'N', 'link', '#4ECDC4', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '供应链金融');
+INSERT INTO `by_tree_dict` VALUES ('c95f20ef13be11f19da92cfda15d723b', 'c93ef82513be11f19da92cfda15d723b', '数字货币', 'BIZ_CRYPTO', 'crypto', 'business_type', '业务类型', 'biz_2_28', 2, 8, 'N', 'bitcoin', '#4ECDC4', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '数字货币');
+INSERT INTO `by_tree_dict` VALUES ('c95f21be13be11f19da92cfda15d723b', 'c93ef82513be11f19da92cfda15d723b', '融资租赁', 'BIZ_LEASE', 'lease', 'business_type', '业务类型', 'biz_2_29', 2, 9, 'N', 'truck', '#4ECDC4', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '融资租赁');
+INSERT INTO `by_tree_dict` VALUES ('c95f228e13be11f19da92cfda15d723b', 'c93ef82513be11f19da92cfda15d723b', '信托服务', 'BIZ_TRUST', 'trust', 'business_type', '业务类型', 'biz_2_30', 2, 10, 'N', 'shield', '#4ECDC4', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '信托业务');
+INSERT INTO `by_tree_dict` VALUES ('c96683ff13be11f19da92cfda15d723b', '0', '线上支付', 'PAY_ONLINE', 'online', 'payment_type', '支付方式', 'pay_31', 1, 1, 'Y', 'wifi', '#3498DB', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '在线支付方式');
+INSERT INTO `by_tree_dict` VALUES ('c96a143413be11f19da92cfda15d723b', '0', '线下支付', 'PAY_OFFLINE', 'offline', 'payment_type', '支付方式', 'pay_32', 1, 2, 'Y', 'store', '#E67E22', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '线下支付方式');
+INSERT INTO `by_tree_dict` VALUES ('c96a164513be11f19da92cfda15d723b', '0', '预付费', 'PAY_PRE', 'prepaid', 'payment_type', '支付方式', 'pay_33', 1, 3, 'Y', 'credit-card', '#2ECC71', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '预付费方式');
+INSERT INTO `by_tree_dict` VALUES ('c96a17db13be11f19da92cfda15d723b', '0', '后付费', 'PAY_POST', 'postpaid', 'payment_type', '支付方式', 'pay_34', 1, 4, 'Y', 'clock', '#9B59B6', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '后付费方式');
+INSERT INTO `by_tree_dict` VALUES ('c96a190913be11f19da92cfda15d723b', '0', '分期支付', 'PAY_INSTALL', 'installment', 'payment_type', '支付方式', 'pay_35', 1, 5, 'Y', 'calendar', '#F1C40F', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '分期付款');
+INSERT INTO `by_tree_dict` VALUES ('c96a1a2513be11f19da92cfda15d723b', '0', '数字货币', 'PAY_CRYPTO', 'crypto', 'payment_type', '支付方式', 'pay_36', 1, 6, 'Y', 'bitcoin', '#F39C12', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '加密货币支付');
+INSERT INTO `by_tree_dict` VALUES ('c96a1b4a13be11f19da92cfda15d723b', '0', '银行转账', 'PAY_TRANSFER', 'transfer', 'payment_type', '支付方式', 'pay_37', 1, 7, 'Y', 'bank', '#16A085', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '银行转账');
+INSERT INTO `by_tree_dict` VALUES ('c96a1c5d13be11f19da92cfda15d723b', '0', '支票支付', 'PAY_CHECK', 'check', 'payment_type', '支付方式', 'pay_38', 1, 8, 'Y', 'file-text', '#7F8C8D', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '支票支付');
+INSERT INTO `by_tree_dict` VALUES ('c96a1d7613be11f19da92cfda15d723b', '0', '现金支付', 'PAY_CASH', 'cash', 'payment_type', '支付方式', 'pay_39', 1, 9, 'Y', 'dollar-sign', '#27AE60', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '现金支付');
+INSERT INTO `by_tree_dict` VALUES ('c96a1e8413be11f19da92cfda15d723b', '0', '积分支付', 'PAY_POINT', 'point', 'payment_type', '支付方式', 'pay_40', 1, 10, 'Y', 'star', '#E74C3C', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '积分支付');
+INSERT INTO `by_tree_dict` VALUES ('c976674a13be11f19da92cfda15d723b', 'c96683ff13be11f19da92cfda15d723b', '微信支付', 'PAY_WECHAT', 'wechat', 'payment_type', '支付方式', 'pay_31_41', 2, 1, 'N', 'wechat', '#2DC100', '1', 'Y', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '微信支付');
+INSERT INTO `by_tree_dict` VALUES ('c976683c13be11f19da92cfda15d723b', 'c96683ff13be11f19da92cfda15d723b', '支付宝', 'PAY_ALIPAY', 'alipay', 'payment_type', '支付方式', 'pay_31_42', 2, 2, 'N', 'alipay', '#1677FF', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '支付宝支付');
+INSERT INTO `by_tree_dict` VALUES ('c97668c713be11f19da92cfda15d723b', 'c96683ff13be11f19da92cfda15d723b', '银联云闪付', 'PAY_UNIONPAY', 'unionpay', 'payment_type', '支付方式', 'pay_31_43', 2, 3, 'N', 'credit-card', '#E60012', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '银联支付');
+INSERT INTO `by_tree_dict` VALUES ('c976694113be11f19da92cfda15d723b', 'c96683ff13be11f19da92cfda15d723b', 'Apple Pay', 'PAY_APPLE', 'applepay', 'payment_type', '支付方式', 'pay_31_44', 2, 4, 'N', 'apple', '#000000', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '苹果支付');
+INSERT INTO `by_tree_dict` VALUES ('c97669b713be11f19da92cfda15d723b', 'c96683ff13be11f19da92cfda15d723b', '京东支付', 'PAY_JD', 'jdpay', 'payment_type', '支付方式', 'pay_31_45', 2, 5, 'N', 'jd', '#E4393C', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '京东支付');
+INSERT INTO `by_tree_dict` VALUES ('c9766a2a13be11f19da92cfda15d723b', 'c96683ff13be11f19da92cfda15d723b', '美团支付', 'PAY_MEITUAN', 'meituan', 'payment_type', '支付方式', 'pay_31_46', 2, 6, 'N', 'food', '#FFC300', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '美团支付');
+INSERT INTO `by_tree_dict` VALUES ('c9766a9913be11f19da92cfda15d723b', 'c96683ff13be11f19da92cfda15d723b', '抖音支付', 'PAY_DOUYIN', 'douyin', 'payment_type', '支付方式', 'pay_31_47', 2, 7, 'N', 'music', '#000000', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '抖音支付');
+INSERT INTO `by_tree_dict` VALUES ('c9766b0a13be11f19da92cfda15d723b', 'c96683ff13be11f19da92cfda15d723b', '快手支付', 'PAY_KUAISHOU', 'kuaishou', 'payment_type', '支付方式', 'pay_31_48', 2, 8, 'N', 'hand', '#FF6B6B', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '快手支付');
+INSERT INTO `by_tree_dict` VALUES ('c9766b7c13be11f19da92cfda15d723b', 'c96683ff13be11f19da92cfda15d723b', '拼多多支付', 'PAY_PDD', 'pinduoduo', 'payment_type', '支付方式', 'pay_31_49', 2, 9, 'N', 'shopping', '#E02F2F', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '拼多多支付');
+INSERT INTO `by_tree_dict` VALUES ('c9766beb13be11f19da92cfda15d723b', 'c96683ff13be11f19da92cfda15d723b', '小米支付', 'PAY_XIAOMI', 'xiaomi', 'payment_type', '支付方式', 'pay_31_50', 2, 10, 'N', 'xiaomi', '#FF6900', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '小米支付');
+INSERT INTO `by_tree_dict` VALUES ('c9766c7113be11f19da92cfda15d723b', 'c96683ff13be11f19da92cfda15d723b', '华为支付', 'PAY_HUAWEI', 'huawei', 'payment_type', '支付方式', 'pay_31_51', 2, 11, 'N', 'huawei', '#FF3B30', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '华为支付');
+INSERT INTO `by_tree_dict` VALUES ('c9766ce313be11f19da92cfda15d723b', 'c96683ff13be11f19da92cfda15d723b', '三星支付', 'PAY_SAMSUNG', 'samsung', 'payment_type', '支付方式', 'pay_31_52', 2, 12, 'N', 'samsung', '#1428A0', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '三星支付');
+INSERT INTO `by_tree_dict` VALUES ('c9766e4213be11f19da92cfda15d723b', 'c96683ff13be11f19da92cfda15d723b', '百度钱包', 'PAY_BAIDU', 'baidu', 'payment_type', '支付方式', 'pay_31_53', 2, 13, 'N', 'baidu', '#2932E1', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '百度支付');
+INSERT INTO `by_tree_dict` VALUES ('c9766ed613be11f19da92cfda15d723b', 'c96683ff13be11f19da92cfda15d723b', 'QQ钱包', 'PAY_QQ', 'qqwallet', 'payment_type', '支付方式', 'pay_31_54', 2, 14, 'N', 'qq', '#12B7F5', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', 'QQ支付');
+INSERT INTO `by_tree_dict` VALUES ('c9766f5a13be11f19da92cfda15d723b', 'c96683ff13be11f19da92cfda15d723b', '网银支付', 'PAY_EBA', 'ebank', 'payment_type', '支付方式', 'pay_31_55', 2, 15, 'N', 'globe', '#34495E', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '网上银行支付');
+INSERT INTO `by_tree_dict` VALUES ('c9766fe113be11f19da92cfda15d723b', 'c96683ff13be11f19da92cfda15d723b', '快捷支付', 'PAY_QUICK', 'quick', 'payment_type', '支付方式', 'pay_31_56', 2, 16, 'N', 'zap', '#F1C40F', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '快捷支付');
+INSERT INTO `by_tree_dict` VALUES ('c976709b13be11f19da92cfda15d723b', 'c96683ff13be11f19da92cfda15d723b', '扫码支付', 'PAY_SCAN', 'scan', 'payment_type', '支付方式', 'pay_31_57', 2, 17, 'N', 'camera', '#1ABC9C', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '扫码支付');
+INSERT INTO `by_tree_dict` VALUES ('c976712513be11f19da92cfda15d723b', 'c96683ff13be11f19da92cfda15d723b', '刷脸支付', 'PAY_FACE', 'face', 'payment_type', '支付方式', 'pay_31_58', 2, 18, 'N', 'face-recognition', '#9B59B6', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '刷脸支付');
+INSERT INTO `by_tree_dict` VALUES ('c97671db13be11f19da92cfda15d723b', 'c96683ff13be11f19da92cfda15d723b', '声波支付', 'PAY_SOUND', 'sound', 'payment_type', '支付方式', 'pay_31_59', 2, 19, 'N', 'mic', '#E67E22', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '声波支付');
+INSERT INTO `by_tree_dict` VALUES ('c976728113be11f19da92cfda15d723b', 'c96683ff13be11f19da92cfda15d723b', '无感支付', 'PAY_SENSELESS', 'senseless', 'payment_type', '支付方式', 'pay_31_60', 2, 20, 'N', 'radio', '#3498DB', '1', 'N', '2026-02-27 17:29:16', '2026-02-27 17:29:16', '无感支付');
+INSERT INTO `by_tree_dict` VALUES ('c982b35713be11f19da92cfda15d723b', '0', '待付款', 'ORDER_PENDING', 'pending', 'order_status', '订单状态', 'order_61', 1, 1, 'N', 'clock', '#F39C12', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '等待买家付款');
+INSERT INTO `by_tree_dict` VALUES ('c982cbcf13be11f19da92cfda15d723b', '0', '待发货', 'ORDER_SHIPPING', 'toship', 'order_status', '订单状态', 'order_62', 1, 2, 'N', 'package', '#3498DB', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '买家已付款待发货');
+INSERT INTO `by_tree_dict` VALUES ('c982cff913be11f19da92cfda15d723b', '0', '待收货', 'ORDER_RECEIVE', 'toreceive', 'order_status', '订单状态', 'order_63', 1, 3, 'N', 'truck', '#2ECC71', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '卖家已发货待收货');
+INSERT INTO `by_tree_dict` VALUES ('c982d34613be11f19da92cfda15d723b', '0', '待评价', 'ORDER_REVIEW', 'toreview', 'order_status', '订单状态', 'order_64', 1, 4, 'N', 'star', '#9B59B6', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '待买家评价');
+INSERT INTO `by_tree_dict` VALUES ('c982d65e13be11f19da92cfda15d723b', '0', '已完成', 'ORDER_DONE', 'completed', 'order_status', '订单状态', 'order_65', 1, 5, 'N', 'check-circle', '#27AE60', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '订单已完成');
+INSERT INTO `by_tree_dict` VALUES ('c982d97013be11f19da92cfda15d723b', '0', '已取消', 'ORDER_CANCEL', 'cancelled', 'order_status', '订单状态', 'order_66', 1, 6, 'N', 'x-circle', '#E74C3C', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '订单已取消');
+INSERT INTO `by_tree_dict` VALUES ('c982dc5413be11f19da92cfda15d723b', '0', '退款中', 'ORDER_REFUND', 'refunding', 'order_status', '订单状态', 'order_67', 1, 7, 'N', 'refresh-cw', '#E67E22', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '退款处理中');
+INSERT INTO `by_tree_dict` VALUES ('c982df1313be11f19da92cfda15d723b', '0', '已退款', 'ORDER_REFUNDED', 'refunded', 'order_status', '订单状态', 'order_68', 1, 8, 'N', 'check', '#95A5A6', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '已退款完成');
+INSERT INTO `by_tree_dict` VALUES ('c982e1cf13be11f19da92cfda15d723b', '0', '售后中', 'ORDER_AFTERSALE', 'aftersale', 'order_status', '订单状态', 'order_69', 1, 9, 'N', 'headphones', '#1ABC9C', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '售后处理中');
+INSERT INTO `by_tree_dict` VALUES ('c982e48813be11f19da92cfda15d723b', '0', '交易关闭', 'ORDER_CLOSED', 'closed', 'order_status', '订单状态', 'order_70', 1, 10, 'N', 'lock', '#7F8C8D', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '交易已关闭');
+INSERT INTO `by_tree_dict` VALUES ('c982e73f13be11f19da92cfda15d723b', '0', '部分发货', 'ORDER_PARTIAL', 'partial', 'order_status', '订单状态', 'order_71', 1, 11, 'N', 'truck', '#3498DB', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '部分商品已发货');
+INSERT INTO `by_tree_dict` VALUES ('c982e9f413be11f19da92cfda15d723b', '0', '部分退款', 'ORDER_PARTIAL_REFUND', 'partial_refund', 'order_status', '订单状态', 'order_72', 1, 12, 'N', 'corner-up-left', '#E67E22', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '部分商品退款');
+INSERT INTO `by_tree_dict` VALUES ('c982ecd813be11f19da92cfda15d723b', '0', '已签收', 'ORDER_SIGNED', 'signed', 'order_status', '订单状态', 'order_73', 1, 13, 'N', 'check-square', '#27AE60', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '买家已签收');
+INSERT INTO `by_tree_dict` VALUES ('c982efa013be11f19da92cfda15d723b', '0', '拒收', 'ORDER_REJECTED', 'rejected', 'order_status', '订单状态', 'order_74', 1, 14, 'N', 'thumbs-down', '#E74C3C', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '买家拒收');
+INSERT INTO `by_tree_dict` VALUES ('c982f29713be11f19da92cfda15d723b', '0', '超时关闭', 'ORDER_TIMEOUT', 'timeout', 'order_status', '订单状态', 'order_75', 1, 15, 'N', 'clock', '#95A5A6', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '超时未支付关闭');
+INSERT INTO `by_tree_dict` VALUES ('c982f55613be11f19da92cfda15d723b', '0', '风险管控', 'ORDER_RISK', 'risk', 'order_status', '订单状态', 'order_76', 1, 16, 'N', 'shield-off', '#E74C3C', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '风控拦截');
+INSERT INTO `by_tree_dict` VALUES ('c982f80013be11f19da92cfda15d723b', '0', '待核销', 'ORDER_VERIFY', 'verify', 'order_status', '订单状态', 'order_77', 1, 17, 'N', 'qr-code', '#9B59B6', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '待线下核销');
+INSERT INTO `by_tree_dict` VALUES ('c982fabc13be11f19da92cfda15d723b', '0', '已核销', 'ORDER_VERIFIED', 'verified', 'order_status', '订单状态', 'order_78', 1, 18, 'N', 'check-circle', '#27AE60', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '已线下核销');
+INSERT INTO `by_tree_dict` VALUES ('c982fd9313be11f19da92cfda15d723b', '0', '配送中', 'ORDER_DELIVERING', 'delivering', 'order_status', '订单状态', 'order_79', 1, 19, 'N', 'truck', '#3498DB', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '商品配送中');
+INSERT INTO `by_tree_dict` VALUES ('c987646e13be11f19da92cfda15d723b', '0', '揽件中', 'ORDER_PICKING', 'picking', 'order_status', '订单状态', 'order_80', 1, 20, 'N', 'package', '#F39C12', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '快递员揽件中');
+INSERT INTO `by_tree_dict` VALUES ('c9876b0b13be11f19da92cfda15d723b', '0', '异常件', 'ORDER_ABNORMAL', 'abnormal', 'order_status', '订单状态', 'order_81', 1, 21, 'N', 'alert-triangle', '#E74C3C', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '异常订单');
+INSERT INTO `by_tree_dict` VALUES ('c987706d13be11f19da92cfda15d723b', '0', '补发中', 'ORDER_RESEND', 'resend', 'order_status', '订单状态', 'order_82', 1, 22, 'N', 'rotate-cw', '#E67E22', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '商品补发中');
+INSERT INTO `by_tree_dict` VALUES ('c987741d13be11f19da92cfda15d723b', '0', '换货中', 'ORDER_EXCHANGE', 'exchange', 'order_status', '订单状态', 'order_83', 1, 23, 'N', 'repeat', '#9B59B6', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '换货处理中');
+INSERT INTO `by_tree_dict` VALUES ('c987778913be11f19da92cfda15d723b', '0', '退货中', 'ORDER_RETURN', 'return', 'order_status', '订单状态', 'order_84', 1, 24, 'N', 'corner-up-left', '#E67E22', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '退货处理中');
+INSERT INTO `by_tree_dict` VALUES ('c9877ae013be11f19da92cfda15d723b', '0', '已删除', 'ORDER_DELETED', 'deleted', 'order_status', '订单状态', 'order_85', 1, 25, 'N', 'trash', '#7F8C8D', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '订单已删除');
+INSERT INTO `by_tree_dict` VALUES ('c9877e4713be11f19da92cfda15d723b', '0', '归档', 'ORDER_ARCHIVED', 'archived', 'order_status', '订单状态', 'order_86', 1, 26, 'N', 'archive', '#34495E', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '订单已归档');
+INSERT INTO `by_tree_dict` VALUES ('c987818d13be11f19da92cfda15d723b', '0', '待确认', 'ORDER_CONFIRM', 'confirm', 'order_status', '订单状态', 'order_87', 1, 27, 'N', 'help-circle', '#F39C12', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '待买家确认');
+INSERT INTO `by_tree_dict` VALUES ('c987850f13be11f19da92cfda15d723b', '0', '待分配', 'ORDER_ASSIGN', 'assign', 'order_status', '订单状态', 'order_88', 1, 28, 'N', 'user-plus', '#3498DB', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '待分配商家');
+INSERT INTO `by_tree_dict` VALUES ('c987885913be11f19da92cfda15d723b', '0', '待接单', 'ORDER_ACCEPT', 'accept', 'order_status', '订单状态', 'order_89', 1, 29, 'N', 'phone', '#2ECC71', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '待商家接单');
+INSERT INTO `by_tree_dict` VALUES ('c9878b8013be11f19da92cfda15d723b', '0', '制作中', 'ORDER_PREPARING', 'preparing', 'order_status', '订单状态', 'order_90', 1, 30, 'N', 'coffee', '#9B59B6', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '商品制作中');
+INSERT INTO `by_tree_dict` VALUES ('c991e61313be11f19da92cfda15d723b', '0', '超级管理员', 'ROLE_SUPER', 'superadmin', 'user_role', '用户角色', 'role_91', 1, 1, 'N', 'crown', '#F1C40F', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '系统超级管理员');
+INSERT INTO `by_tree_dict` VALUES ('c9930a1213be11f19da92cfda15d723b', '0', '系统管理员', 'ROLE_ADMIN', 'admin', 'user_role', '用户角色', 'role_92', 1, 2, 'N', 'shield', '#E74C3C', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '系统管理员');
+INSERT INTO `by_tree_dict` VALUES ('c99311de13be11f19da92cfda15d723b', '0', '运营人员', 'ROLE_OPER', 'operator', 'user_role', '用户角色', 'role_93', 1, 3, 'N', 'settings', '#3498DB', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '运营人员');
+INSERT INTO `by_tree_dict` VALUES ('c993180413be11f19da92cfda15d723b', '0', '财务人员', 'ROLE_FINANCE', 'finance', 'user_role', '用户角色', 'role_94', 1, 4, 'N', 'dollar-sign', '#2ECC71', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '财务人员');
+INSERT INTO `by_tree_dict` VALUES ('c9931dfa13be11f19da92cfda15d723b', '0', '客服人员', 'ROLE_SERVICE', 'service', 'user_role', '用户角色', 'role_95', 1, 5, 'N', 'message-circle', '#9B59B6', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '客服人员');
+INSERT INTO `by_tree_dict` VALUES ('c993240013be11f19da92cfda15d723b', '0', '普通用户', 'ROLE_USER', 'user', 'user_role', '用户角色', 'role_96', 1, 6, 'N', 'user', '#95A5A6', '1', 'Y', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '普通注册用户');
+INSERT INTO `by_tree_dict` VALUES ('c993294213be11f19da92cfda15d723b', '0', 'VIP会员', 'ROLE_VIP', 'vip', 'user_role', '用户角色', 'role_97', 1, 7, 'N', 'star', '#F39C12', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', 'VIP会员');
+INSERT INTO `by_tree_dict` VALUES ('c9932ed113be11f19da92cfda15d723b', '0', '企业用户', 'ROLE_ENTERPRISE', 'enterprise', 'user_role', '用户角色', 'role_98', 1, 8, 'N', 'briefcase', '#16A085', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '企业认证用户');
+INSERT INTO `by_tree_dict` VALUES ('c993344013be11f19da92cfda15d723b', '0', '商家用户', 'ROLE_MERCHANT', 'merchant', 'user_role', '用户角色', 'role_99', 1, 9, 'N', 'shopping-bag', '#E67E22', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '商家用户');
+INSERT INTO `by_tree_dict` VALUES ('c99339e913be11f19da92cfda15d723b', '0', '测试账号', 'ROLE_TEST', 'test', 'user_role', '用户角色', 'role_100', 1, 10, 'N', 'bug', '#7F8C8D', '0', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '测试专用账号');
+INSERT INTO `by_tree_dict` VALUES ('c9933f5613be11f19da92cfda15d723b', '0', '开发人员', 'ROLE_DEV', 'developer', 'user_role', '用户角色', 'role_101', 1, 11, 'N', 'code', '#3498DB', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '开发人员');
+INSERT INTO `by_tree_dict` VALUES ('c993447b13be11f19da92cfda15d723b', '0', '产品经理', 'ROLE_PM', 'pm', 'user_role', '用户角色', 'role_102', 1, 12, 'N', 'layout', '#9B59B6', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '产品经理');
+INSERT INTO `by_tree_dict` VALUES ('c9934a9c13be11f19da92cfda15d723b', '0', '设计师', 'ROLE_DESIGN', 'designer', 'user_role', '用户角色', 'role_103', 1, 13, 'N', 'pen-tool', '#E67E22', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', 'UI设计师');
+INSERT INTO `by_tree_dict` VALUES ('c993504613be11f19da92cfda15d723b', '0', '前端开发', 'ROLE_FRONTEND', 'frontend', 'user_role', '用户角色', 'role_104', 1, 14, 'N', 'globe', '#3498DB', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '前端开发工程师');
+INSERT INTO `by_tree_dict` VALUES ('c993563913be11f19da92cfda15d723b', '0', '后端开发', 'ROLE_BACKEND', 'backend', 'user_role', '用户角色', 'role_105', 1, 15, 'N', 'server', '#2ECC71', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '后端开发工程师');
+INSERT INTO `by_tree_dict` VALUES ('c9935b7713be11f19da92cfda15d723b', '0', 'DBA', 'ROLE_DBA', 'dba', 'user_role', '用户角色', 'role_106', 1, 16, 'N', 'database', '#9B59B6', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '数据库管理员');
+INSERT INTO `by_tree_dict` VALUES ('c99360e813be11f19da92cfda15d723b', '0', '运维人员', 'ROLE_OPS', 'ops', 'user_role', '用户角色', 'role_107', 1, 17, 'N', 'settings', '#E74C3C', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '运维工程师');
+INSERT INTO `by_tree_dict` VALUES ('c993667213be11f19da92cfda15d723b', '0', '测试人员', 'ROLE_QA', 'qa', 'user_role', '用户角色', 'role_108', 1, 18, 'N', 'check-circle', '#F39C12', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '测试工程师');
+INSERT INTO `by_tree_dict` VALUES ('c9936bce13be11f19da92cfda15d723b', '0', '项目经理', 'ROLE_PM', 'project_manager', 'user_role', '用户角色', 'role_109', 1, 19, 'N', 'briefcase', '#16A085', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '项目经理');
+INSERT INTO `by_tree_dict` VALUES ('c99371a513be11f19da92cfda15d723b', '0', '部门经理', 'ROLE_DEPT_MGR', 'dept_manager', 'user_role', '用户角色', 'role_110', 1, 20, 'N', 'users', '#34495E', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '部门经理');
+INSERT INTO `by_tree_dict` VALUES ('c99376fe13be11f19da92cfda15d723b', '0', '总经理', 'ROLE_GM', 'gm', 'user_role', '用户角色', 'role_111', 1, 21, 'N', 'award', '#F1C40F', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '总经理');
+INSERT INTO `by_tree_dict` VALUES ('c9937c3013be11f19da92cfda15d723b', '0', '董事长', 'ROLE_CHAIRMAN', 'chairman', 'user_role', '用户角色', 'role_112', 1, 22, 'N', 'crown', '#F39C12', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '董事长');
+INSERT INTO `by_tree_dict` VALUES ('c99381c413be11f19da92cfda15d723b', '0', '实习生', 'ROLE_INTERN', 'intern', 'user_role', '用户角色', 'role_113', 1, 23, 'N', 'user', '#95A5A6', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '实习人员');
+INSERT INTO `by_tree_dict` VALUES ('c99387cf13be11f19da92cfda15d723b', '0', '顾问', 'ROLE_CONSULTANT', 'consultant', 'user_role', '用户角色', 'role_114', 1, 24, 'N', 'message-circle', '#9B59B6', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '顾问');
+INSERT INTO `by_tree_dict` VALUES ('c9938d8313be11f19da92cfda15d723b', '0', '合作伙伴', 'ROLE_PARTNER', 'partner', 'user_role', '用户角色', 'role_115', 1, 25, 'N', 'handshake', '#2ECC71', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '合作伙伴');
+INSERT INTO `by_tree_dict` VALUES ('c99392fa13be11f19da92cfda15d723b', '0', '供应商', 'ROLE_SUPPLIER', 'supplier', 'user_role', '用户角色', 'role_116', 1, 26, 'N', 'truck', '#E67E22', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '供应商');
+INSERT INTO `by_tree_dict` VALUES ('c993988b13be11f19da92cfda15d723b', '0', '渠道商', 'ROLE_CHANNEL', 'channel', 'user_role', '用户角色', 'role_117', 1, 27, 'N', 'share', '#3498DB', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '渠道商');
+INSERT INTO `by_tree_dict` VALUES ('c9939e1913be11f19da92cfda15d723b', '0', '代理商', 'ROLE_AGENT', 'agent', 'user_role', '用户角色', 'role_118', 1, 28, 'N', 'briefcase', '#9B59B6', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '代理商');
+INSERT INTO `by_tree_dict` VALUES ('c993a39b13be11f19da92cfda15d723b', '0', 'VIP客户', 'ROLE_VIP_CUSTOMER', 'vip_customer', 'user_role', '用户角色', 'role_119', 1, 29, 'N', 'star', '#F1C40F', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', 'VIP客户');
+INSERT INTO `by_tree_dict` VALUES ('c993a96813be11f19da92cfda15d723b', '0', '普通客户', 'ROLE_CUSTOMER', 'customer', 'user_role', '用户角色', 'role_120', 1, 30, 'N', 'user', '#95A5A6', '1', 'N', '2026-02-27 17:29:17', '2026-02-27 17:29:17', '普通客户');
 
 -- ----------------------------
 -- Table structure for by_user
@@ -534,7 +718,7 @@ CREATE TABLE `contract_audit_log`  (
   INDEX `idx_operator`(`operator_id` ASC) USING BTREE,
   INDEX `idx_operation_time`(`operation_time` ASC) USING BTREE,
   INDEX `idx_success`(`success_flag` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '审计日志表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '审计日志表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of contract_audit_log
@@ -583,7 +767,7 @@ CREATE TABLE `contract_change_record`  (
   INDEX `idx_applicant`(`applicant_id` ASC) USING BTREE,
   INDEX `idx_apply_time`(`apply_time` ASC) USING BTREE,
   INDEX `idx_approval_time`(`approval_time` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '变更记录表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '变更记录表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of contract_change_record
@@ -625,7 +809,7 @@ CREATE TABLE `contract_file_attachment`  (
   INDEX `idx_uploader`(`uploader_id` ASC) USING BTREE,
   INDEX `idx_file_type`(`file_type` ASC) USING BTREE,
   INDEX `idx_created_time`(`created_time` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '文件附件表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '文件附件表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of contract_file_attachment
@@ -675,7 +859,7 @@ CREATE TABLE `contract_operation_record`  (
   INDEX `idx_operation_time`(`operation_time` ASC) USING BTREE,
   INDEX `idx_ip`(`ip_address` ASC) USING BTREE,
   INDEX `idx_success`(`success_flag` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '操作记录表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '操作记录表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of contract_operation_record
@@ -724,7 +908,7 @@ CREATE TABLE `contract_payment_record`  (
   INDEX `idx_actual_date`(`actual_pay_date` ASC) USING BTREE,
   INDEX `idx_payer`(`payer_name` ASC) USING BTREE,
   INDEX `idx_payee`(`payee_name` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '合同付款记录表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '合同付款记录表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of contract_payment_record
@@ -755,7 +939,7 @@ CREATE TABLE `contract_statistics`  (
   INDEX `idx_stat_date`(`stat_date` ASC) USING BTREE,
   INDEX `idx_department`(`department_id` ASC) USING BTREE,
   INDEX `idx_type`(`contract_type` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '合同统计表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '合同统计表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of contract_statistics
@@ -803,7 +987,7 @@ CREATE TABLE `contract_system_log`  (
   INDEX `idx_service`(`service_name` ASC) USING BTREE,
   INDEX `idx_keyword1`(`keyword1` ASC) USING BTREE,
   INDEX `idx_keyword2`(`keyword2` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '系统日志表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '系统日志表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of contract_system_log
@@ -852,7 +1036,7 @@ CREATE TABLE `contract_transfer_record`  (
   INDEX `idx_to_party`(`to_party_type` ASC, `to_party_id` ASC) USING BTREE,
   INDEX `idx_status`(`approval_status` ASC) USING BTREE,
   INDEX `idx_transfer_time`(`transfer_time` ASC) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '转让记录表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '转让记录表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of contract_transfer_record

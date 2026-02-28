@@ -6,7 +6,9 @@ import com.by.common.utils.HttpContextUtils;
 import com.by.common.utils.IdUtil;
 import com.by.lesson02.dto.RoleDto;
 import com.by.lesson02.entity.ByRole;
+import com.by.lesson02.entity.ByUserRole;
 import com.by.lesson02.mapper.ByRoleMapper;
+import com.by.lesson02.mapper.ByUserRoleMapper;
 import com.by.lesson02.result.Result;
 import com.by.lesson02.result.ResultCode;
 import com.by.lesson02.service.ByOperateLogService;
@@ -20,6 +22,7 @@ import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -34,6 +37,8 @@ public class ByRoleServiceImpl extends ServiceImpl<ByRoleMapper, ByRole> impleme
 
     @Autowired
     private ByOperateLogService logService;
+    @Autowired
+    private ByUserRoleMapper byUserRoleMapper;
 
     @Override
     public Result finRoleTree(RoleDto dto) {
@@ -92,5 +97,25 @@ public class ByRoleServiceImpl extends ServiceImpl<ByRoleMapper, ByRole> impleme
         } catch (Exception e) {
             return Result.fail(e.getMessage());
         }
+    }
+
+    @Override
+    public Result findRoleByUserId(String userId) {
+
+        LambdaQueryWrapper<ByUserRole> userROleWrapper = new LambdaQueryWrapper<>();
+        userROleWrapper.eq(ByUserRole::getUserId, userId);
+        List<ByUserRole> list = byUserRoleMapper.selectList(userROleWrapper);
+
+        if (list.isEmpty()) {
+            return Result.fail(ResultCode.NULL_VALUE.getCode(), ResultCode.NULL_VALUE.getMessage());
+        }
+
+        List<String> roleIds = list.stream().map(ByUserRole::getRoleId).distinct().toList();
+
+        LambdaQueryWrapper<ByRole> roleWrapper = new LambdaQueryWrapper<>();
+        roleWrapper.in(ByRole::getRoleId, roleIds);
+        List<ByRole> roleList = baseMapper.selectList(roleWrapper);
+
+        return Result.success(roleList);
     }
 }

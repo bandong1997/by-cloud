@@ -5,8 +5,11 @@ import com.by.common.constant.CommonStatus;
 import com.by.common.utils.HttpContextUtils;
 import com.by.lesson02.entity.ByPermission;
 import com.by.lesson02.entity.ByRole;
+import com.by.lesson02.entity.ByRolePermission;
 import com.by.lesson02.mapper.ByPermissionMapper;
+import com.by.lesson02.mapper.ByRolePermissionMapper;
 import com.by.lesson02.result.Result;
+import com.by.lesson02.result.ResultCode;
 import com.by.lesson02.service.ByOperateLogService;
 import com.by.lesson02.service.ByPermissionService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -16,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -30,6 +34,8 @@ public class ByPermissionServiceImpl extends ServiceImpl<ByPermissionMapper, ByP
 
     @Autowired
     private ByOperateLogService logService;
+    @Autowired
+    private ByRolePermissionMapper byRolePermissionMapper;
 
     @Override
     public Result finPermissionTree() {
@@ -42,5 +48,23 @@ public class ByPermissionServiceImpl extends ServiceImpl<ByPermissionMapper, ByP
         logService.saveOperateLogAsync(Constants.LOG_PERMISSION_TITLE, Constants.LOG_TYPE_QUERY, HttpContextUtils.getHttpServletRequest());
 
         return Result.success(treeList);
+    }
+
+    @Override
+    public Result findePermissionByRoleId(String roleId) {
+
+        LambdaQueryWrapper<ByRolePermission> rolePermissionWrapper = new LambdaQueryWrapper<>();
+        rolePermissionWrapper.eq(ByRolePermission::getRoleId, roleId);
+        List<ByRolePermission> list = byRolePermissionMapper.selectList(rolePermissionWrapper);
+        if (list.isEmpty()) {
+            return Result.fail(ResultCode.NULL_VALUE.getCode(), ResultCode.NULL_VALUE.getMessage());
+        }
+        List<String> permissionIds = list.stream().map(ByRolePermission::getPermissionId).toList();
+
+        LambdaQueryWrapper<ByPermission> permissionWrapper = new LambdaQueryWrapper<>();
+        permissionWrapper.in(ByPermission::getPermissionId, permissionIds);
+        List<ByPermission> permissionList = baseMapper.selectList(permissionWrapper);
+
+        return Result.success(permissionList);
     }
 }

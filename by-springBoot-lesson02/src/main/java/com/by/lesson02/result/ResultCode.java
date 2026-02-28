@@ -50,7 +50,10 @@ public enum ResultCode {
     DELETE_ERROR(504, "删除失败"),
 
     // 编码重复
-    REPEAT_CODE(505, "编码重复");
+    REPEAT_CODE(505, "编码重复"),
+
+    // 编码重复
+    NULL_VALUE(506, "没有查到相关数据");
 
 
     /**
