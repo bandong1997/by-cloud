@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>当前用户</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #eee;
+            padding: 2rem;
+        }
+        .container { max-width: 560px; margin: 0 auto; }
+        h1 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .card {
+            background: rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 1rem;
+        }
+        .card pre {
+            margin: 0;
+            font-size: 0.85rem;
+            overflow: auto;
+            color: #b0b0b0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background: #e94560;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+        .btn:hover { opacity: 0.9; }
+        .btn-secondary { background: #444; margin-left: 0.5rem; }
+        .msg { color: #ff8a9a; margin-top: 0.5rem; }
+        .links { margin-top: 1.5rem; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>当前用户信息</h1>
+    <div class="card" id="userCard">
+        <pre id="userJson">加载中...</pre>
+    </div>
+    <div id="errMsg" class="msg"></div>
+    <div class="links">
+        <a href="/user" class="btn">刷新</a>
+        <button type="button" class="btn btn-secondary" id="logoutBtn">退出登录</button>
+        <a href="/login" class="btn btn-secondary">返回登录</a>
+    </div>
+</div>
+
+<script>
+    const API_BASE = '';
+    const token = localStorage.getItem('accessToken');
+
+    function showUser(data) {
+        document.getElementById('userJson').textContent = JSON.stringify(data, null, 2);
+    }
+
+    function showError(msg) {
+        document.getElementById('userJson').textContent = '';
+        document.getElementById('errMsg').textContent = msg;
+    }
+
+    if (!token) {
+        showError('未登录，请先登录');
+        document.getElementById('userJson').textContent = '';
+    } else {
+        fetch(API_BASE + '/byUser/currentUser', {
+            headers: { 'Authorization':  token }
+        })
+            .then(r => r.json())
+            .then(res => {
+                if (res.code === 200 && res.data) {
+                    showUser(res.data);
+                } else {
+                    showError(res.message || '获取用户信息失败');
+                }
+            })
+            .catch(() => showError('网络错误'));
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+        const t = localStorage.getItem('accessToken');
+        if (t) {
+            fetch(API_BASE + '/byUser/logout', {
+                method: 'POST',
+                headers: { 'Authorization': + t }
+            }).finally(() => {});
+        }
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
+        window.location.href = '/login';
+    });
+</script>
+</body>
+</html>

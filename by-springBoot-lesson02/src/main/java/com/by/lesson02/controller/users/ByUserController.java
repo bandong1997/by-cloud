@@ -13,6 +13,8 @@ import com.by.lesson02.utils.UserContextHolder;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -37,6 +39,10 @@ public class ByUserController {
     private ByRoleService byRoleService;
     @Autowired
     private TokenService tokenService;
+    @Autowired
+    private RedisTemplate<String, Object> redisTemplate;
+
+    private static final String CAPTCHA_REDIS_PREFIX = "captcha:";
 
     @Operation(summary = "分页查询用户", description = "findPageUser")
     @PostMapping(value = "/findPageUser")
@@ -64,12 +70,23 @@ public class ByUserController {
 
     /**
      * 用户登录
+     * 用户登录（需先通过 /captcha/image 获取验证码，登录时携带 captchaKey、captchaCode）
      * 账号：admin
      * 密码：123456
      */
     @Operation(summary = "用户登录", description = "login")
     @PostMapping("/login")
-    public Result login(@RequestParam String username, @RequestParam String password) {
+    public Result login(@RequestParam String username,
+                        @RequestParam String password,
+                        @RequestParam String captchaKey,
+                        @RequestParam String captchaCode){
+
+        // 为null表示验证通过，非null则存在错误细心
+        Result captchaResult = verifyCaptcha(captchaKey, captchaCode);
+        if (captchaResult != null) {
+            return captchaResult;
+        }
+
         ByUser byUser = byUserService.login(username, password);
         if (byUser == null) {
             return Result.fail(ResultCode.PASSWORD_ERROR.getCode(), "用户名或密码错误");
@@ -83,6 +100,26 @@ public class ByUserController {
         byUser.setPassword(null);
         data.put("user", byUser);
         return Result.success(data);
+    }
+
+    /**
+     * 校验登录验证码（从 Redis 读取，忽略大小写，通过后删除一次性使用）。
+     *
+     * @return 校验失败时返回对应 Result，通过时返回 null
+     */
+    private Result verifyCaptcha(String captchaKey, String captchaCode) {
+        if (!StringUtils.hasText(captchaKey) || !StringUtils.hasText(captchaCode)) {
+            return Result.fail(ResultCode.CAPTCHA_ERROR.getCode(), "验证码不能为空");
+        }
+        String stored = (String) redisTemplate.opsForValue().get(CAPTCHA_REDIS_PREFIX + captchaKey);
+        if (stored == null) {
+            return Result.fail(ResultCode.CAPTCHA_EXPIRED.getCode(), ResultCode.CAPTCHA_EXPIRED.getMessage());
+        }
+        if (!stored.equalsIgnoreCase(captchaCode.trim())) {
+            return Result.fail(ResultCode.CAPTCHA_ERROR.getCode(), ResultCode.CAPTCHA_ERROR.getMessage());
+        }
+        redisTemplate.delete(CAPTCHA_REDIS_PREFIX + captchaKey);
+        return null;
     }
 
     /**

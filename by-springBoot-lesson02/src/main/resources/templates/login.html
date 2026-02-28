@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户登录</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #eee;
+        }
+        .login-card {
+            width: 100%;
+            max-width: 380px;
+            padding: 2rem;
+            background: rgba(255,255,255,0.06);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        h1 {
+            margin: 0 0 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.65rem 0.85rem;
+            font-size: 1rem;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+        }
+        .form-group input::placeholder {
+            color: #888;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: #e94560;
+        }
+        .captcha-row {
+            display: flex;
+            gap: 10px;
+            align-items: flex-end;
+        }
+        .captcha-row .form-group { flex: 1; margin-bottom: 0; }
+        .captcha-box {
+            flex-shrink: 0;
+            width: 120px;
+            height: 40px;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.15);
+            cursor: pointer;
+            background: #2a2a4a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            color: #888;
+        }
+        .captcha-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .btn {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-primary {
+            background: #e94560;
+            color: #fff;
+            margin-top: 0.5rem;
+        }
+        .btn-primary:hover { background: #c73e54; }
+        .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+        .msg {
+            margin-top: 1rem;
+            padding: 0.6rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            display: none;
+        }
+        .msg.error { background: rgba(233,69,96,0.2); color: #ff8a9a; display: block; }
+        .msg.success { background: rgba(76,175,80,0.2); color: #81c784; display: block; }
+        .link-row { text-align: center; margin-top: 1rem; }
+        .link-row a { color: #e94560; text-decoration: none; }
+        .link-row a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+<div class="login-card">
+    <h1>用户登录</h1>
+    <form id="loginForm">
+        <div class="form-group">
+            <label for="username">用户名</label>
+            <input type="text" id="username" name="username" placeholder="请输入用户名" required autocomplete="username">
+        </div>
+        <div class="form-group">
+            <label for="password">密码</label>
+            <input type="password" id="password" name="password" placeholder="请输入密码" required autocomplete="current-password">
+        </div>
+        <div class="form-group captcha-row">
+            <div class="form-group" style="flex:1;">
+                <label for="captchaCode">验证码</label>
+                <input type="text" id="captchaCode" name="captchaCode" placeholder="请输入验证码" required maxlength="6" autocomplete="off">
+            </div>
+            <div class="captcha-box" id="captchaBox" title="点击刷新验证码">
+                <span id="captchaPlaceholder">加载中...</span>
+                <img id="captchaImg" alt="验证码" style="display:none;">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" id="submitBtn">登 录</button>
+    </form>
+    <div id="msg" class="msg"></div>
+    <div class="link-row" id="afterLogin" style="display:none;">
+        <a href="/user">进入系统 →</a>
+    </div>
+</div>
+
+<script>
+    const API_BASE = '';
+    let captchaKey = '';
+
+    function loadCaptcha() {
+        // 加载表单中的id
+        const box = document.getElementById('captchaBox');
+        const img = document.getElementById('captchaImg');
+        const placeholder = document.getElementById('captchaPlaceholder');
+
+        placeholder.textContent = '加载中...';
+        img.style.display = 'none';
+        fetch(API_BASE + '/captcha/image')
+            .then(r => r.json())
+            .then(res => {
+                if (res.code === 200 && res.data) {
+                    captchaKey = res.data.captchaKey || '';
+                    if (res.data.captchaImage) {
+                        img.src = res.data.captchaImage.indexOf('data:') === 0
+                            ? res.data.captchaImage
+                            : 'data:image/png;base64,' + res.data.captchaImage;
+                        img.style.display = 'block';
+                        placeholder.style.display = 'none';
+                    } else {
+                        placeholder.textContent = '无图';
+                    }
+                } else {
+                    placeholder.textContent = '获取失败';
+                }
+            })
+            .catch(() => {
+                placeholder.textContent = '网络错误';
+            });
+    }
+    document.getElementById('captchaBox').addEventListener('click', function() {
+        if (!this.querySelector('img').style.display) return;
+        loadCaptcha();
+    });
+
+    function showMsg(text, type) {
+        const el = document.getElementById('msg');
+        el.textContent = text;
+        el.className = 'msg ' + (type === 'error' ? 'error' : 'success');
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value;
+        const captchaCode = document.getElementById('captchaCode').value.trim();
+        const submitBtn = document.getElementById('submitBtn');
+
+        if (!captchaKey) {
+            showMsg('请等待验证码加载完成', 'error');
+            return;
+        }
+        submitBtn.disabled = true;
+        showMsg('');
+
+        const params = new URLSearchParams();
+        params.set('username', username);
+        params.set('password', password);
+        params.set('captchaKey', captchaKey);
+        params.set('captchaCode', captchaCode);
+debugger
+        fetch(API_BASE + '/byUser/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: params.toString()
+        })
+            .then(r => r.json())
+            .then(res => {
+                if (res.code === 200 && res.data) {
+                    if (res.data.accessToken) {
+                        localStorage.setItem('accessToken', res.data.accessToken);
+                        if (res.data.refreshToken) localStorage.setItem('refreshToken', res.data.refreshToken);
+                    }
+                    showMsg('登录成功', 'success');
+                    document.getElementById('afterLogin').style.display = 'block';
+                } else {
+                    showMsg(res.message || '登录失败', 'error');
+                    loadCaptcha();
+                    document.getElementById('captchaCode').value = '';
+                }
+            })
+            .catch(() => {
+                showMsg('网络错误，请重试', 'error');
+                loadCaptcha();
+            })
+            .finally(() => { submitBtn.disabled = false; });
+    });
+
+    loadCaptcha();
+</script>
+</body>
+</html>

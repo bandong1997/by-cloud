@@ -46,6 +46,12 @@ public enum ResultCode {
     // 用户名已存在
     USER_EXIST(408, "用户名已存在"),
 
+    // 验证码错误
+    CAPTCHA_ERROR(409, "验证码错误"),
+
+    // 验证码已过期
+    CAPTCHA_EXPIRED(410, "验证码已过期，请刷新"),
+
     // 系统错误
     SYSTEM_ERROR(500, "系统错误"),
 

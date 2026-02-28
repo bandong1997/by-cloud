@@ -52,6 +52,10 @@ jwt:
   # 不需要登录校验的路径前缀（startsWith 匹配）
   skip-paths:
     - /byUser/login
+    - /login
+    - /user
+    - /captcha
+    - /captcha/image
     - /byUser/refreshToken
     - /byUser/logout
     - /doc.html

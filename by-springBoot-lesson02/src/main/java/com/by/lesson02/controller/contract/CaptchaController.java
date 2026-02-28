@@ -1,6 +1,7 @@
 package com.by.lesson02.controller.contract;
 
 import com.by.common.utils.CaptchaUtil;
+import com.by.lesson02.result.Result;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpSession;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -79,6 +82,24 @@ public class CaptchaController {
         } else {
             return "验证码错误，请重新输入";
         }
+    }
+
+    /**
+     * 获取登录用验证码（不依赖 Session，供登录页调用）。
+     * 返回 captchaKey 与 base64 图片，登录时携带 captchaKey + 用户输入的验证码。
+     */
+    @Operation(summary = "获取登录验证码", description = "登录页获取验证码图片与 key")
+    @GetMapping("/captcha/image")
+    @ResponseBody
+    public Result getLoginCaptcha() {
+        String code = CaptchaUtil.generateCode();
+        String captchaKey = UUID.randomUUID().toString();
+        redisTemplate.opsForValue().set("captcha:" + captchaKey, code, 5, TimeUnit.MINUTES);
+        String captchaImage = CaptchaUtil.generateCaptchaImage(code);
+        Map<String, Object> data = new HashMap<>();
+        data.put("captchaKey", captchaKey);
+        data.put("captchaImage", captchaImage);
+        return Result.success(data);
     }
 
 }
