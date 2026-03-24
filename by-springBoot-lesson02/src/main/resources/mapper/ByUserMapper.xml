@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.by.lesson02.mapper.ByUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.by.lesson02.entity.ByUser">
+        <id column="user_id" property="userId" />
+        <result column="username" property="username" />
+        <result column="password" property="password" />
+        <result column="real_name" property="realName" />
+        <result column="email" property="email" />
+        <result column="phone" property="phone" />
+        <result column="status" property="status" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <resultMap id="userPermissionMap" type="com.by.lesson02.vo.UserPermissionVO">
+        <result property="userId" column="user_id"/>
+        <result property="realName" column="real_name"/>
+        <result property="email" column="email"/>
+        <result property="phone" column="phone"/>
+        <result property="roleCode" column="role_code"/>
+        <result property="roleName" column="role_name"/>
+        <result property="roleDesc" column="role_desc"/>
+        <result property="permissionCode" column="permission_code"/>
+        <result property="permissionName" column="permission_name"/>
+        <result property="permissionType" column="permission_type"/>
+    </resultMap>
+
+    <select id="getUserPermissions2" resultMap="userPermissionMap">
+        SELECT
+            bu.user_id, bu.real_name, bu.email, bu.phone,
+            br.role_code, br.role_name, br.role_desc,
+            bp.permission_code, bp.permission_name, bp.permission_type
+        FROM by_user bu
+                 LEFT JOIN by_user_role bur ON bu.user_id = bur.user_id
+                 LEFT JOIN by_role br ON bur.role_id = br.role_id
+                 LEFT JOIN by_role_permission brp ON br.role_id = brp.role_id
+                 LEFT JOIN by_permission bp ON brp.permission_id = bp.permission_id
+        WHERE bu.user_id = #{userId}
+    </select>
+
+</mapper>

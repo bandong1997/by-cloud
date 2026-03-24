@@ -22,4 +22,8 @@ public interface ByUserService extends IService<ByUser> {
     Result deleteByUserId(String userId);
 
     ByUser login(String username, String password);
+
+    Result findUserRolePermission();
+
+    Result info();
 }

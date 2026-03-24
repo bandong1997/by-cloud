@@ -7,14 +7,19 @@ import com.by.common.constant.CommonStatus;
 import com.by.common.utils.IdUtil;
 import com.by.common.utils.md5.MD5Util;
 import com.by.lesson02.dto.UserPageDto;
+import com.by.lesson02.entity.ByRolePermission;
 import com.by.lesson02.entity.ByUser;
+import com.by.lesson02.entity.ByUserRole;
+import com.by.lesson02.mapper.ByRolePermissionMapper;
 import com.by.lesson02.mapper.ByUserMapper;
+import com.by.lesson02.mapper.ByUserRoleMapper;
 import com.by.lesson02.result.Result;
 import com.by.lesson02.result.ResultCode;
 import com.by.lesson02.service.ByOperateLogService;
 import com.by.lesson02.service.ByUserService;
 import com.by.common.utils.HttpContextUtils;
 import com.by.lesson02.utils.Constants;
+import com.by.lesson02.utils.UserContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -36,6 +41,10 @@ public class ByUserServiceImpl extends ServiceImpl<ByUserMapper, ByUser> impleme
 
     @Autowired
     private ByOperateLogService logService;
+    @Autowired
+    private ByUserRoleMapper userRoleMapper;
+    @Autowired
+    private ByRolePermissionMapper rolePermissionMapper;
 
     @Override
     public Result findPageUser(UserPageDto dto) {
@@ -134,5 +143,36 @@ public class ByUserServiceImpl extends ServiceImpl<ByUserMapper, ByUser> impleme
         }
         boolean verify = MD5Util.verify(password, user.getPassword());
         return verify ? user : null;
+    }
+
+    @Override
+    public Result findUserRolePermission() {
+
+        String userId = UserContextHolder.getUserId();
+//        return Result.success(baseMapper.getUserPermissions(userId));
+        return Result.success(baseMapper.getUserPermissions2(userId));
+
+    }
+
+    @Override
+    public Result info() {
+        Map<String, Object> data = new HashMap<>();
+        String userId = UserContextHolder.getUserId();
+        // 用户信息
+        ByUser byUser = baseMapper.selectOne(new LambdaQueryWrapper<ByUser>().eq(ByUser::getUserId, userId).last("LIMIT 1"));
+        data.put("user", byUser);
+        // 角色信息
+        LambdaQueryWrapper<ByUserRole> userRoleWrapper = new LambdaQueryWrapper<>();
+        userRoleWrapper.eq(ByUserRole::getUserId, userId);
+        List<ByUserRole> userRoleList = userRoleMapper.selectList(userRoleWrapper);
+        List<String> roleIds = userRoleList.stream().map(ByUserRole::getRoleId).distinct().toList();
+        data.put("roleIds", roleIds);
+        // 权限信息
+        LambdaQueryWrapper<ByRolePermission> rolePermissionWrapper = new LambdaQueryWrapper<>();
+        rolePermissionWrapper.in(ByRolePermission::getRoleId, roleIds);
+        List<ByRolePermission> permissionsList = rolePermissionMapper.selectList(rolePermissionWrapper);
+        List<String> getPermissionIds = permissionsList.stream().map(ByRolePermission::getPermissionId).distinct().toList();
+        data.put("permissionIds", getPermissionIds);
+        return Result.success(data);
     }
 }
