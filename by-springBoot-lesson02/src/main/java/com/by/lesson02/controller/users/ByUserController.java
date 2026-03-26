@@ -111,6 +111,28 @@ public class ByUserController {
 
 
 
+    @Operation(summary = "用户登录2", description = "login2")
+    @PostMapping("/login2")
+    public Result login2(@RequestParam String username,
+                        @RequestParam String password){
+
+        ByUser byUser = byUserService.login(username, password);
+        if (byUser == null) {
+            return Result.fail(ResultCode.PASSWORD_ERROR.getCode(), "用户名或密码错误");
+        }
+        TokenService.TokenPair tokenPair = tokenService.createToken(byUser);
+        Map<String, Object> data = new HashMap<>();
+        data.put("accessToken", Constants.BEARER + tokenPair.accessToken());
+//        data.put("accessToken", tokenPair.accessToken());
+        data.put("refreshToken", tokenPair.refreshToken());
+        data.put("accessExpire", tokenPair.accessExpireSeconds());
+        data.put("refreshExpire", tokenPair.refreshExpireSeconds());
+        byUser.setPassword(null);
+        data.put("user", byUser);
+        return Result.success(data);
+    }
+
+
     /**
      * 校验登录验证码（从 Redis 读取，忽略大小写，通过后删除一次性使用）。
      *
